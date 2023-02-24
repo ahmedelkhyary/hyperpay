@@ -40,9 +40,9 @@ dependencies:
 #  payment:
 #    path: ../
 
-  payment:
-    git:
-      url: "https://github.com/AhmedAElllatif/hyper_plugin.git"
+#  payment:
+#    git:
+#      url: ""
 
 
 dev_dependencies:
