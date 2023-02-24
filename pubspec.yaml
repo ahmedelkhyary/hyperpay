@@ -1,6 +1,6 @@
 name: payment
 description: The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/ahmedelkhyary/hyperpay
 
 environment:
