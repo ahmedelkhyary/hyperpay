@@ -1,0 +1,92 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "请选择支付方式";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "支付信息";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "处理中";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "支付信息";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "合计金额";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "您的设备将会收到一条推送通知";
+"LABEL_MBWAY_ACCEPT_PIN" = "请采用PIN MB WAY方式受理交易";
+"LABEL_TERMS_AND_CONDITIONS" = "条款和条件";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "我已阅读并同意此条款和条件";
+"LABEL_SWEDISH" = "瑞典文";
+"LABEL_FINNISH" = "芬兰文";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "请稍等";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "确认支付";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "立即付款";
+"BUTTON_TITLE_PAY_AMOUNT" = "付款 %@";
+"BUTTON_TITLE_REGISTER" = "注册";
+"BUTTON_TITLE_CANCEL" = "取消";
+"BUTTON_TITLE_BACK" = "更改";
+"BUTTON_TITLE_DONE" = "确定";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "持卡人姓名";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "卡号";
+"FIELD_LABEL_EXPIRY_DATE" = "有效期限";
+"FIELD_LABEL_CVV" = "安全码 或 卡验证码";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "手机号码";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "开户人姓名";
+"FIELD_LABEL_IBAN" = "国际银行账户号码";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "国际银行账户号码 或 账号";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "银行识别码 或 银行代码";
+"FIELD_LABEL_SELECT_COUNTRY" = "请选择国家";
+"FIELD_LABEL_SELECT_BANK" = "请选择发卡银行";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "保存支付信息方便下次购买";
+"FIELD_LABEL_STORE_CARD_TYPE" = "请选择卡种";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "分期笔数";
+"FIELD_LABEL_EMAIL" = "邮箱";
+"FIELD_LABEL_COUNTRY_CODE" = "国家代码";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "身份证号码";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "卡面上的姓名";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "卡正面一串较长的数字";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "两位月份/两位年份 或 两位月份/四位年份";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3位号码";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4位号码";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "开户人姓名";
+"FIELD_PLACEHOLDER_IBAN" = "国际银行账户号码";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "国际银行账户号码 或 账号";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "银行识别码 或 银行代码";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "邮箱";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "身份证号码";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "持卡人姓名不正确";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "输入的卡号不正确";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "有效期不正确，请使用两位月份/两位年份 或 两位月份/四位年份 格式";
+"FIELD_ERROR_CARD_EXPIRED" = "卡片已过期";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "安全代码由卡背面签名栏数字最后三位构成";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "安全代码由卡正面的4位号码构成";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "手机号码不正确";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "开户人姓名不正确";
+"FIELD_ERROR_IBAN_INVALID" = "国际银行账户号码不正确";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "国际银行账户号码 或 账号不正确";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "银行识别码 或 银行代码不正确";
+"FIELD_ERROR_EMAIL_INVALID" = "邮箱无效";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "身份证号码无效";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "已保存的支付方式";
+"PAYMENT_METHOD_GROUP_OTHER" = "其它支付方式";
+"PAYMENT_METHOD_GROUP_CARDS" = "信用卡或借記卡";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "单一欧元支付区直接借记";

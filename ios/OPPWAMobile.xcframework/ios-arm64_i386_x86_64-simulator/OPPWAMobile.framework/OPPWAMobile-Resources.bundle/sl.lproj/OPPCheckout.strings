@@ -1,0 +1,102 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Izberi način plačila";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Podrobnosti plačila";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Obdelovanje";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Podatki o plačilu";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Skupni znesek";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "V tvojo napravo bo poslano potisno obvestilo.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Potrdi transakcijo s svojo kodo PIN za MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "Pogoji in določila";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Prebral/-a sem Pogoje in določila ter se strinjam z njimi";
+"LABEL_SWEDISH" = "švedščina";
+"LABEL_FINNISH" = "finščina";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Izberi želeni način plačila:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Prosimo, počakaj";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Za potrditev plačila";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "PLAČAJ ZDAJ";
+"BUTTON_TITLE_PAY_AMOUNT" = "Plačaj %@";
+"BUTTON_TITLE_REGISTER" = "Registriraj se";
+"BUTTON_TITLE_CANCEL" = "Prekliči";
+"BUTTON_TITLE_BACK" = "Spremeni";
+"BUTTON_TITLE_DONE" = "Končano";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Ime imetnika kartice";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Številka kreditne kartice";
+"FIELD_LABEL_EXPIRY_DATE" = "Datum poteka veljavnosti";
+"FIELD_LABEL_CVV" = "Varnostna koda ali CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Številka mobilnega telefona";
+"FIELD_LABEL_QRCODE" = "QR-koda";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Imetnik računa";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN ali številka računa";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC ali bančna koda";
+"FIELD_LABEL_SELECT_COUNTRY" = "Izberi državo";
+"FIELD_LABEL_SELECT_BANK" = "Izberi banko";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Shrani podrobnosti plačila za prihodnjo uporabo";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Izberi vrsto kartice";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Število obrokov";
+"FIELD_LABEL_EMAIL" = "E-poštni naslov";
+"FIELD_LABEL_COUNTRY_CODE" = "Koda države";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = " Nacionalna identifikacijska oznaka";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Številka računa";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Preverjanje pristnosti računa";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Ime, kot je navedeno na kartici";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Dolga številka na sprednji strani kartice";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/LL ali MM/LLLL";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3-mestna koda";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4-mestna koda";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Ime imetnika računa";
+"FIELD_PLACEHOLDER_IBAN" = "Mednarodna številka bančnega računa (IBAN)";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN ali številka računa";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC ali bančna koda";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "E-poštni naslov";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = " Nacionalna identifikacijska oznaka";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Številka računa";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Preverjanje pristnosti računa";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Ime imetnika kartice ni veljavno";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Navedena številka kartice ni veljavna";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Datum poteka veljavnosti ni veljaven, uporabi obliko zapisa MM/LL ali MM/LLLL";
+"FIELD_ERROR_CARD_EXPIRED" = "Veljavnost kartice je potekla";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Varnostna koda mora vsebovati zadnje 3 številke, navedene na zadnji strani kartice";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Varnostna koda mora vsebovati 4-mestno številko, navedeno na sprednji strani kartice";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Ime imetnika računa ni veljavno";
+"FIELD_ERROR_IBAN_INVALID" = "Številka IBAN ni veljavna";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "Številka IBAN ali številka računa ni veljavna";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "Številka BIC ali bančna koda ni veljavna";
+"FIELD_ERROR_EMAIL_INVALID" = "Neveljaven e-poštni naslov";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Neveljavna številka mobilnega telefona";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Neveljavna nacionalna identifikacijska oznaka";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Neveljavna številka računa";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "Datum poteka veljavnosti ni veljaven, uporabi obliko zapisa MM/LL ali MM/LLLL";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "Račun je potekel";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Shranjeni načini plačila";
+"PAYMENT_METHOD_GROUP_OTHER" = "Drugi načini plačila";
+"PAYMENT_METHOD_GROUP_CARDS" = "Kreditne/debetne kartice";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "Direktna obremenitev SEPA";
+"PAYMENT_METHOD_TYPE_SOFORTUEBERWEISUNG" = "SOFORT Banking";

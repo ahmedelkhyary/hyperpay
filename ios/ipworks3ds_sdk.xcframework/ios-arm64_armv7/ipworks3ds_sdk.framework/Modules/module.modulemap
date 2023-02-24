@@ -1,0 +1,11 @@
+framework module ipworks3ds_sdk {
+  umbrella header "ipworks3ds_sdk.h"
+
+  export *
+  module * { export * }
+}
+
+module ipworks3ds_sdk.Swift {
+    header "ipworks3ds_sdk-Swift.h"
+    requires objc
+}

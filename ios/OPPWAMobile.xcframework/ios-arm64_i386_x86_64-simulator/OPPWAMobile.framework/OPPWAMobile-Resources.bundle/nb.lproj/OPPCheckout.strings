@@ -1,0 +1,103 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Velg betalingsalternativ";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Betalingsopplysninger";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Behandler";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Betalingsinformasjon";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Totalsum";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "Du vil få et pushvarsel på telefonen din.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Vennligst godkjenn overføringen med PIN MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "Vilkår og betingelser";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Jeg har lest og godkjenner vilkår og betingelser";
+"LABEL_SWEDISH" = "Svensk";
+"LABEL_FINNISH" = "Finsk";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Vennligst velg betalingsalternativ:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Vennligst vent";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Bekreft betaling";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "BETAL NÅ";
+"BUTTON_TITLE_PAY_AMOUNT" = "Betal %@";
+"BUTTON_TITLE_REGISTER" = "Registrer";
+"BUTTON_TITLE_CANCEL" = "Avbryt";
+"BUTTON_TITLE_BACK" = "Endre";
+"BUTTON_TITLE_DONE" = "Ferdig";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Kortinnhaverens navn";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Kortnummer";
+"FIELD_LABEL_EXPIRY_DATE" = "Utløpsdato";
+"FIELD_LABEL_CVV" = "Sikkerhetskode";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Mobilnummer";
+"FIELD_LABEL_QRCODE" = "QR_kode";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Kortholders navn";
+"FIELD_LABEL_IBAN" = "IBAN (International Bank Account Number)";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN eller kontonummer";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC eller bankkode";
+"FIELD_LABEL_SELECT_COUNTRY" = "Velg land:";
+"FIELD_LABEL_SELECT_BANK" = "Velg bank:";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Lagre betalingsopplysninger til neste gang";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Velg korttype:";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Antall delbetalinger";
+"FIELD_LABEL_EMAIL" = "E-post";
+"FIELD_LABEL_COUNTRY_CODE" = "Landskode";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Personnummer";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Kontonummer";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Kontoverifisering";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Navn som står på kortet";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Det lange nummeret på forsiden av kortet";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/ÅÅ eller MM/ÅÅÅÅ";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "tresifret";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "firesifret";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Kortholders navn";
+"FIELD_PLACEHOLDER_IBAN" = "International Bank Account Number (IBAN)";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN eller kontonummer";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC eller bankkode";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "E-post";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Personnummer";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Kontonummer";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Kontoverifisering";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Kortinnhaverens navn er ikke gyldig";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Kortnummerets navn er ikke gyldig";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Utløspdatoen stemmer ikke, bruk formatet MM/ÅÅ eller MM/ÅÅÅÅ";
+"FIELD_ERROR_CARD_EXPIRED" = "Kortet er utgått";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Sikkerhetskoden er de tre sifrene på kortets bakside.";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Sikkerhetskoden er de fire sifrene på kortets forside.";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Kontoinnhaverens navn er ugyldig";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN ikke gyldig";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "IBAN eller kontonummer er ikke gyldig";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "Clearingnummer eller BIC er ikke gyldig";
+"FIELD_ERROR_EMAIL_INVALID" = "Ugyldig e-postadresse";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Ugyldig mobilnummer";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Feil personnummer";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Ugyldig kortnummer";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "Utløpsdato stemmer ikke, bruk formatet MM/ÅÅ eller MM/ÅÅÅÅ";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "Kotoen er utgått";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Lagre betalingsalternativer";
+"PAYMENT_METHOD_GROUP_OTHER" = "Endre betalingsalternativer";
+"PAYMENT_METHOD_GROUP_CARDS" = "Kredit-/bankkort";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYLATER" = "Få først. Betal senere.";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_SLICEIT" = "Del opp.";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYNOW" = "Kort";

@@ -1,0 +1,95 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Zahlungsmethode auswählen";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Zahlungsdaten";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "In Bearbeitung";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Zahlungsinfo";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Gesamtbetrag";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "Eine Push-Nachricht wird zu ihrem Gerät gesendet";
+"LABEL_MBWAY_ACCEPT_PIN" = "Bitte bestätigen sie die Transaktion mit ihrem MB WAY-PIN";
+"LABEL_TERMS_AND_CONDITIONS" = "Allgemeine Geschäftsbedingungen";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Ich habe die allgemeinen Geschäftsbedingungen gelesen und stimme diesen zu";
+"LABEL_SWEDISH" = "Schwedisch";
+"LABEL_FINNISH" = "Finnisch";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Bitte Warten";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Zahlung bestätigen";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "Jetzt zahlen";
+"BUTTON_TITLE_PAY_AMOUNT" = "%@ bezahlen";
+"BUTTON_TITLE_REGISTER" = "Anmelden";
+"BUTTON_TITLE_CANCEL" = "Abbrechen";
+"BUTTON_TITLE_BACK" = "Ändern";
+"BUTTON_TITLE_DONE" = "Fertig";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Karteninhaber";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Kreditkartennummer";
+"FIELD_LABEL_EXPIRY_DATE" = "Gültig bis";
+"FIELD_LABEL_CVV" = "Sicherheitscode/CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Mobiltelefonnummer";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Kontoinhaber";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN oder Kontonummer";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC oder Bankleitzahl";
+"FIELD_LABEL_SELECT_COUNTRY" = "Land auswählen:";
+"FIELD_LABEL_SELECT_BANK" = "Bank auswählen:";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Zahlungsdaten für zukünftige Zahlungen speichern";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Kartentyp auswählen:";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Anzahl der Raten";
+"FIELD_LABEL_EMAIL" = "Email";
+"FIELD_LABEL_COUNTRY_CODE" = "Ländervorwahl";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Personenkennzeichen";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Name, wie er auf der Karte aufgedruckt ist";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Lange Nummer auf der Kartenvorderseite";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/JJ, MM/JJJJ";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3 Ziffern";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4 Ziffern";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Name des Kontoinhabers";
+"FIELD_PLACEHOLDER_IBAN" = "Internationale Kontonummer";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN oder Kontonummer";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC oder Bankleitzahl";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xx";
+"FIELD_PLACEHOLDER_EMAIL" = "Email";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Personenkennzeichen";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Ungültiger Karteninhaber";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Ungültige Kartennummer";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Ungültiges Ablaufdatum, bitte MM/JJ oder MM/JJJJ verwenden";
+"FIELD_ERROR_CARD_EXPIRED" = "Kreditkarte ist abgelaufen";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Sichereitscode muss aus 3 Ziffern bestehen";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Der vierstellige Sicherheitscode befindet sich auf der Kartenvorderseite";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Ungültige Telefonnummer";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Ungültiger Kontoinhaber";
+"FIELD_ERROR_IBAN_INVALID" = "Ungültige IBAN";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "Ungültige IBAN oder Kontonummer";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "Ungültige BIC oder Bankleitzahl";
+"FIELD_ERROR_EMAIL_INVALID" = "Ungültige Email";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Ungültiges Personenkennzeichen";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Gespeicherte Zahlungsmethoden";
+"PAYMENT_METHOD_GROUP_OTHER" = "Weitere Zahlungsmethoden";
+"PAYMENT_METHOD_GROUP_CARDS" = "Kredit- / Debitkarten";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_SOFORTUEBERWEISUNG" = "SOFORT Überweisung";
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "SEPA Lastschrift";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYLATER" = "Rechnung";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_SLICEIT" = "Ratenkauf";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYNOW" = "Sofortüberweisung";

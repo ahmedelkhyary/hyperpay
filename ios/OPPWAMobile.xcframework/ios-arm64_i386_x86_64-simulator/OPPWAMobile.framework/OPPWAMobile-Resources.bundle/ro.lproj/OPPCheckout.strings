@@ -1,0 +1,102 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Selectează metoda de plată";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Detaliile plății";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Procesare";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Informații despre plată";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Suma totală";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "O notificare push va fi trimisă pe dispozitivul tău.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Te rugăm să confirmi tranzacția cu codul PIN MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "Termene și condiții";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Am citit și sunt de acord cu Termenele și condițiile";
+"LABEL_SWEDISH" = "Suedeză";
+"LABEL_FINNISH" = "Finlandeză";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Te rugăm să selectezi metoda de plată preferată:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Te rugăm să aștepți";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Pentru confirmarea plății";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "PLĂTEȘTE ACUM";
+"BUTTON_TITLE_PAY_AMOUNT" = "Plătește %@";
+"BUTTON_TITLE_REGISTER" = "Înregistrează-te";
+"BUTTON_TITLE_CANCEL" = "Anulează";
+"BUTTON_TITLE_BACK" = "Modifică";
+"BUTTON_TITLE_DONE" = "Finalizare";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Numele posesorului cardului";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Numărul cardului de credit";
+"FIELD_LABEL_EXPIRY_DATE" = "Data de expirare";
+"FIELD_LABEL_CVV" = "Codul de securitate sau CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Numărul de telefon mobil";
+"FIELD_LABEL_QRCODE" = "Codul QR";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Posesorul contului";
+"FIELD_LABEL_IBAN" = "Codul IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "Codul IBAN sau numărul contului";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC sau codul băncii";
+"FIELD_LABEL_SELECT_COUNTRY" = "Selectează țara";
+"FIELD_LABEL_SELECT_BANK" = "Selectează banca";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Salvează detaliile plății pentru utilizare ulterioară";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Selectează tipul cardului";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Numărul ratelor";
+"FIELD_LABEL_EMAIL" = "Adresa de e-mail";
+"FIELD_LABEL_COUNTRY_CODE" = "Codul țării";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Numărul național de identificare";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Numărul contului";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Verificare cont";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Numele care apare pe card";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Numărul lung de pe fața cardului";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "LL/AA sau LL/AAAA";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "Cod de 3 cifre";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "Cod de 4 cifre";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Numele posesorului cardului";
+"FIELD_PLACEHOLDER_IBAN" = "Numărul internațional al contului bancar";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "Codul IBAN sau numărul contului";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC sau codul băncii";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "Adresa de e-mail";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Numărul național de identificare";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Numărul contului";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Verificare cont";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Numele posesorului cardului este incorect";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Numărul cardului este incorect";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Data de expirare a cardului este incorectă, folosește formatul LL/AA sau LL/AAAA";
+"FIELD_ERROR_CARD_EXPIRED" = "Cardul este expirat";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Codul de securitate trebuie să conțină ultimele 3 cifre de pe spatele cardului tău";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Codul de securitate trebuie să conțină codul de 4 cifre de fața cardului tău";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Numele posesorului cardului este incorect";
+"FIELD_ERROR_IBAN_INVALID" = "Codul IBAN este incorect";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "Codul IBAN sau numărul contului este incorect";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "BIC sau codul băncii este incorect";
+"FIELD_ERROR_EMAIL_INVALID" = "Adresa de e-mail nu este valabilă";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Numărul de telefon nu este valabil";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Numărul național de identificare nu este valabil";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Numărul contului este incorect";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "Data de expirare este incorectă, folosește formatul LL/AA sau LL/AAAA";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "Contul este expirat";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Metode de plată salvate";
+"PAYMENT_METHOD_GROUP_OTHER" = "Alte metode de plată";
+"PAYMENT_METHOD_GROUP_CARDS" = "Carduri de credit/debit";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "SEPA Direct Debit";
+"PAYMENT_METHOD_TYPE_SOFORTUEBERWEISUNG" = "SOFORT BANKING";

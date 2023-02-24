@@ -1,0 +1,103 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Wybierz Metodę Płatności";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Szczegóły płatności";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Przetwarzanie";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Informacje o płatności";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Kwota ogółem";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "Powiadomienie push zostanie wysłane do Twojego urządzenia.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Proszę zaakceptować transakcję za pomocą PIN MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "Regulamin";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Przeczytałem i akceptuję Regulamin";
+"LABEL_SWEDISH" = "Szwedzki";
+"LABEL_FINNISH" = "Fiński";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Wybierz preferowaną metodę płatności:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Proszę czekać";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Aby potwierdzić płatność";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "ZAPŁAĆ TERAZ";
+"BUTTON_TITLE_PAY_AMOUNT" = "Zapłać %@";
+"BUTTON_TITLE_REGISTER" = "Zarejestruj";
+"BUTTON_TITLE_CANCEL" = "Anuluj";
+"BUTTON_TITLE_BACK" = "Zmień";
+"BUTTON_TITLE_DONE" = "Gotowe";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Imię i nazwisko posiadacza karty";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Numer karty kredytowej";
+"FIELD_LABEL_EXPIRY_DATE" = "Termin ważności";
+"FIELD_LABEL_CVV" = "Kod bezpieczeństwa lub CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Numer telefonu komórkowego";
+"FIELD_LABEL_QRCODE" = "Kod QR";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Właściciel konta";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN lub numer konta";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "Kod BIC lub bankowy";
+"FIELD_LABEL_SELECT_COUNTRY" = "Wybierz kraj:";
+"FIELD_LABEL_SELECT_BANK" = "Wybierz Bank:";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Przechowuj szczegóły płatności do wykorzystania w przyszłości";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Wybierz typ karty:";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Liczba rat";
+"FIELD_LABEL_EMAIL" = "E-mail";
+"FIELD_LABEL_COUNTRY_CODE" = "Kod pocztowy";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Krajowy identyfikator";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Numer konta";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Weryfikacja konta";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Imię, jakie widnieje na karcie";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Długi numer z przodu karty";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/RR lub MM/RRRR";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3-cyfrowy kod";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4-cyfrowy kod";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Nazwa właściciela konta";
+"FIELD_PLACEHOLDER_IBAN" = "Międzynarodowy numer rachunku bankowego";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN lub numer konta";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "Kod BIC lub bankowy";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "E-mail";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Krajowy identyfikator";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Numer konta";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Weryfikacja konta";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Nazwisko posiadacza karty jest nieprawidłowe";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Podany numer karty jest nieprawidłowy";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Data ważności karty jest nieprawidłowa, użyj formatu MM/RR lub MM/RRRR";
+"FIELD_ERROR_CARD_EXPIRED" = "Karta wygasła";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Kod bezpieczeństwa musi zawierać 3 ostatnie cyfry na odwrocie karty";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Kod bezpieczeństwa musi zawierać 4-cyfrowy numer z przodu karty";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Nazwa posiadacza rachunku jest nieprawidłowa";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN jest nieprawidłowy";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "Numer IBAN lub numer konta są nieprawidłowe";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "Kod BIC lub bankowy jest nieprawidłowy";
+"FIELD_ERROR_EMAIL_INVALID" = "Niepoprawny email";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Nieprawidłowy numer telefonu komórkowego";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Nieprawidłowy identyfikator krajowy";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Nieprawidłowy numer konta";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "Data ważności jest nieprawidłowa, użyj formatu MM/RR lub MM/RRRR";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "Konto wygasło";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Przechowywane metody płatności";
+"PAYMENT_METHOD_GROUP_OTHER" = "Inne metody płatności";
+"PAYMENT_METHOD_GROUP_CARDS" = "Karty kredytowe / debetowe";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_SOFORTUEBERWEISUNG" = "BANKOWOŚĆ SOFORT";
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "Polecenie zapłaty SEPA";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYNOW" = "Przelew elektroniczny";

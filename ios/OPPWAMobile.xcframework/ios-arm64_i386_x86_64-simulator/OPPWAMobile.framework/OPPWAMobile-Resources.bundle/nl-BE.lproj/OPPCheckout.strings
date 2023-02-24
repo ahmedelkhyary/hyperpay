@@ -1,0 +1,104 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Kies betaalwijze";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Betaalgegevens";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Verwerken";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Betaalinformatie";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Totaalbedrag";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "We sturen een pushbericht naar je mobiel toestel.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Accepteer de transactie alsjeblieft met je PIN MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "Algemene voorwaarden";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Ik heb de algemene contractvoorwaarden gelezen en begrepen.";
+"LABEL_SWEDISH" = "Zweedse";
+"LABEL_FINNISH" = "Finse";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Selecteer je gewenste betaalwijze:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Even geduld alsjeblieft";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Bevestig betaling";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "Betaal";
+"BUTTON_TITLE_PAY_AMOUNT" = "Betaal %@";
+"BUTTON_TITLE_REGISTER" = "Registreer";
+"BUTTON_TITLE_CANCEL" = "Annuleer";
+"BUTTON_TITLE_BACK" = "Pas aan";
+"BUTTON_TITLE_DONE" = "Gereed";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Naam kaarthouder";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Kredietkaartnummer";
+"FIELD_LABEL_EXPIRY_DATE" = "Vervaldatum";
+"FIELD_LABEL_CVV" = "Beveiligingscode of CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Mobiel telefoonnummer";
+"FIELD_LABEL_QRCODE" = "QR-code";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Rekeninghouder";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN of bankrekeningnummer";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC of bankcode";
+"FIELD_LABEL_SELECT_COUNTRY" = "Selecteer land";
+"FIELD_LABEL_SELECT_BANK" = "Selecteer bank";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Sla betaalgegevens op voor toekomstig gebruik";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Kies kaarttype";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Aantal termijnen";
+"FIELD_LABEL_EMAIL" = "E-mailadres";
+"FIELD_LABEL_COUNTRY_CODE" = "Landcode";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Rijksregisternummer";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Account nummer";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Account verificatie";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Naam zoals op de kaart staat";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Lange nummer op de voorkant van de kaart";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/JJ of MM/JJJJ";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3-cijferige code";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4-cijferige code";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Naam rekeninghouder";
+"FIELD_PLACEHOLDER_IBAN" = "International Bank Account Number";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN of bankrekeningnummer";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC of bankcode";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "E-mailadres";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Rijksregisternummer";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Account nummer";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Account verificatie";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Naam kaarthouder is niet geldig";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Kaartnummer is niet geldig";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Vervaldatum is niet geldig, vul in als MM/JJ of MM/JJJJ";
+"FIELD_ERROR_CARD_EXPIRED" = "Kaart is vervallen";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Veiligheidscode moet de 3 laatste cijfers op de achterkant van je kaart bevatten";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Veligheidscode moet het 4-cijferige nummer op de voorkant van je kaart bevatten";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Naam rekeninghouder is ongeldig";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN is ongeldig";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "IBAN of bankrekeningnummer is ongeldig";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "BIC of bankcode is ongeldig";
+"FIELD_ERROR_EMAIL_INVALID" = "Ongeldig e-mailadres";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Ongeldig mobiel telefoonnummer";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Ongeldig rijksregisternummer";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Ongeldig account nummer";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "Vervaldatum is niet geldig, gebruik formaat MM/JJ of MM/JJJJ";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "Account is verlopen";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Opgeslagen betaalwijze";
+"PAYMENT_METHOD_GROUP_OTHER" = "Andere betaalwijze";
+"PAYMENT_METHOD_GROUP_CARDS" = "Krediet-/debetkaart";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "SEPA-domiciliëring";
+"PAYMENT_METHOD_TYPE_SOFORTUEBERWEISUNG" = "SOFORT BANKING";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYLATER" = "Betalen binnen 21 dagen";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYNOW" = "Directe bankoverschrijving";

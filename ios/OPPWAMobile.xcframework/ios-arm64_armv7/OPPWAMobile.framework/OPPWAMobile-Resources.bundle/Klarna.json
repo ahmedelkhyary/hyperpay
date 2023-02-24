@@ -1,0 +1,67 @@
+{
+	"KLARNA_INVOICE": {
+		"NL": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/nl_nl/invoice?fee=%@\">Factuurvoorwaarden</a>",
+			"title": "Factuur"
+    	},
+    	"DE": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/de_de/invoice?fee=%@\">Rechnungsbedingungen</a>",
+			"title": "Rechnung",
+			"text": "Mit der Übermittlung der für die Abwicklung der gewählten Klarna Zahlungsmethode und einer Identitäts- und Bonitätsprüfung erforderlichen Daten an Klarna bin ich einverstanden. Meine <a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/de_de/consent\">Einwilligung</a> kann ich jederzeit mit Wirkung für die Zukunft widerrufen. Es gelten die AGB des Händlers."
+    	},
+		"AT": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/de_at/invoice?fee=%@\">Rechnungsbedingungen</a>",
+			"title": "Rechnung",
+			"text": "Mit der Übermittlung der für die Abwicklung der gewählten Klarna Zahlungsmethode und einer Identitäts- und Bonitätsprüfung erforderlichen Daten an Klarna bin ich einverstanden. Meine <a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/de_at/consent\">Einwilligung</a> kann ich jederzeit mit Wirkung für die Zukunft widerrufen. Es gelten die AGB des Händlers."
+    	},
+    	"DK": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/da_dk/invoice?fee=%@\">Vilkår for faktura</a>",
+			"title": "Faktura"
+    	},
+    	"FI": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/fi_fi/invoice?fee=%@\">Laskuehdot</a>",
+			"title": "Lasku"
+    	},
+    	"NO": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/nb_no/invoice?fee=%@\">Vilkår for faktura</a>",
+			"title": "Faktura"
+    	},
+    	"SE": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/sv_se/invoice?fee=%@\">Vilkår for faktura</a>",
+			"title": "Faktura"
+    	}
+	},
+	"KLARNA_INSTALLMENTS": {
+		"NL": {
+            "link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/nl_nl/account?fee=%@\">Lees meer!</a>",
+			"image": "klarna_nl_agreement",
+			"title": "Account"
+    	},
+    	"DE": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/de_de/invoice?fee=%@\">Lesen Sie mehr!</a>",
+			"title": "Ratenkauf",
+			"text": "Mit der Übermittlung der für die Abwicklung der gewählten Klarna Zahlungsmethode und einer Identitäts- und Bonitätsprüfung erforderlichen Daten an Klarna bin ich einverstanden. Meine <a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/de_de/consent\">Einwilligung</a> kann ich jederzeit mit Wirkung für die Zukunft widerrufen. Es gelten die AGB des Händlers."
+    	},
+    	"AT": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/de_de/invoice?fee=%@\">Lesen Sie mehr!</a>",
+			"title": "Ratenkauf",
+			"text": "Mit der Übermittlung der für die Abwicklung der gewählten Klarna Zahlungsmethode und einer Identitäts- und Bonitätsprüfung erforderlichen Daten an Klarna bin ich einverstanden.\nMeine <a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/de_de/consent\">Einwilligung</a> kann ich jederzeit mit Wirkung für die Zukunft widerrufen. Es gelten die AGB des Händlers."
+    	},
+    	"DK": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/da_dk/invoice?fee=%@\">Læs mere</a>",
+			"title": "Konto"
+    	},
+    	"FI": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/fi_fi/invoice?fee=%@\">Lue lisää</a>",
+			"title": "Tili"
+    	},
+    	"NO": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/nb_no/invoice?fee=%@\">Les mer</a>",
+			"title": "Konto"
+    	},
+    	"SE": {
+			"link": "<a href=\"https://cdn.klarna.com/1.0/shared/content/legal/terms/%@/sv_se/invoice?fee=%@\">Läs mer</a>",
+			"title": "Konto"
+    	}
+	}
+}

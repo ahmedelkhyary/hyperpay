@@ -1,0 +1,92 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Seleccione el método de pago";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Detalles del pago";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Procesando";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Informacion de pago";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Monto total";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "Se enviará una notificación automática a su dispositivo.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Por favor, acepte la transacción con su PIN MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "Términos y condiciones";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "He leído y acepto los términos y condiciones";
+"LABEL_SWEDISH" = "Sueco";
+"LABEL_FINNISH" = "Finés";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Espere por favor";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "PAGUE AHORA";
+"BUTTON_TITLE_PAY_AMOUNT" = "Pagar %@";
+"BUTTON_TITLE_REGISTER" = "Registro";
+"BUTTON_TITLE_CANCEL" = "Cancelar";
+"BUTTON_TITLE_BACK" = "Cambiar";
+"BUTTON_TITLE_DONE" = "Finalizar";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Para confirmar el pago";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Nombre del titular de la tarjeta";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Número de tarjeta de crédito";
+"FIELD_LABEL_EXPIRY_DATE" = "Fecha de caducidad";
+"FIELD_LABEL_CVV" = "Código de seguridad o CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Número de teléfono móvil";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Titular de la cuenta";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN o número de cuenta";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC o Código de Banco";
+"FIELD_LABEL_SELECT_BANK" = "Seleccionar Banco";
+"FIELD_LABEL_SELECT_COUNTRY" = "Seleccionar país";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Guardar detalles de pago para uso futuro";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Seleccionar tarjeta";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Número de plazos";
+"FIELD_LABEL_EMAIL" = "Correo electrónico";
+"FIELD_LABEL_COUNTRY_CODE" = "Prefijo telefónico internacional";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Identificador nacional";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Nombre como aparece en la tarjeta";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Número largo en el frente de tu tarjeta";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/AA o MM/AAAA";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "Código de 3 dígitos";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "Código de 4 dígitos";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "nombre del titular de la cuenta";
+"FIELD_PLACEHOLDER_IBAN" = "Numero de cuenta de Banco Internacional";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN o número de cuenta";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC o Código de Banco";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xx";
+"FIELD_PLACEHOLDER_EMAIL" = "Correo electrónico";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Identificador nacional";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Nombre del titular de la tarjeta no es válido";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Número de tarjeta introducido no es válido";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Fecha de caducidad de la tarjeta no es válida, utilice el formato MM/AA o MM/AAAA";
+"FIELD_ERROR_CARD_EXPIRED" = "La tarjeta ha caducado";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "El código de seguridad debe contener los últimos 3 dígitos en la parte posterior de su tarjeta";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "El código de seguridad debe contener un número de 4 dígitos en la parte frontal de la tarjeta";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Número de teléfono móvil inválido";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "El nombre del titular de la cuenta no es válido";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN no es válido";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "IBAN o número de cuenta no es válido";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "BIC o código bancario no es válido";
+"FIELD_ERROR_EMAIL_INVALID" = "Correo electrónico inválido";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Identificador nacional inválido";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Métodos de pago almacenados";
+"PAYMENT_METHOD_GROUP_OTHER" = "Otros métodos de pago";
+"PAYMENT_METHOD_GROUP_CARDS" = "Tarjeta de débito / crédito";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "Débito directo SEPA";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYNOW" = "Transferencia";

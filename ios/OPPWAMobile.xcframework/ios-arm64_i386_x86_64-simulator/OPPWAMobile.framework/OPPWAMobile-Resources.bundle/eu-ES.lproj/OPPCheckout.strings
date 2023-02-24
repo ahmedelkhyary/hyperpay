@@ -1,0 +1,92 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Aukeratu ordaintzeko modua";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Ordainketaren xehetasunak";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Tramitazioa";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Ordainketaren informazioa";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Guztira";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "Jakinarazpen automatiko bat bidaliko da zure gailura.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Mesedez, onartu transakzioa PIN MB WAY erabiliz.";
+"LABEL_TERMS_AND_CONDITIONS" = "Baldintzak eta betebeharrak";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Baldintzak eta betebeharrak irakurri eta onartzen ditut";
+"LABEL_SWEDISH" = "Suediera";
+"LABEL_FINNISH" = "Finlandiera";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Itxaron, mesedez";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Ordainketa baieztatzeko";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "ORDAINDU ORAIN";
+"BUTTON_TITLE_PAY_AMOUNT" = "Ordaindu %@";
+"BUTTON_TITLE_REGISTER" = "Erregistratu";
+"BUTTON_TITLE_CANCEL" = "Utzi";
+"BUTTON_TITLE_BACK" = "Aldatu";
+"BUTTON_TITLE_DONE" = "Done";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Txartela-titularraren izena";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Kreditu-txartelaren zenbakia";
+"FIELD_LABEL_EXPIRY_DATE" = "Iraungitze-data";
+"FIELD_LABEL_CVV" = "Segurtasun-kodea edo CVV-a";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Telefono mugikorraren";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Kontuaren titularra";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN-a edo kontu-zenbakia";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC-a edo banku-kodea";
+"FIELD_LABEL_SELECT_COUNTRY" = "Aukeratu herrialdea";
+"FIELD_LABEL_SELECT_BANK" = "Aukeratu bankua";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Gorde ordainketaren xehetasunak etorkizunean erabiltzeko";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Aukeratu txartela-mota";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Epeak";
+"FIELD_LABEL_EMAIL" = "Helbide elektronikoa";
+"FIELD_LABEL_COUNTRY_CODE" = "Herrialde-kodea";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Identifikatzaile nazionala";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Txartelean agertzen den izena";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Txartelaren aurrealdeko zenbaki luzea";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "HH/UU edo HH/UUUU";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3 digituko kodea";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4 digituko kodea";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Kontu-titularraren izena";
+"FIELD_PLACEHOLDER_IBAN" = "Banku-kontuaren kode internazionala";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN-a edo kontu-zenbakia";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC-a edo banku-kodea";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "Helbide elektronikoa";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Identifikatzaile nazionala";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Txartela-titularraren izenak ez du balio";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Txartela-zenbakiak ez du balio";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Txartelaren iraungitze-datak ez du balio, erabili HH/UU edo HH/UUUU formatua";
+"FIELD_ERROR_CARD_EXPIRED" = "Txartela iraungi da";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Segurtasun-kodea txartelaren atzealdeko azken 3 digituak izan behar ditu";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Segurtasun-kodea txartelaren aurrealdeko 4 digituak izan behar ditu";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Kontu-titularraren izenak ez du balio";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN-ak ez du balio";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "IBAN-ak edo kontu-zenbakiak ez du balio";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "BIC-ak edo banku-kodeak ez du balio";
+"FIELD_ERROR_EMAIL_INVALID" = "Helbide elektronikoak ez du balio";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Telefono zenbakiak ez du balio";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Identifikatzaile nazionalak ez du balio";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Gordetako ordaintzeko moduak";
+"PAYMENT_METHOD_GROUP_OTHER" = "Beste ordaintzeko moduak";
+"PAYMENT_METHOD_GROUP_CARDS" = "Kreditu/zordunketa-txartelak";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "SEPA zordunketa zuzena";

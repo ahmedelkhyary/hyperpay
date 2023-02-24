@@ -1,0 +1,90 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Selecciona el mètode de pagament";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Dades del pagament";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "S'està processant";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Informació del pagament";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Quantitat total";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "S'enviarà una notificació push al teu dispositiu.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Accepta la transacció amb el teu PIN d'MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "Termes i condicions";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "He llegit i accepto els termes i condicions";
+"LABEL_SWEDISH" = "Suec";
+"LABEL_FINNISH" = "Finès";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Espera";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Confirma el pagament";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "PAGA ARA";
+"BUTTON_TITLE_PAY_AMOUNT" = "Paga %@";
+"BUTTON_TITLE_REGISTER" = "Registra't";
+"BUTTON_TITLE_CANCEL" = "Cancel·la";
+"BUTTON_TITLE_BACK" = "Canvia";
+"BUTTON_TITLE_DONE" = "Fet";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Nom del titular de la targeta";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Número de la targeta de crèdit";
+"FIELD_LABEL_EXPIRY_DATE" = "Data de caducitat";
+"FIELD_LABEL_CVV" = "Codi de seguretat o CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Número de mòbil";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Titular del compte";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN o número de compte";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC o codi del banc";
+"FIELD_LABEL_SELECT_COUNTRY" = "Selecciona el país:";
+"FIELD_LABEL_SELECT_BANK" = "Selecciona el banc:";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Emmagatzema les dades del pagament per utilitzar-les en el futur";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Tria el tipus de targeta:";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Nombre de terminis";
+"FIELD_LABEL_EMAIL" = "Correu electrònic";
+"FIELD_LABEL_COUNTRY_CODE" = "Codi del país";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Identificador nacional";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Nom tal i com apareix a la targeta";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Número llarg que es troba a la part frontal de la targeta";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/AA o MM/AAAA";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "Codi de 3 dígits";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "Codi de 4 dígits";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Nom del titular del compte";
+"FIELD_PLACEHOLDER_IBAN" = "Codi Internacional de Compte Bancari";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN o número de compte";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC o codi del banc";
+"FIELD_PLACEHOLDER_EMAIL" = "Correu electrònic";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Identificador nacional";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "El nom del titular de la targeta no és vàlid";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "El número de targeta introduït no és vàlid";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "La data de caducitat no és vàlida, utilitza el format MM/AA o MM/AAAA";
+"FIELD_ERROR_CARD_EXPIRED" = "La targeta ha caducat";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "El codi de seguretat està format pels últims 3 dígits de la part del darrere de la targeta";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "El codi de seguretat és el número de 4 dígits de la part frontal de la targeta";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "El nom del titular del compte no és vàlid";
+"FIELD_ERROR_IBAN_INVALID" = "L'IBAN no és vàlid";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "L'IBAN o número de compte no és vàlid";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "El BIC o codi del banc no és vàlid";
+"FIELD_ERROR_EMAIL_INVALID" = "El correu electrònic no és vàlid";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "El número de mòbil no és vàlid";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "L'identificador nacional no és vàlid";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Mètodes de pagament emmagatzemats";
+"PAYMENT_METHOD_GROUP_OTHER" = "Altres mètodes de pagament";
+"PAYMENT_METHOD_GROUP_CARDS" = "Targetes de crèdit/dèbit";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "Domiciliació de dèbit directe SEPA";

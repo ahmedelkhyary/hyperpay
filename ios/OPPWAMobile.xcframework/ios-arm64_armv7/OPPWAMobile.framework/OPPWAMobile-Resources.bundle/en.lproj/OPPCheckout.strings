@@ -1,0 +1,153 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Select Payment Method";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Payment Details";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Processing";
+"VIEW_CONTROLLER_TITLE_ADDRESS" = "Billing Address";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Payment Info";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Total Amount";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "A push notification will be sent to your device.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Please accept the transaction with your PIN MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "Terms and Conditions";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "I have read and agree the Terms and Conditions";
+"LABEL_SWEDISH" = "Swedish";
+"LABEL_FINNISH" = "Finnish";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Please select your preferred payment method:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Please wait";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "To confirm payment";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "Pay now";
+"BUTTON_TITLE_PAY_AMOUNT" = "Pay %@";
+"BUTTON_TITLE_REGISTER" = "Register";
+"BUTTON_TITLE_CANCEL" = "Cancel";
+"BUTTON_TITLE_BACK" = "Change";
+"BUTTON_TITLE_DONE" = "Done";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Name of Card Holder";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Credit Card Number";
+"FIELD_LABEL_EXPIRY_DATE" = "Expiration Date";
+"FIELD_LABEL_CVV" = "Security Code or CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Mobile Phone Number";
+"FIELD_LABEL_QRCODE" = "QR-Code";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Account Holder";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN or Account Number";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC or Bank Code";
+"FIELD_LABEL_SELECT_COUNTRY" = "Select Country:";
+"FIELD_LABEL_SELECT_BANK" = "Select Bank:";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Store payment details for future use";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Choose card type:";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Number of installments";
+"FIELD_LABEL_EMAIL" = "Email";
+"FIELD_LABEL_COUNTRY_CODE" = "Country code";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "National Identifier";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Account Number";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Account Verification";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Name as it appears on card";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Long number on the front of your card";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/YY or MM/YYYY";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3-digit code";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4-digit code";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Account Holder Name";
+"FIELD_PLACEHOLDER_IBAN" = "International Bank Account Number";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN or Account Number";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC or Bank Code";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "Email";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "National Identifier";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Account Number";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Account Verification";
+"FIELD_PLACEHOLDER_STREET1" = "Street";
+"FIELD_PLACEHOLDER_STREET2" = "Address Line 2";
+"FIELD_PLACEHOLDER_CITY" = "City";
+"FIELD_PLACEHOLDER_STATE" = "State";
+"FIELD_PLACEHOLDER_COUNTRY" = "Country";
+"FIELD_PLACEHOLDER_POSTCODE" = "Post Code";
+"FIELD_PLACEHOLDER_OPTIONAL" = "(Optional)";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Card holder name is not valid";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Card number entered is not valid";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Card expiration date is not valid, use MM/YY or MM/YYYY format";
+"FIELD_ERROR_CARD_EXPIRED" = "Card is expired";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Security code must contain last 3 digits on the back of your card";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Security code must contain 4-digit number on the front of your card";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Account holder name is not valid";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN is not valid";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "IBAN or account number is not valid";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "BIC or bank code is not valid";
+"FIELD_ERROR_EMAIL_INVALID" = "Invalid email";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Invalid mobile number";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Invalid national identifier";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Invalid account number";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "Expiration date is not valid, use MM/YY or MM/YYYY format";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "Account is expired";
+"FIELD_ERROR_ADDRESS_INVALID" = "Click here for Billing Address";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Stored Payment Methods";
+"PAYMENT_METHOD_GROUP_OTHER" = "Other Payment Methods";
+"PAYMENT_METHOD_GROUP_CARDS" = "Credit / Debit Cards";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_MASTER" = "MasterCard";
+"PAYMENT_METHOD_TYPE_MAESTRO" = "Maestro";
+"PAYMENT_METHOD_TYPE_VISA" = "VISA";
+"PAYMENT_METHOD_TYPE_AMEX" = "American Express";
+"PAYMENT_METHOD_TYPE_DINERS" = "Diners Club";
+"PAYMENT_METHOD_TYPE_DISCOVER" = "Discover";
+"PAYMENT_METHOD_TYPE_UNIONPAY" = "UnionPay Card";
+"PAYMENT_METHOD_TYPE_UNIONPAY_SMS" = "UnionPay SMS";
+"PAYMENT_METHOD_TYPE_JCB" = "JCB";
+"PAYMENT_METHOD_TYPE_APPLEPAY" = "Apple Pay";
+"PAYMENT_METHOD_TYPE_SOFORTUEBERWEISUNG" = "SOFORT BANKING";
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "SEPA Direct Debit";
+"PAYMENT_METHOD_TYPE_IDEAL" = "IDEAL";
+"PAYMENT_METHOD_TYPE_PAYPAL" = "PayPal";
+"PAYMENT_METHOD_TYPE_BOLETO" = "BOLETO Bancário";
+"PAYMENT_METHOD_TYPE_ALIPAY" = "Alipay";
+"PAYMENT_METHOD_TYPE_CHINAUNIONPAY" = "UnionPay Online Payment";
+"PAYMENT_METHOD_TYPE_PAYSAFECARD" = "Paysafecard";
+"PAYMENT_METHOD_TYPE_YANDEX" = "Yandex";
+"PAYMENT_METHOD_TYPE_DANKORT" = "Dankort";
+"PAYMENT_METHOD_TYPE_TRUSTLY" = "Trustly";
+"PAYMENT_METHOD_TYPE_RATENKAUF" = "Ratenkauf";
+"PAYMENT_METHOD_TYPE_GIROPAY" = "Giropay";
+"PAYMENT_METHOD_TYPE_MASTERPASS" = "Masterpass";
+"PAYMENT_METHOD_TYPE_KLARNA_INVOICE" = "Klarna Invoice";
+"PAYMENT_METHOD_TYPE_KLARNA_INSTALLMENTS" = "Klarna Installments";
+"PAYMENT_METHOD_TYPE_PAYDIREKT" = "Paydirekt";
+"PAYMENT_METHOD_TYPE_SIBS_MULTIBANCO" = "Multibanco";
+"PAYMENT_METHOD_TYPE_MASTERDEBIT" = "MasterCard Debit";
+"PAYMENT_METHOD_TYPE_VISADEBIT" = "Visa Debit";
+"PAYMENT_METHOD_TYPE_VISAELECTRON" = "Visa Electron";
+"PAYMENT_METHOD_TYPE_CARTEBLEUE" = "Carte Bleue";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYLATER" = "Pay later";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_SLICEIT" = "Financing";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYNOW" = "Pay now";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_BILLPAY" = "BillPay";
+"PAYMENT_METHOD_TYPE_PAYTRAIL" = "Paytrail";
+"PAYMENT_METHOD_TYPE_PRZELEWY" = "Przelewy24";
+"PAYMENT_METHOD_TYPE_PF_KARTE_DIRECT" = "PostFinance Card";
+"PAYMENT_METHOD_TYPE_MADA" = "Mada";
+"PAYMENT_METHOD_TYPE_MBWAY" = "MB WAY";
+"PAYMENT_METHOD_TYPE_IKANOOI_FI" = "Ikano Lasku FI";
+"PAYMENT_METHOD_TYPE_IKANOOI_NO" = "Ikano Faktura NO";
+"PAYMENT_METHOD_TYPE_IKANOOI_SE" = "Ikano Faktura SE";

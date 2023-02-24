@@ -1,0 +1,91 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "اختر طريقة الدفع";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "تفاصيل الدفع";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "تنفيذ العملية";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "معلومات الدفع";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "الاجمالي";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "سيتم إرسال إشعار إلى جهازك.";
+"LABEL_MBWAY_ACCEPT_PIN" = "الرجاء قبول المعاملة باستخدام PIN MB WAY.";
+"LABEL_TERMS_AND_CONDITIONS" = "الأحكام والشروط";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "لقد قرأت وأوافق على الشروط والأحكام";
+"LABEL_SWEDISH" = "السويدية";
+"LABEL_FINNISH" = "الفنلندية";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "الرجاء اختيار طريقة الدفع :";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "انتظر من فضلك";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "لتأكيد الدفع";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "ادفع الان";
+"BUTTON_TITLE_PAY_AMOUNT" = "%@ إدفع";
+"BUTTON_TITLE_REGISTER" = "تسجيل";
+"BUTTON_TITLE_CANCEL" = "الغاء";
+"BUTTON_TITLE_BACK" = "تغيير";
+"BUTTON_TITLE_DONE" = "تم";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "اسم حامل البطاقة";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "رقم البطاقة الاتمانية";
+"FIELD_LABEL_EXPIRY_DATE" = "تاريخ الانتهاء";
+"FIELD_LABEL_CVV" = "الرقم السري خلف البطاقة";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "رقم الجوال";
+"FIELD_LABEL_QRCODE" = "رمز QR";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "اسم صاحب الحساب";
+"FIELD_LABEL_IBAN" = "الايبان";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "الايبان او رقم الحساب";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "كود البنك";
+"FIELD_LABEL_SELECT_COUNTRY" = "اختر البلد";
+"FIELD_LABEL_SELECT_BANK" = "اختر البنك";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "تسجيل بيانات الدفع للاستخدام لاحقا";
+"FIELD_LABEL_STORE_CARD_TYPE" = "اختر نوع البطاقة الاتمانية";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "عدد الاقساط";
+"FIELD_LABEL_EMAIL" = "البريد الإلكتروني";
+"FIELD_LABEL_COUNTRY_CODE" = "الرقم الدولي";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "المعرف الوطني";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "الاسم كما مكتوب على البطاقة الاتمانية";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "الرقم الطويل على البطاقة الاتمانية";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "شهر/سنة";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "كود الثلاثة ارقام";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "كود الاربعة ارقام";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "اسم صاحب الحساب البنكي";
+"FIELD_PLACEHOLDER_IBAN" = "رقم الحساب الدولي";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "الايبان او رقم الحساب";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "كود البنك";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "البريد الإلكتروني";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "المعرف الوطني";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "اسم حامل البطاقة الاتمانية غير صحيح";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "رقم البطاقة الاتمانية غير صحيح";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "تاريخ انتهاء البطاقة الاتمانية غير صحيح";
+"FIELD_ERROR_CARD_EXPIRED" = "البطاقة الاتمانية منتهية الصلاحية";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "الكود السري لابد ان يحتوي على الثلاثة ارقام خلف البطاقة الاتمانية";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "الكود السري لابد ان يحتوي على الاربعة ارقام على البطاقة الاتمانية";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "رقم الجوال غير صحيح";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "اسم صاحب الحساب غير صحيح";
+"FIELD_ERROR_IBAN_INVALID" = "الايبان غير صحيح";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "الايبان او رقم الحساب غير صحيح";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "كود البنك غير صحيح";
+"FIELD_ERROR_EMAIL_INVALID" = "بريد إلكتروني خاطئ";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "معرف وطني غير صالح";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "تسجيل طريقة الدفع";
+"PAYMENT_METHOD_GROUP_OTHER" = "طرق اخرى للدفع";
+"PAYMENT_METHOD_GROUP_CARDS" = "بطاقات الائتمان";

@@ -1,0 +1,98 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "결제 방법 선택";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "결제 세부 정보";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "처리 중";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "결제 정보";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "총액";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "사용자의 기기로 푸시 알림이 전송됩니다.";
+"LABEL_MBWAY_ACCEPT_PIN" = "PIN MB WAY로 거래를 수락해주세요.";
+"LABEL_TERMS_AND_CONDITIONS" = "이용약관";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "이용약관을 읽었으며 이에 동의합니다.";
+"LABEL_SWEDISH" = "스웨덴어";
+"LABEL_FINNISH" = "핀란드어";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "희망하는 결제 방법을 선택하세요.";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "잠시 기다려 주세요.";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "결제 확인";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "지금 결제";
+"BUTTON_TITLE_PAY_AMOUNT" = "%@ 결제하기";
+"BUTTON_TITLE_REGISTER" = "등록";
+"BUTTON_TITLE_CANCEL" = "취소";
+"BUTTON_TITLE_BACK" = "수정";
+"BUTTON_TITLE_DONE" = "완료";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "카드 소지자 이름";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "신용카드 번호";
+"FIELD_LABEL_EXPIRY_DATE" = "만료 날짜";
+"FIELD_LABEL_CVV" = "보안 코드 또는 CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "휴대폰 번호";
+"FIELD_LABEL_QRCODE" = "QR 코드";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "예금주";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN 또는 계좌번호";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC 또는 은행 코드";
+"FIELD_LABEL_SELECT_COUNTRY" = "국가 선택";
+"FIELD_LABEL_SELECT_BANK" = "은행 선택";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "나중에 사용하도록 결제 세부 정보 저장";
+"FIELD_LABEL_STORE_CARD_TYPE" = "카드 종류 선택";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "할부 개월 수";
+"FIELD_LABEL_EMAIL" = "이메일";
+"FIELD_LABEL_COUNTRY_CODE" = "국가 코드";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "주민등록번호";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "계좌번호";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "계좌 인증";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "카드에 표시된 이름";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "카드 앞면에 있는 긴 숫자";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/YY 또는 MM/YYYY";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3자리 숫자";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4자리 숫자";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "예금주 이름";
+"FIELD_PLACEHOLDER_IBAN" = "국제 은행 계좌번호";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN 또는 계좌번호";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC 또는 은행 코드";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "이메일";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "주민등록번호";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "계좌번호";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "계좌 인증";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "카드 소지자 이름이 올바르지 않습니다.";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "입력한 카드 번호가 올바르지 않습니다.";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "카드 만료 날짜가 올바르지 않습니다. MM/YY 또는 MM/YYYY 형식을 사용하세요.";
+"FIELD_ERROR_CARD_EXPIRED" = "만료된 카드입니다.";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "보안 코드는 카드 뒷면에 있는 마지막 3자리 숫자를 포함해야 합니다.";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "보안 코드는 카드 앞면에 있는 4자리 숫자를 포함해야 합니다.";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "예금주 이름이 올바르지 않습니다.";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN이 올바르지 않습니다.";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "IBAN 또는 계좌번호가 올바르지 않습니다.";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "BIC 또는 은행 코드가 올바르지 않습니다.";
+"FIELD_ERROR_EMAIL_INVALID" = "유효하지 않은 이메일";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "유효하지 않은 휴대폰 번호";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "올바르지 않은 주민등록번호";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "올바르지 않은 계좌번호";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "만료 날짜가 올바르지 않습니다. MM/YY 또는 MM/YYYY 형식을 사용하세요.";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "만료된 계좌입니다.";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "저장된 결제 방법";
+"PAYMENT_METHOD_GROUP_OTHER" = "다른 결제 방법";
+"PAYMENT_METHOD_GROUP_CARDS" = "신용카드/직불카드";

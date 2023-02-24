@@ -1,0 +1,116 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OPPWAMobile
+import Foundation
+@_exported import OPPWAMobile
+import Swift
+import _Concurrency
+import ipworks3ds_sdk
+@_inheritsConvenienceInitializers @objc public class OPPThreeDSConfig : ObjectiveC.NSObject {
+  @objc public var challengeUiTypes: OPPWAMobile.OPPThreeDSChallengeUiType
+  @objc public var sdkMaxTimeout: Swift.Int
+  @objc public var clientConfigParams: [Swift.String : Swift.String] {
+    @objc get
+    @objc set
+  }
+  @objc public var appBundleID: Swift.String
+  @objc public var locale: Swift.String?
+  @objc public var deviceParameterBlacklist: [Swift.String]?
+  @objc public var uiCustomization: ipworks3ds_sdk.UiCustomization
+  @objc public var threeDSRequestorAppURL: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class OPPThreeDSSchemeConfig : ObjectiveC.NSObject {
+  @objc public var dsRefId: Swift.String {
+    get
+  }
+  @objc public var dsEncryptCert: Swift.String {
+    get
+  }
+  @objc public var dsCaRootCert: Swift.String {
+    get
+  }
+  @objc public init(dsRefId: Swift.String, dsEncryptCert: Swift.String, dsCaRootCert: Swift.String)
+  @objc deinit
+}
+@objc public enum OPPThreeDSTransactionStatus : Swift.Int {
+  case authenticated
+  case attemptProcessingPerformed
+  case denied
+  case rejected
+  case failed
+  case undefined
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol OPPThreeDSChallengeCallback {
+  @objc func completed(completionEvent: OPPWAMobile.OPPThreeDSCompletionEvent)
+  @objc func cancelled()
+  @objc func failed(errorEvent: OPPWAMobile.OPPThreeDSErrorEvent)
+}
+@_hasMissingDesignatedInitializers @objc public class OPPThreeDSCompletionEvent : ObjectiveC.NSObject {
+  @objc public var transactionId: Swift.String {
+    get
+  }
+  @objc public var transactionStatus: OPPWAMobile.OPPThreeDSTransactionStatus {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class OPPThreeDSErrorEvent : ObjectiveC.NSObject {
+  @objc public var errorCode: Swift.String? {
+    get
+  }
+  @objc public var errorMessage: Swift.String {
+    get
+  }
+  @objc public var errorDetails: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class OPPThreeDSTransaction : ObjectiveC.NSObject {
+  @objc public func getAuthRequestParams() throws -> Swift.String
+  @objc public func doChallenge(authResponse: Swift.String, navigationController: UIKit.UINavigationController, threeDSRequestorAppURL: Swift.String?, challengeCallback: OPPWAMobile.OPPThreeDSChallengeCallback) throws
+  @objc public func getProgressView() throws -> ipworks3ds_sdk.ProgressView
+  @objc public func close() throws
+  @objc deinit
+}
+@objc public protocol OPPThreeDSServiceCallback {
+  @objc func initialized(error: Swift.Error?)
+}
+@objc public enum OPPThreeDSTransactionMode : Swift.Int {
+  case test
+  case live
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class OPPThreeDSService : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: OPPWAMobile.OPPThreeDSService
+  @objc public var paymentBrands: [Swift.String]?
+  @objc public var config: OPPWAMobile.OPPThreeDSConfig
+  @objc public var isInitialized: Swift.Bool {
+    get
+  }
+  @objc public var initCallback: OPPWAMobile.OPPThreeDSServiceCallback?
+  @objc public func initialize(transactionMode: OPPWAMobile.OPPThreeDSTransactionMode, paymentBrands: [Swift.String])
+  @objc public func createTransaction(paymentBrand: Swift.String, protocolVersion: Swift.String) throws -> OPPWAMobile.OPPThreeDSTransaction
+  @objc public func cleanUp() throws
+  @objc public func getWarnings() throws -> [ipworks3ds_sdk.Warning]
+  @objc public func getSDKVersion() throws -> Swift.String
+  @objc public func setCustomSchemeConfig(_ schemeConfigDict: [Swift.String : OPPWAMobile.OPPThreeDSSchemeConfig])
+  @objc deinit
+}
+extension OPPWAMobile.OPPThreeDSTransactionStatus : Swift.Equatable {}
+extension OPPWAMobile.OPPThreeDSTransactionStatus : Swift.Hashable {}
+extension OPPWAMobile.OPPThreeDSTransactionStatus : Swift.RawRepresentable {}
+extension OPPWAMobile.OPPThreeDSTransactionMode : Swift.Equatable {}
+extension OPPWAMobile.OPPThreeDSTransactionMode : Swift.Hashable {}
+extension OPPWAMobile.OPPThreeDSTransactionMode : Swift.RawRepresentable {}

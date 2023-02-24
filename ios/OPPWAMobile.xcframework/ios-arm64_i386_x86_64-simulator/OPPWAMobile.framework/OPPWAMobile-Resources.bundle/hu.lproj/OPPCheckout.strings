@@ -1,0 +1,102 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Fizetési mód kiválasztása";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Fizetés részletei";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Feldolgozás";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Fizetési információ";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Teljes összeg";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "Leküldéses értesítést küldünk a készülékedre.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Kérjük, erősítsd meg a tranzakciót az MB WAY PIN kóddal.";
+"LABEL_TERMS_AND_CONDITIONS" = "Általános szerződési feltételek";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Elolvastam és elfogadom az Általános Szerződési Feltételeket";
+"LABEL_SWEDISH" = "Svéd";
+"LABEL_FINNISH" = "Finn";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Kérjük, válassz fizetési módot:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Kérjük, várj";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Fizetés megerősítése";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "FIZETÉS MOST";
+"BUTTON_TITLE_PAY_AMOUNT" = "Fizetés %@";
+"BUTTON_TITLE_REGISTER" = "Regisztráció";
+"BUTTON_TITLE_CANCEL" = "Mégse";
+"BUTTON_TITLE_BACK" = "Változtatás";
+"BUTTON_TITLE_DONE" = "Kész";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Kártyabirtokos neve";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Bankkártya száma";
+"FIELD_LABEL_EXPIRY_DATE" = "Lejárati dátum";
+"FIELD_LABEL_CVV" = "Biztonsági kód vagy CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Mobiltelefonszám";
+"FIELD_LABEL_QRCODE" = "QR-kód";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Számlatulajdonos";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN vagy számlaszám";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC vagy bank kód";
+"FIELD_LABEL_SELECT_COUNTRY" = "Ország kiválasztása";
+"FIELD_LABEL_SELECT_BANK" = "Bank kiválasztása";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Áruházi fizetés részletei a későbbiekre";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Válaszd ki a kártya típusát";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Beszerelések száma";
+"FIELD_LABEL_EMAIL" = "E-mail";
+"FIELD_LABEL_COUNTRY_CODE" = "Ország kódja";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Országazonosító szám";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Számlaszám";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Fiókellenőrzés";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "A kártyán szereplő név";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "A kártya elején lévő hosszú szám";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "HH/ÉÉ vagy HH/ÉÉÉÉ";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3 jegyű kód";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4 jegyű kód";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Számlatulajdonos neve";
+"FIELD_PLACEHOLDER_IBAN" = "nemzetközi bankszámlaszám";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN vagy számlaszám";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC vagy bankkód";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "E-mail";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Országazonosító szám";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Számlaszám";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Fiókellenőrzés";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "A bankkártya tulajdonosának neve érvénytelen";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "A megadott kártyaszám érvénytelen";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "A kártya lejárati dátum érvénytelen, használd a HH/ÉÉ vagy HH/ÉÉÉÉ formátumot";
+"FIELD_ERROR_CARD_EXPIRED" = "A kártya lejárt";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "A biztonsági kódnak a bankkártya hátoldalán lévő 3 számjegyet kell tartalmaznia";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "A biztonsági kódnak a bankkártya első oldalán lévő 4 számjegyet kell tartalmaznia";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "A kártyatulajdonos neve érvénytelen";
+"FIELD_ERROR_IBAN_INVALID" = "AZ IBAN érvénytelen";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "Az IBAN vagy a bankszámlaszám érvénytelen";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "A BIC vagy bank kód érvénytelen";
+"FIELD_ERROR_EMAIL_INVALID" = "Érvénytelen e-mail cím";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Érvénytelen mobiltelefonszám";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Érvénytelen azonosító";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Érvénytelen számlaszám";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "A lejárati dátum érvénytelen, használd a HH/ÉÉ vagy HH/ÉÉÉÉ formátumot";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "A fiók lejárt";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Mentett fizetési módok";
+"PAYMENT_METHOD_GROUP_OTHER" = "Egyéb fizetési módok";
+"PAYMENT_METHOD_GROUP_CARDS" = "Hitel- / betéti kártyák";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "SEPA megbízás ";
+"PAYMENT_METHOD_TYPE_SOFORTUEBERWEISUNG" = "SOFORT Banking";

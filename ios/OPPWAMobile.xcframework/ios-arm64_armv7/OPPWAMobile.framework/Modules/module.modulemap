@@ -1,0 +1,11 @@
+framework module OPPWAMobile {
+  umbrella header "OPPWAMobile.h"
+
+  export *
+  module * { export * }
+}
+
+module OPPWAMobile.Swift {
+    header "OPPWAMobile-Swift.h"
+    requires objc
+}

@@ -1,0 +1,107 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Valitse maksutapa";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Maksutiedot";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Maksua käsitellään";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Maksun tiedot";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Kokonaissumma";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "Laitteeseesi lähetetään push-ilmoitus.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Hyväksy maksu MB WAY PIN-koodilla.";
+"LABEL_TERMS_AND_CONDITIONS" = "Käyttöehdot";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Olen lukenut ja hyväksynyt käyttöehdot";
+"LABEL_SWEDISH" = "Ruotsi";
+"LABEL_FINNISH" = "Suomi";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Valitse haluamasi maksutapa:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Odota hetki";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Maksun vahvistaminen";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "MAKSA NYT";
+"BUTTON_TITLE_PAY_AMOUNT" = "Maksa %@";
+"BUTTON_TITLE_REGISTER" = "Rekisteröidy";
+"BUTTON_TITLE_CANCEL" = "Peruuta";
+"BUTTON_TITLE_BACK" = "Muuta";
+"BUTTON_TITLE_DONE" = "Valmis";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Kortinhaltijan nimi";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Luottokortin numero";
+"FIELD_LABEL_EXPIRY_DATE" = "Viimeinen voimassaolopäivä";
+"FIELD_LABEL_CVV" = "Turvakoodi tai CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Matkapuhelinnumero";
+"FIELD_LABEL_QRCODE" = "QR-koodi";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Tilinhaltija";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN tai tilinumero";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC tai pankin tunnus";
+"FIELD_LABEL_SELECT_COUNTRY" = "Valitse maa:";
+"FIELD_LABEL_SELECT_BANK" = "Valitse pankki:";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Tallenna maksutiedot myöhempää käyttöä varten";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Valitse kortin tyyppi:";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Maksuerien määrä";
+"FIELD_LABEL_EMAIL" = "Sähköposti";
+"FIELD_LABEL_COUNTRY_CODE" = "Maatunnus";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Henkilötunnus";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Tilinumero";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Tilin vahvistus";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Nimi samassa muodossa kuin kortissa";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Pitkä numero kortin etupuolella";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "KK/VV tai KK/VVVV";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3-numeroinen tunnus";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4-numeroinen tunnus";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Tilinhaltijan nimi";
+"FIELD_PLACEHOLDER_IBAN" = "Kansainvälinen tilinumero";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN tai tilinumero";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC tai pankin tunnus";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "Sähköposti";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Henkilötunnus";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Tilinumero";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Tilin vahvistus";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Kortinhaltijan nimi ei kelpaa";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Annettu kortin numero ei kelpaa";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Kortin viimeinen voimassaolopäivä ei kelpaa, käytä muotoa KK/VV tai KK/VVVV";
+"FIELD_ERROR_CARD_EXPIRED" = "Kortti on vanhentunut";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Turvakoodissa on oltava kortin taustapuolella olevat 3 viimeistä numeroa";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Turvakoodi on kortin etupuolella oleva 4-numeroinen tunnus";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Tilinhaltijan nimi ei kelpaa";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN ei kelpaa";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "IBAN tai tilinumero ei kelpaa";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "BIC tai pankin tunnus ei kelpaa";
+"FIELD_ERROR_EMAIL_INVALID" = "Sähköpostiosoite on virheellinen";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Matkapuhelinnumero on virheellinen";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Henkilötunnus on virheellinen";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Tilinumero on virheellinen";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "Viimeinen voimassaolopäivä ei kelpaa, käytä muotoa KK/VV tai KK/VVVV";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "Tili on vanhentunut";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Tallennetut maksutavat";
+"PAYMENT_METHOD_GROUP_OTHER" = "Muut maksutavat";
+"PAYMENT_METHOD_GROUP_CARDS" = "Luotto-/pankkikortit";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "SEPA-suoraveloitus";
+"PAYMENT_METHOD_TYPE_IKANOOI_FI" = "IKEA-lasku";
+"PAYMENT_METHOD_TYPE_IK_PRIVATE_LABEL" = "Hei-kortti / Hei-laina";
+"PAYMENT_METHOD_TYPE_PAYTRAIL" = "Verkkopankki ja MobilePay";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYLATER" = "Maksa myöhemmin";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_SLICEIT" = "Pilko maksut";
+"PAYMENT_METHOD_TYPE_KLARNA_PAYMENTS_PAYNOW" = "Verkkopankkimaksu";

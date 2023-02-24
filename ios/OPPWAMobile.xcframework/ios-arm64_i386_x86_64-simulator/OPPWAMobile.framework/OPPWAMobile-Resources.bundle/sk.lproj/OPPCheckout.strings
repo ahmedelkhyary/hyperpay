@@ -1,0 +1,102 @@
+//
+// Checkout.strings
+// $$frameworkname$$
+//
+
+/// View controller titles
+"VIEW_CONTROLLER_TITLE_PAYMENT_METHOD_SELECTION" = "Vybrať spôsob platby";
+"VIEW_CONTROLLER_TITLE_PAYMENT_DETAILS" = "Podrobnosti o platbe";
+"VIEW_CONTROLLER_TITLE_PROCESSING" = "Spracováva sa...";
+
+/// Form titles
+"FORM_TITLE_PAYMENT_INFO" = "Informácie o platbe";
+
+/// Labels
+"LABEL_TOTAL_AMOUNT" = "Celková suma";
+"LABEL_MBWAY_PUSH_NOTIFICATION" = "Na vaše zariadenie odošleme push notifikáciu.";
+"LABEL_MBWAY_ACCEPT_PIN" = "Potvrďte, prosím, transakciu pomocou MB WAY PIN.";
+"LABEL_TERMS_AND_CONDITIONS" = "Všeobecné obchodné podmienky";
+"LABEL_TERMS_AND_CONDITIONS_AGREEMENT" = "Prečítal/a som si a súhlasím so Všeobecnými obchodnými podmienkami";
+"LABEL_SWEDISH" = "Švédčina";
+"LABEL_FINNISH" = "Fínčina";
+"LABEL_STC_PAY_SELECT_PAYMENT_METHOD" = "Vyberte si, prosím, spôsob platby:";
+
+/// Messages
+"MESSAGE_PLEASE_WAIT" = "Čakajte, prosím...";
+
+/// Device owner authentication
+"DEVICE_AUTH_REASON" = "Potvrdiť platbu";
+
+/// Button titles
+"BUTTON_TITLE_PAY" = "ZAPLATIŤ";
+"BUTTON_TITLE_PAY_AMOUNT" = "Zaplatiť %@";
+"BUTTON_TITLE_REGISTER" = "Registrovať sa";
+"BUTTON_TITLE_CANCEL" = "Zrušiť";
+"BUTTON_TITLE_BACK" = "Zmeniť";
+"BUTTON_TITLE_DONE" = "Hotovo";
+
+/// Text field label names
+"FIELD_LABEL_CARD_HOLDER_NAME" = "Meno držiteľa karty";
+"FIELD_LABEL_CREDIT_CARD_NUMBER" = "Číslo kreditnej karty";
+"FIELD_LABEL_EXPIRY_DATE" = "Dátum exspirácie";
+"FIELD_LABEL_CVV" = "Bezpečnostný kód alebo CVV";
+"FIELD_LABEL_MOBILE_PHONE_NUMBER" = "Mobilné telefónne číslo";
+"FIELD_LABEL_QRCODE" = "QR kód";
+"FIELD_LABEL_BANK_ACCOUNT_HOLDER_NAME" = "Majiteľ účtu";
+"FIELD_LABEL_IBAN" = "IBAN";
+"FIELD_LABEL_IBAN_OR_ACCOUNT_NUMBER" = "IBAN alebo číslo účtu";
+"FIELD_LABEL_BIC_OR_BANK_CODE" = "BIC alebo kód banky";
+"FIELD_LABEL_SELECT_COUNTRY" = "Vybrať krajinu";
+"FIELD_LABEL_SELECT_BANK" = "Vybrať banku";
+"FIELD_LABEL_STORE_PAYMENT_DETAILS" = "Uložte si platobné informácie pre ďalšie nákupy";
+"FIELD_LABEL_STORE_CARD_TYPE" = "Vyberte typ platobnej karty";
+"FIELD_LABEL_NUMBER_OF_INSTALLMENTS" = "Počet splátok";
+"FIELD_LABEL_EMAIL" = "E-mail";
+"FIELD_LABEL_COUNTRY_CODE" = "Kód krajiny";
+"FIELD_LABEL_NATIONAL_IDENTIFIER" = "Rodné číslo";
+"FIELD_LABEL_ACCOUNT_NUMBER" = "Číslo účtu";
+"FIELD_LABEL_ACCOUNT_VERIFICATION" = "Overenie účtu";
+
+/// Text field placeholders
+"FIELD_PLACEHOLDER_CARD_HOLDER_NAME" = "Meno, ako je uvedené na platobnej karte";
+"FIELD_PLACEHOLDER_CARD_NUMBER" = "Dlhé číslo na prednej strane platobnej karty";
+"FIELD_PLACEHOLDER_EXPIRY_DATE" = "MM/RR alebo MM/RRRR";
+"FIELD_PLACEHOLDER_CVV_3_DIGITS" = "3-miestny číselný kód";
+"FIELD_PLACEHOLDER_CVV_4_DIGITS" = "4-miestny číselný kód";
+"FIELD_PLACEHOLDER_BANK_ACCOUNT_HOLDER_NAME" = "Meno majiteľa účtu";
+"FIELD_PLACEHOLDER_IBAN" = "Medzinárodné číslo bankového účtu";
+"FIELD_PLACEHOLDER_IBAN_OR_ACCOUNT_NUMBER" = "IBAN alebo číslo účtu";
+"FIELD_PLACEHOLDER_BIC_OR_BANK_CODE" = "BIC alebo kód banky";
+"FIELD_PLACEHOLDER_COUNTRY_CODE" = "+xxx";
+"FIELD_PLACEHOLDER_MOBILE_PHONE_NUMBER" = "xxxxxxxxx";
+"FIELD_PLACEHOLDER_EMAIL" = "E-mail";
+"FIELD_PLACEHOLDER_NATIONAL_IDENTIFIER" = "Rodné číslo";
+"FIELD_PLACEHOLDER_ACCOUNT_NUMBER" = "Číslo účtu";
+"FIELD_PLACEHOLDER_ACCOUNT_VERIFICATION" = "Overenie účtu";
+
+/// Text field errors
+"FIELD_ERROR_CARD_HOLDER_NAME_INVALID" = "Meno držiteľa platobnej karty je neplatné";
+"FIELD_ERROR_CARD_NUMBER_INVALID" = "Uvedené číslo platobnej karty je neplatné";
+"FIELD_ERROR_CARD_EXPIRY_DATE_INVALID" = "Dátum exspirácie platobnej karty je neplatný, použite formát MM/RR alebo MM/RRRR";
+"FIELD_ERROR_CARD_EXPIRED" = "Platnosť platobnej karty vypršala";
+"FIELD_ERROR_CARD_CVV_3_DIGITS_INVALID" = "Bezpečnostný kód musí obsahovať posledné 3 čísla na zadnej strane platobnej karty";
+"FIELD_ERROR_CARD_CVV_4_DIGITS_INVALID" = "Bezpečnostný kód musí obsahovať 4-miestne číslo na prednej strane platobnej karty";
+"FIELD_ERROR_BANK_ACCOUNT_HOLDER_INVALID" = "Meno držiteľa účtu je neplatné";
+"FIELD_ERROR_IBAN_INVALID" = "IBAN je neplatný";
+"FIELD_ERROR_IBAN_OR_ACCOUNT_NUMBER_INVALID" = "IBAN alebo číslo účtu sú neplatné";
+"FIELD_ERROR_BIC_OR_BANK_CODE_INVALID" = "BIC alebo kód banky sú neplatné";
+"FIELD_ERROR_EMAIL_INVALID" = "E-mail je neplatný";
+"FIELD_ERROR_MOBILE_PHONE_INVALID" = "Mobilné číslo je neplatné";
+"FIELD_ERROR_NATIONAL_IDENTIFIER_INVALID" = "Rodné číslo je neplatné";
+"FIELD_ERROR_ACCOUNT_NUMBER_INVALID" = "Neplatné číslo účtu";
+"FIELD_ERROR_ACCOUNT_EXPIRY_DATE_INVALID" = "Dátum exspirácie je neplatný, použite, prosím formát MM/RR alebo MM/RRRR";
+"FIELD_ERROR_ACCOUNT_EXPIRED" = "Platnosť účtu vypršala";
+
+/// Payment method groups are displayed if tokens are received
+"PAYMENT_METHOD_GROUP_STORED" = "Uložené spôsoby platby";
+"PAYMENT_METHOD_GROUP_OTHER" = "Iné spôsoby platby";
+"PAYMENT_METHOD_GROUP_CARDS" = "Kreditné/debetné karty";
+
+/// Payment method names
+"PAYMENT_METHOD_TYPE_DIRECTDEBIT_SEPA" = "SEPA inkaso";
+"PAYMENT_METHOD_TYPE_SOFORTUEBERWEISUNG" = "SOFORT Banking";
