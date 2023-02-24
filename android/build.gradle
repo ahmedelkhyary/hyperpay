@@ -17,7 +17,7 @@ rootProject.allprojects {
         google()
         mavenCentral()
         flatDir {
-            dirs project(':payment').file('libs')
+            dirs project(':hyperpay_plugin').file('libs')
         }
     }
 }
