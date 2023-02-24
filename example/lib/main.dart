@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:payment/flutter_hyperpay.dart';
+import 'package:hyperPayPlugin/flutter_hyperpay.dart';
 
 void main() {
   runApp(const MyApp());

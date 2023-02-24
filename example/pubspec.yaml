@@ -37,12 +37,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   http:
-#  payment:
+#  hyperPayPlugin:
 #    path: ../
 
-#  payment:
-#    git:
-#      url: ""
+  hyperPayPlugin:
+    git:
+      url: "https://github.com/ahmedelkhyary/hyperpay.git"
 
 
 dev_dependencies:
