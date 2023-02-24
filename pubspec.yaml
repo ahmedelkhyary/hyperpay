@@ -1,7 +1,7 @@
-name: payment
-description: The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started.
-version: 1.0.0
-homepage: https://github.com/ahmedelkhyary/hyperpay
+name: hyperpay_plugin
+description: The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile.
+version: 1.0.2-beta
+repository: https://github.com/ahmedelkhyary/hyperpay
 
 
 environment:
@@ -17,7 +17,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-#  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

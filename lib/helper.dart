@@ -1,16 +1,16 @@
-
 part of 'flutter_hyperpay.dart';
+
 class PaymentResultManger {
   static PaymentResultData getPaymentResult(String paymentResult) {
     if (paymentResult == PaymentConst.success) {
       return PaymentResultData(
-          errorString: '', paymentResult: PaymentResult.SUCCESS);
-    } else if (paymentResult == PaymentConst.SYNC) {
+          errorString: '', paymentResult: PaymentResult.success);
+    } else if (paymentResult == PaymentConst.sync) {
       return PaymentResultData(
-          errorString: '', paymentResult: PaymentResult.SYNC);
+          errorString: '', paymentResult: PaymentResult.sync);
     } else {
       return PaymentResultData(
-          errorString: '', paymentResult: PaymentResult.NORESULT);
+          errorString: '', paymentResult: PaymentResult.noResult);
     }
   }
 }
