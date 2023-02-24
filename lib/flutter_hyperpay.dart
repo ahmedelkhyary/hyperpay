@@ -2,11 +2,17 @@ import 'dart:async';
 import 'package:hyperpay_plugin/method_channel_store_cards.dart';
 import 'method_channel_apple_pay.dart';
 import 'method_channel_ready_ui.dart';
+
 part 'hyper_pay_const.dart';
+
 part 'helper.dart';
+
 part 'ready_ui.dart';
+
 part 'stored_cards.dart';
+
 part 'enum.dart';
+
 part 'apple_pay.dart';
 
 class FlutterHyperPay {
@@ -34,8 +40,8 @@ class FlutterHyperPay {
     );
   }
 
-  Future<PaymentResultData> payWithApplePay({
-    required ApplePay applePay}) async {
+  Future<PaymentResultData> payWithApplePay(
+      {required ApplePay applePay}) async {
     return await implementPaymentApplePay(
         applePay: applePay,
         shopperResultUrl: shopperResultUrl,
@@ -44,8 +50,8 @@ class FlutterHyperPay {
         lang: lang);
   }
 
-  Future<PaymentResultData> payWithSoredCards({
-    required StoredCards storedCards}) async {
+  Future<PaymentResultData> payWithSoredCards(
+      {required StoredCards storedCards}) async {
     return await implementPaymentStoredCards(
       brand: storedCards.brandName,
       checkoutId: storedCards.checkoutId,
