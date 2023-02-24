@@ -1,7 +1,8 @@
-name: payment
+name: hyperPayPlugin
 description: The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started.
 version: 1.0.0
 homepage: https://github.com/ahmedelkhyary/hyperpay
+
 
 environment:
   sdk: '>=2.18.5 <3.0.0'
