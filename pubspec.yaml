@@ -1,6 +1,6 @@
 name: payment
-description: A new Flutter project.
-version: 0.0.1
+description: HyperPay mobile SDK for iOS and Android, used to accept payments in flutter apps using HyperPay payments gateway.
+version: 1.0.0-beta
 homepage: https://github.com/ahmedelkhyary/hyperpay
 
 environment:
