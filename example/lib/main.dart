@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
 
   getCheckOut({required double finalPrice}) async {
-    payRequestNow(checkoutId: 'F922A63D20D8185529C74556EF65C5FD.uat01-vm-tx04', cardName: "VISA");
+    payRequestNow(checkoutId: '0930A63D15A6A4BF6A2E7C9EC79471A1.uat01-vm-tx01', cardName: "VISA");
   }
 
   payRequestNow({required String cardName, required String checkoutId}) async {
@@ -91,10 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
     if (paymentResultData.paymentResult == PaymentResult.success ||
         paymentResultData.paymentResult == PaymentResult.sync) {
       // do something
-      try {
-      } catch (message) {
-        return ;
-      }
     }
 
   }
