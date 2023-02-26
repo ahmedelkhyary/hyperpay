@@ -68,7 +68,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation(name: "oppwa.mobile-4.6.0-release", ext: 'aar')
+    implementation(name: "oppwa.mobile-4.9.0-release", ext: 'aar')
     debugImplementation(name: "ipworks3ds_sdk", ext: 'aar')
     releaseImplementation(name: "ipworks3ds_sdk_deploy", ext: 'aar')
     implementation "com.google.android.material:material:1.6.1"
