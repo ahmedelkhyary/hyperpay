@@ -15,7 +15,7 @@ Future<PaymentResultData> implementPaymentStoredCards({
   var platform = MethodChannel(channelName);
   try {
     final String? result = await platform.invokeMethod(
-      PaymentConst.gethyperpayresponse,
+      PaymentConst.methodCall,
       getPaymentWithCards(
           tokenId: tokenId,
           brand: brand,

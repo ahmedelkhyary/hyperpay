@@ -4,7 +4,7 @@ class PaymentConst {
   static const String applePay = "APPLEPAY";
   static const String readyUi = "ReadyUI";
   static const String storedCards = "StoredCards";
-  static const String gethyperpayresponse = "gethyperpayresponse";
+  static const String methodCall = "gethyperpayresponse";
   static const String success = "success";
   static const String error = "error";
   static const String sync = "SYNC";
