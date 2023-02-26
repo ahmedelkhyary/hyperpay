@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:hyperpay_plugin/flutter_hyperpay.dart';
 
-Future<PaymentResultData> implementPayment({
-    required String? brand,
+Future<PaymentResultData> implementPayment(
+    {required String? brand,
     required String checkoutId,
     required String channelName,
     required String shopperResultUrl,
@@ -14,7 +14,7 @@ Future<PaymentResultData> implementPayment({
   var platform = MethodChannel(channelName);
   try {
     final String? result = await platform.invokeMethod(
-      PaymentConst.gethyperpayresponse,
+      PaymentConst.methodCall,
       getReadyModelCards(
         brand: brand,
         checkoutId: checkoutId,
@@ -34,8 +34,8 @@ Future<PaymentResultData> implementPayment({
   }
 }
 
-Map<String, String?> getReadyModelCards({
-    required String? brand,
+Map<String, String?> getReadyModelCards(
+    {required String? brand,
     required String checkoutId,
     required String shopperResultUrl,
     required String lang,

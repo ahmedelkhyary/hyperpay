@@ -12,7 +12,7 @@ Future<PaymentResultData> implementPaymentApplePay({
   var platform = MethodChannel(channelName);
   try {
     final String? result = await platform.invokeMethod(
-      PaymentConst.gethyperpayresponse,
+      PaymentConst.methodCall,
       getReadyModelApplePay(
           applePayBundel: applePay.applePayBundel,
           brand: PaymentBrands.applePay,

@@ -92,7 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
         paymentResultData.paymentResult == PaymentResult.sync) {
       // do something
       try {
-      } catch (message) {}
+      } catch (message) {
+        return ;
+      }
     }
 
   }
