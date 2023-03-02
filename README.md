@@ -1,7 +1,17 @@
-# HyperPay SDK Plugin
+# HyperPay SDK Plugin 
+
+The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started
+
+#### [Official Website](https://www.hyperpay.com/integration-guides/)
 
 [![pub package](https://img.shields.io/badge/pub-1.0.0-blue)](https://pub.dev/packages/hyperpay_plugin)
 
+
+## Support ReadyUI
+- **VISA** **,** **MasterCard**
+- **STC**
+- **Apple Pay**
+- **MADA** *( Saudi Arabia )*
 
 ### Android Setup
 
