@@ -78,7 +78,7 @@ late FlutterHyperPay flutterHyperPay ;
   /// URL TO GET CHECKOUT ID FOR TEST
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
 
-getCheckOut({required double finalPrice}) async {
+getCheckOut() async {
     payRequestNow(checkoutId: '629D8A95DE267040C10D29E558F8BE37.uat01-vm-tx04', cardName: "VISA");
   }
 

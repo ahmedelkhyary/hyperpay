@@ -1,3 +1,6 @@
+## 1.0.0
+* release first version , android 
+
 ## 1.0.4-beta
 * update some dart format
 
