@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:hyperpay_plugin/flutter_hyperpay.dart';
+import 'flutter_hyperpay.dart';
 
 Future<PaymentResultData> implementPaymentStoredCards({
   required String? brand,

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:hyperpay_plugin/method_channel_store_cards.dart';
+import 'method_channel_store_cards.dart';
 import 'method_channel_apple_pay.dart';
 import 'method_channel_ready_ui.dart';
 
