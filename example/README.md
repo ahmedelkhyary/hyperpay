@@ -2,6 +2,7 @@
 
 [![pub package](https://img.shields.io/badge/pub-1.0.0-blue)](https://pub.dev/packages/hyperpay_plugin)
 
+
 ### Android Setup
 
 1. Open `android/app/build.gradle` and add the following lines
@@ -61,6 +62,9 @@ late FlutterHyperPay flutterHyperPay ;
       lang: InAppPaymentSetting.getLang(),
     );
 
+```
+
+```
   /// URL TO GET CHECKOUT ID FOR TEST
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
 
@@ -68,7 +72,7 @@ getCheckOut({required double finalPrice}) async {
     payRequestNow(checkoutId: '629D8A95DE267040C10D29E558F8BE37.uat01-vm-tx04', cardName: "VISA");
   }
 
-  payRequestNow({required String cardName, required String checkoutId}) async {
+payRequestNow({required String cardName, required String checkoutId}) async {
 
     PaymentResultData paymentResultData;
     if (cardName.toLowerCase() ==
@@ -98,6 +102,9 @@ getCheckOut({required double finalPrice}) async {
 
   }
 
+```
+
+```
   class InAppPaymentSetting {
   static const String applePay="APPLEPAY";
   static  String shopperResultUrl= "com.testpayment.payment"; // this name must like scheme in intent-filter
