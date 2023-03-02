@@ -1,0 +1,33 @@
+PODS:
+  - Flutter (1.0.0)
+  - hyperpay_plugin (0.0.1):
+    - Flutter
+    - hyperpay_sdk (~> 4.9.0)
+  - hyperpay_sdk (4.9.0)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - hyperpay_plugin (from `.symlinks/plugins/hyperpay_plugin/ios`)
+  - hyperpay_sdk (from `https://github.com/ahmedelkhyary/hyperpay_sdk.git`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  hyperpay_plugin:
+    :path: ".symlinks/plugins/hyperpay_plugin/ios"
+  hyperpay_sdk:
+    :git: https://github.com/ahmedelkhyary/hyperpay_sdk.git
+
+CHECKOUT OPTIONS:
+  hyperpay_sdk:
+    :commit: b22e26e393282b8213a14c9208f7fd760b5a9c6f
+    :git: https://github.com/ahmedelkhyary/hyperpay_sdk.git
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  hyperpay_plugin: 432ea2c9897003861b352c7f6bcc768438364276
+  hyperpay_sdk: 29302f5e0822fa31472bd3e987e5f53db8a2afdf
+
+PODFILE CHECKSUM: 19e3624099e50198136fe2a76b0e2b8be62c026a
+
+COCOAPODS: 1.11.3
