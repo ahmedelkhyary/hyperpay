@@ -22,8 +22,4 @@ A new Flutter project.
   s.swift_version = '5.0'
   s.dependency 'hyperpay_sdk' , '~> 4.9.0'
 
-  #s.preserve_paths = 'OPPWAMobile.xcframework', 'ipworks3ds_sdk.xcframework'
-  #s.xcconfig = { 'OTHER_LDFLAGS' => '-framework OPPWAMobile -framework ipworks3ds_sdk ' }
-  #s.vendored_frameworks = 'OPPWAMobile.xcframework', 'ipworks3ds_sdk.xcframework'
-
  end
