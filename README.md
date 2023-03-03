@@ -1,10 +1,10 @@
-# HyperPay SDK Plugin 
+# HyperPay SDK Plugin
 
 The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started
 
 #### [Official Website](https://www.hyperpay.com/integration-guides/)
 
-[![pub package](https://img.shields.io/badge/pub-1.0.0-blue)](https://pub.dev/packages/hyperpay_plugin)
+[![pub package](https://img.shields.io/badge/Release%20-1.0.1%20Pub%20dev-orange)](https://pub.dev/packages/hyperpay_plugin)
 
 
 ## Support ReadyUI
@@ -15,8 +15,8 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
 
 ### Android Setup
 
-1. Open `android/app/build.gradle` and add the following lines 
-&NewLine;
+1. Open `android/app/build.gradle` and add the following lines
+   &NewLine;
 
 ```
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -29,10 +29,10 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
     implementation "androidx.browser:browser:1.4.0"
 ```
 2. Open `app/build.gradle` and make sure that the `minSdkVersion` is **21**
-&NewLine;
+   &NewLine;
 
 3. Open your `AndroidManifest.xml`, and put `intent-filter` inside `activity`.
-&NewLine;
+   &NewLine;
 
 
 ```
@@ -53,12 +53,35 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
         
 ```
 #### Note about Intent-filter scheme
- `It's used when making a payment outside the app (Like open browser) and back into the app` 
- 
- 
+`It's used when making a payment outside the app (Like open browser) and back into the app`
+
+
 
 ### IOS Setup
-We will release it in the next version
+1. Open Podfile, and paste the following inside of it:
+   &NewLine;
+
+```ruby
+pod 'hyperpay_sdk', :git => 'https://github.com/ahmedelkhyary/hyperpay_sdk.git'
+$static_framework = ['hyperpay_plugin']
+pre_install do |installer|
+  Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+  installer.pod_targets.each do |pod|
+      if $static_framework.include?(pod.name)
+        def pod.build_type;
+          Pod::BuildType.static_library
+        end
+      end
+    end
+end
+```
+
+2. Add your `Url Scheme` as a bundle identifier.
+   &NewLine;
+
+<br /><img src="https://user-images.githubusercontent.com/70061912/222661323-3a0ffde7-6fba-4f77-9adc-9ac6e2afe006.PNG" atl="Xcode URL type" width="700"/>
+
+
 
 
 
@@ -78,7 +101,7 @@ late FlutterHyperPay flutterHyperPay ;
   /// URL TO GET CHECKOUT ID FOR TEST
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
 
-getCheckOut() async {
+getCheckOut({required double finalPrice}) async {
     payRequestNow(checkoutId: '629D8A95DE267040C10D29E558F8BE37.uat01-vm-tx04', cardName: "VISA");
   }
 
