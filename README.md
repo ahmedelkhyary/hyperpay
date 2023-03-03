@@ -79,7 +79,7 @@ end
 2. Add your `Url Scheme` as a bundle identifier.
    &NewLine;
 
-<br /><img src="https://user-images.githubusercontent.com/70061912/222661323-3a0ffde7-6fba-4f77-9adc-9ac6e2afe006.PNG" atl="Xcode URL type" width="700"/>
+<br /><img src="https://user-images.githubusercontent.com/70061912/222664709-0744b798-ba1d-47e4-917d-c05e803f89ef.PNG" atl="Xcode URL type" width="700"/>
 
 
 
@@ -89,11 +89,11 @@ end
 
 ```dart
 late FlutterHyperPay flutterHyperPay ;
-    flutterHyperPay = FlutterHyperPay(
-      shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // For Android
-      paymentMode:  PaymentMode.test,
-      lang: InAppPaymentSetting.getLang(),
-    );
+flutterHyperPay = FlutterHyperPay(
+shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // For Android
+paymentMode:  PaymentMode.test,
+lang: InAppPaymentSetting.getLang(),
+);
 
 ```
 
