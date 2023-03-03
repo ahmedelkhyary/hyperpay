@@ -145,7 +145,8 @@ when the plugin closes, check the payment status
 ```
   class InAppPaymentSetting {
   static const String applePay="APPLEPAY";
-  static  String shopperResultUrl= "com.testpayment.payment"; // this name must like scheme in intent-filter
+   // shopperResultUrl : this name must like scheme in intent-filter , url scheme in xcode
+  static  String shopperResultUrl= "com.testpayment.payment";
   static  String merchantId= "Your MerchantId";
   static const String countryCode="SA";
   static const String currencyCode="SAR";
