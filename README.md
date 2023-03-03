@@ -53,6 +53,8 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
         
 ```
 #### Note about Intent-filter scheme
+The `Scheme` field must match the `InAppPaymentSetting.shopperResultUrl` field.
+
 `It's used when making a payment outside the app (Like open browser) and back into the app`
 
 
@@ -76,8 +78,8 @@ pre_install do |installer|
 end
 ```
 
-2. Add your `Url Scheme` as a bundle identifier.
-   &NewLine;
+2. Add `Url Scheme` to the list of bundle identifiers.
+   The `Url Scheme` field must match the `InAppPaymentSetting.shopperResultUrl` field.
 
 <br /><img src="https://user-images.githubusercontent.com/70061912/222664709-0744b798-ba1d-47e4-917d-c05e803f89ef.PNG" atl="Xcode URL type" width="700"/>
 
@@ -86,25 +88,27 @@ end
 
 
 ### Setup HyperPay Environment Configuration
-
+define instanse of `FlutterHyperPay`
 ```dart
 late FlutterHyperPay flutterHyperPay ;
-flutterHyperPay = FlutterHyperPay(
-shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // For Android
-paymentMode:  PaymentMode.test,
-lang: InAppPaymentSetting.getLang(),
-);
+    flutterHyperPay = FlutterHyperPay(
+      shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
+      paymentMode:  PaymentMode.test, // test or live
+      lang: InAppPaymentSetting.getLang(), 
+    );
 
 ```
-
+create a method to get the checkoutId
 ```
   /// URL TO GET CHECKOUT ID FOR TEST
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
 
-getCheckOut({required double finalPrice}) async {
+getCheckOut() async {
     payRequestNow(checkoutId: '629D8A95DE267040C10D29E558F8BE37.uat01-vm-tx04', cardName: "VISA");
   }
-
+  ```
+send checkoutId and brandName to Plugin
+```
 payRequestNow({required String cardName, required String checkoutId}) async {
 
     PaymentResultData paymentResultData;
@@ -127,14 +131,15 @@ payRequestNow({required String cardName, required String checkoutId}) async {
         ),
       );
     }
+  }
 
+```
+when the plugin closes, check the payment status
+```
     if (paymentResultData.paymentResult == PaymentResult.success ||
         paymentResultData.paymentResult == PaymentResult.sync) {
       // do something
     }
-
-  }
-
 ```
 
 ```
