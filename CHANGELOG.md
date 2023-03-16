@@ -1,3 +1,6 @@
+## 1.0.2
+* update LICENSE
+
 ## 1.0.1
 * release second version , android , ios , hyperPay sdk 4.9.0
 
