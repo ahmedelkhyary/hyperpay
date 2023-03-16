@@ -98,8 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class InAppPaymentSetting {
   static const String applePay="APPLEPAY";
-  static  String shopperResultUrl= "com.testpayment.payment";
-  static  String merchantId= "MerchantId";
+  static const String shopperResultUrl= "com.testpayment.payment";
+  static const String merchantId= "MerchantId";
   static const String countryCode="SA";
   static const String currencyCode="SAR";
   static getLang() {
