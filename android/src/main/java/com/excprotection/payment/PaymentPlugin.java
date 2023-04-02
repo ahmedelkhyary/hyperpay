@@ -136,7 +136,7 @@ public class PaymentPlugin  implements
 
     // CHECK PAYMENT MODE
     CheckoutSettings checkoutSettings;
-    if (mode.equals("LIVE")) {
+    if (mode.equals("live")) {
       //LIVE MODE
       checkoutSettings = new CheckoutSettings(checkoutId, paymentBrands,
               Connect.ProviderMode.LIVE);
@@ -162,7 +162,6 @@ public class PaymentPlugin  implements
     if (setStorePaymentDetailsMode.equals("true")) {
       checkoutSettings.setStorePaymentDetailsMode(CheckoutStorePaymentDetailsMode.PROMPT);
     }
-
     //CHANGE THEME
     checkoutSettings.setThemeResId(R.style.NewCheckoutTheme);
 
@@ -189,7 +188,7 @@ public class PaymentPlugin  implements
       Transaction transaction = new Transaction(paymentParams);
 
       //Set Mode;
-      boolean resultMode = mode.equals("TEST");
+      boolean resultMode = mode.equals("test");
       Connect.ProviderMode providerMode ;
 
       if (resultMode) {
@@ -216,7 +215,7 @@ public class PaymentPlugin  implements
     if (brands.equals("STC_PAY")) {
       try {
         //Set Mode
-        boolean resultMode = mode.equals("TEST");
+        boolean resultMode = mode.equals("test");
         Connect.ProviderMode providerMode ;
 
         if (resultMode) {
@@ -277,7 +276,7 @@ public class PaymentPlugin  implements
             Transaction transaction = new Transaction(paymentParams);
 
             //Set Mode;
-            boolean resultMode = mode.equals("TEST");
+            boolean resultMode = mode.equals("test");
             Connect.ProviderMode providerMode ;
 
             if (resultMode) {

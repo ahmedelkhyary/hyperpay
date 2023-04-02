@@ -2,9 +2,8 @@
 
 The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started
 
-#### [Official Website](https://www.hyperpay.com/integration-guides/)
 
-[![pub package](https://img.shields.io/badge/Release%20-1.0.1%20Pub%20dev-orange)](https://pub.dev/packages/hyperpay_plugin)
+[![pub package](https://img.shields.io/badge/Releas-1.0.3%20Pub%20dev-orange)](https://pub.dev/packages/hyperpay_plugin)
 
 
 ## Support ReadyUI
@@ -91,11 +90,11 @@ end
 define instanse of `FlutterHyperPay`
 ```dart
 late FlutterHyperPay flutterHyperPay ;
-    flutterHyperPay = FlutterHyperPay(
-      shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
-      paymentMode:  PaymentMode.test, // test or live
-      lang: InAppPaymentSetting.getLang(), 
-    );
+flutterHyperPay = FlutterHyperPay(
+shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
+paymentMode:  PaymentMode.test, // test or live
+lang: InAppPaymentSetting.getLang(),
+);
 
 ```
 create a method to get the checkoutId
@@ -146,8 +145,8 @@ when the plugin closes, check the payment status
   class InAppPaymentSetting {
   static const String applePay="APPLEPAY";
    // shopperResultUrl : this name must like scheme in intent-filter , url scheme in xcode
-  static  String shopperResultUrl= "com.testpayment.payment";
-  static  String merchantId= "Your MerchantId";
+  static const String shopperResultUrl= "com.testpayment.payment";
+  static const String merchantId= "MerchantId";
   static const String countryCode="SA";
   static const String currencyCode="SAR";
   static getLang() {
@@ -159,6 +158,3 @@ when the plugin closes, check the payment status
   }
 }
 ```
-
-
-

@@ -104,7 +104,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     
     private func openCheckoutUI(checkoutId: String,result1: @escaping FlutterResult) {
          
-         if self.mode == "LIVE" {
+         if self.mode == "live" {
              self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
          }else{
              self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
@@ -171,7 +171,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     
     private func applepay(checkoutId: String,result1: @escaping FlutterResult) {
            
-           if self.mode == "LIVE" {
+           if self.mode == "live" {
                self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
            }else{
                self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
@@ -246,7 +246,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
        }
        
        private func storedCards(checkoutId: String,result1: @escaping FlutterResult) {
-           if self.mode == "LIVE" {
+           if self.mode == "live" {
                self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
            }else{
                self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
