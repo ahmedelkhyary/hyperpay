@@ -4,7 +4,7 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
 
 [![pub package](https://img.shields.io/badge/Releas-1.0.4%20Pub%20dev-blue)](https://pub.dev/packages/hyperpay_plugin)
 [![Discord](https://img.shields.io/badge/Discord-JOIN-blue?logo=discord)](https://discord.gg/tjZaRwDk)
-[![GitHub](https://img.shields.io/badge/Github-Link-blue?logo=github)](https://discord.gg/tjZaRwDk)
+[![GitHub](https://img.shields.io/badge/Github-Link-blue?logo=github)](https://github.com/ahmedelkhyary/hyperpay)
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](https://pub.dev/packages/hyperpay_plugin/license)
 
 
