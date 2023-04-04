@@ -1,4 +1,7 @@
 ## 1.0.2
+* update issue https://github.com/ahmedelkhyary/hyperpay/issues/6
+
+## 1.0.2
 * update LICENSE
 
 ## 1.0.1
