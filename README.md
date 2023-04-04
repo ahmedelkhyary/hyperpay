@@ -2,8 +2,9 @@
 
 The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started
 
-
-[![pub package](https://img.shields.io/badge/Releas-1.0.3%20Pub%20dev-orange)](https://pub.dev/packages/hyperpay_plugin)
+[![pub package](https://img.shields.io/badge/Releas-1.0.3%20Pub%20dev-orange?)](https://pub.dev/packages/hyperpay_plugin)
+[![Discord](https://img.shields.io/badge/Discord-JOIN-blue?logo=discord)](https://discord.gg/tjZaRwDk)
+[![GitHub](https://img.shields.io/badge/Github-Link-blue?logo=github)](https://discord.gg/tjZaRwDk)
 
 
 ## Support ReadyUI
@@ -90,11 +91,11 @@ end
 define instanse of `FlutterHyperPay`
 ```dart
 late FlutterHyperPay flutterHyperPay ;
-flutterHyperPay = FlutterHyperPay(
-shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
-paymentMode:  PaymentMode.test, // test or live
-lang: InAppPaymentSetting.getLang(),
-);
+    flutterHyperPay = FlutterHyperPay(
+      shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
+      paymentMode:  PaymentMode.test, // test or live
+      lang: InAppPaymentSetting.getLang(), 
+    );
 
 ```
 create a method to get the checkoutId
@@ -158,3 +159,6 @@ when the plugin closes, check the payment status
   }
 }
 ```
+
+
+
