@@ -1,3 +1,6 @@
+## 1.0.4
+* add discord , github Link , update readmey
+
 ## 1.0.2
 * update issue https://github.com/ahmedelkhyary/hyperpay/issues/6
 
