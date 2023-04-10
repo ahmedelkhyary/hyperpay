@@ -56,12 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InkWell( onTap: (){getCheckOut(brandName: "VISA");}, child: const Text("VISA" )),
-            InkWell( onTap: (){getCheckOut(brandName: "MASTER");}, child: const Text("MASTER")),
-            InkWell( onTap: (){getCheckOut(brandName: "MADA");}, child: const Text("MADA")),
-            InkWell( onTap: (){getCheckOut(brandName: "STC_PAY");}, child: const Text("STC_PAY")),
+            InkWell( onTap: (){getCheckOut(brandName: "VISA");}, child: const Text("VISA" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: (){getCheckOut(brandName: "MASTER");}, child: const Text("MASTER" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: (){getCheckOut(brandName: "MADA");}, child: const Text("MADA" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: (){getCheckOut(brandName: "STC_PAY");}, child: const Text("STC_PAY" , style: TextStyle(fontSize: 20),)),
             Platform.isIOS
-                ? InkWell( onTap: (){getCheckOut(brandName: "APPLEPAY");}, child: const Text("APPLEPAY"))
+                ? InkWell( onTap: (){getCheckOut(brandName: "APPLEPAY");}, child: const Text("APPLEPAY" , style: TextStyle(fontSize: 20),))
                 : Container(),
           ],
         ),
