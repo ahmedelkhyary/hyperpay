@@ -103,9 +103,16 @@ create a method to get the checkoutId
 ```
   /// URL TO GET CHECKOUT ID FOR TEST
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
+  /// Brands Names [ VISA , MASTER , MADA , STC_PAY , APPLEPAY]
 
 getCheckOut() async {
-    payRequestNow(checkoutId: '629D8A95DE267040C10D29E558F8BE37.uat01-vm-tx04', cardName: "VISA");
+    final url = Uri.parse('https://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      payRequestNow(checkoutId: json.decode(response.body)['id'], cardName: "VISA");
+    }else{
+      dev.log(response.body.toString(), name: "STATUS CODE ERROR");
+    }
   }
   ```
 send checkoutId and brandName to Plugin
@@ -121,7 +128,9 @@ payRequestNow({required String cardName, required String checkoutId}) async {
             applePayBundel: InAppPaymentSetting.merchantId,
             checkoutId: checkoutId,
             countryCode: InAppPaymentSetting.countryCode,
-            currencyCode: InAppPaymentSetting.currencyCode),
+            currencyCode: InAppPaymentSetting.currencyCode,
+            themColorHexIOS: "#1298AD" // FOR IOS ONLY
+),
       );
     } else {
       paymentResultData = await flutterHyperPay.readyUICards(
@@ -129,6 +138,7 @@ payRequestNow({required String cardName, required String checkoutId}) async {
           brandName: cardName,
           checkoutId: checkoutId,
           setStorePaymentDetailsMode: false,
+          themColorHexIOS: "#1298AD" // FOR IOS ONLY
         ),
       );
     }

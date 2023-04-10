@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  http:
   hyperpay_plugin:
     path: ../
 

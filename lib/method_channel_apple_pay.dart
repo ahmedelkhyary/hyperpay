@@ -23,7 +23,7 @@ Future<PaymentResultData> implementPaymentApplePay({
           paymentMode: paymentMode,
           lang: lang,
           shopperResultUrl: shopperResultUrl,
-          iosPluginColor: applePay.iosPluginColor),
+          themColorHexIOS: applePay.themColorHexIOS),
     );
     transactionStatus = '$result';
     return PaymentResultManger.getPaymentResult(transactionStatus);
@@ -44,7 +44,7 @@ Map<String, String> getReadyModelApplePay({
   required String shopperResultUrl,
   required PaymentMode paymentMode,
   required String lang,
-  String? iosPluginColor = "",
+  String? themColorHexIOS = "",
 }) {
   return {
     "type": PaymentConst.applePay,
@@ -52,7 +52,7 @@ Map<String, String> getReadyModelApplePay({
     "checkoutid": checkoutId,
     "brand": brand,
     "lang": lang,
-    "iosPluginColor": iosPluginColor ?? "",
+    "iosPluginColor": themColorHexIOS ?? "",
     "ShopperResultUrl": shopperResultUrl,
     "ApplePayBundel": applePayBundel,
     "CountryCode": cuntryCode,
