@@ -153,7 +153,7 @@ when the plugin closes, check the payment status
       // do something
     }
 ```
-change color in android platform 
+change color in `android` platform 
 open `android/app/src/main/res/values` and add the following lines
 
 ```
