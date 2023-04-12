@@ -54,7 +54,7 @@ Map<String, String> getReadyModelApplePay({
     "checkoutid": checkoutId,
     "brand": brand,
     "lang": lang,
-    "iosPluginColor": themColorHexIOS ?? "",
+    "themColorHexIOS": themColorHexIOS ?? "",
     "companyName": companyName ?? "",
     "ShopperResultUrl": shopperResultUrl,
     "ApplePayBundel": applePayBundel,
