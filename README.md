@@ -129,7 +129,8 @@ payRequestNow({required String cardName, required String checkoutId}) async {
             checkoutId: checkoutId,
             countryCode: InAppPaymentSetting.countryCode,
             currencyCode: InAppPaymentSetting.currencyCode,
-            themColorHexIOS: "#1298AD" // FOR IOS ONLY
+            themColorHexIOS: "#000000", // FOR IOS ONLY
+            companyName: "Test Co"
 ),
       );
     } else {
@@ -138,7 +139,7 @@ payRequestNow({required String cardName, required String checkoutId}) async {
           brandName: cardName,
           checkoutId: checkoutId,
           setStorePaymentDetailsMode: false,
-          themColorHexIOS: "#1298AD" // FOR IOS ONLY
+          themColorHexIOS: "#000000", // FOR IOS ONLY
         ),
       );
     }
