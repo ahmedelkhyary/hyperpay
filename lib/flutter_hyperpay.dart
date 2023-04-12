@@ -35,7 +35,7 @@ class FlutterHyperPay {
       channelName: channelName,
       paymentMode: paymentMode,
       lang: lang,
-      iosPluginColor: readyUI.iosPluginColor,
+      themColorHexIOS: readyUI.themColorHexIOS,
       setStorePaymentDetailsMode: readyUI.setStorePaymentDetailsMode,
     );
   }

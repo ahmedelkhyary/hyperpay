@@ -5,12 +5,12 @@ class ApplePay {
   String countryCode;
   String currencyCode;
   String checkoutId;
-  String? iosPluginColor;
+  String? themColorHexIOS;
 
   ApplePay(
       {required this.applePayBundel,
       required this.checkoutId,
       required this.countryCode,
-      this.iosPluginColor,
+      this.themColorHexIOS,
       required this.currencyCode});
 }

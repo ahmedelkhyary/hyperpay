@@ -1,6 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hyperpay_plugin/flutter_hyperpay.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'dart:developer' as dev;
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     flutterHyperPay = FlutterHyperPay(
-      shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // For Android
+      shopperResultUrl: InAppPaymentSetting.shopperResultUrl,
       paymentMode:  PaymentMode.test,
       lang: InAppPaymentSetting.getLang(),
     );
@@ -49,20 +52,35 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title:const Text("Payment"),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          getCheckOut();
-        },
-        child: const Icon(Icons.ads_click),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell( onTap: (){getCheckOut(brandName: "VISA");}, child: const Text("VISA" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: (){getCheckOut(brandName: "MASTER");}, child: const Text("MASTER" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: (){getCheckOut(brandName: "MADA");}, child: const Text("MADA" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: (){getCheckOut(brandName: "STC_PAY");}, child: const Text("STC_PAY" , style: TextStyle(fontSize: 20),)),
+            Platform.isIOS
+                ? InkWell( onTap: (){getCheckOut(brandName: "APPLEPAY");}, child: const Text("APPLEPAY" , style: TextStyle(fontSize: 20),))
+                : Container(),
+          ],
+        ),
       ),
     );
   }
 
   /// URL TO GET CHECKOUT ID FOR TEST
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
+  /// Brands Names [ VISA , MASTER , MADA , STC_PAY , APPLEPAY]
 
-  getCheckOut() async {
-    payRequestNow(checkoutId: '09ED05F7D9FE46B68EA21F780D3CD06F.prod01-vm-tx14', cardName: "VISA");
+  getCheckOut({required String brandName}) async {
+    final url = Uri.parse('https://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      payRequestNow(checkoutId: json.decode(response.body)['id'], cardName: brandName);
+    }else{
+      dev.log(response.body.toString(), name: "STATUS CODE ERROR");
+    }
   }
 
   payRequestNow({required String cardName, required String checkoutId}) async {
@@ -76,7 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
             applePayBundel: InAppPaymentSetting.merchantId,
             checkoutId: checkoutId,
             countryCode: InAppPaymentSetting.countryCode,
-            currencyCode: InAppPaymentSetting.currencyCode),
+            currencyCode: InAppPaymentSetting.currencyCode,
+            themColorHexIOS: "#1298AD" // FOR IOS ONLY
+        ),
       );
     } else {
       paymentResultData = await flutterHyperPay.readyUICards(
@@ -84,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
           brandName: cardName,
           checkoutId: checkoutId,
           setStorePaymentDetailsMode: false,
+          themColorHexIOS: "#1298AD" // FOR IOS ONLY
         ),
       );
     }

@@ -8,7 +8,7 @@ Future<PaymentResultData> implementPayment(
     required String shopperResultUrl,
     required String lang,
     required PaymentMode paymentMode,
-    String? iosPluginColor,
+    String? themColorHexIOS,
     required bool setStorePaymentDetailsMode}) async {
   String transactionStatus;
   var platform = MethodChannel(channelName);
@@ -18,7 +18,7 @@ Future<PaymentResultData> implementPayment(
       getReadyModelCards(
         brand: brand,
         checkoutId: checkoutId,
-        iosPluginColor: iosPluginColor,
+        themColorHexIOS: themColorHexIOS,
         shopperResultUrl: shopperResultUrl,
         paymentMode: paymentMode,
         lang: lang,
@@ -40,7 +40,7 @@ Map<String, String?> getReadyModelCards(
     required String shopperResultUrl,
     required String lang,
     required PaymentMode paymentMode,
-    String? iosPluginColor,
+    String? themColorHexIOS,
     required bool setStorePaymentDetailsMode}) {
   return {
     "type": PaymentConst.readyUi,
@@ -48,7 +48,7 @@ Map<String, String?> getReadyModelCards(
     "checkoutid": checkoutId,
     "brand": brand,
     "lang": lang,
-    "iosPluginColor": iosPluginColor ?? "",
+    "iosPluginColor": themColorHexIOS ?? "",
     "ShopperResultUrl": shopperResultUrl,
     "setStorePaymentDetailsMode": setStorePaymentDetailsMode.toString(),
   };

@@ -39,6 +39,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     let flutterChannel:String = "Hyperpay.demo.fultter/channel";
     let channel = FlutterMethodChannel(name: flutterChannel, binaryMessenger: registrar.messenger())
     let instance = SwiftPaymentPlugin()
+    registrar.addApplicationDelegate(instance)
     registrar.addMethodCallDelegate(instance, channel: channel)
      
   }
@@ -313,7 +314,6 @@ private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {
 
        }
      public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-           print("urlscheme:" + (url.scheme)!)
            var handler:Bool = false
            if url.scheme?.caseInsensitiveCompare( self.shopperResultURL) == .orderedSame {
                didReceiveAsynchronousPaymentCallback(result: self.Presult!)

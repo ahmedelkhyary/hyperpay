@@ -5,13 +5,13 @@ class ReadyUI {
   String checkoutId;
   bool setStorePaymentDetailsMode;
   String? brandName;
-  String? iosPluginColor;
+  String? themColorHexIOS;
 
   ReadyUI({
     this.paymentType = PaymentConst.readyUi,
     required this.checkoutId,
     this.brandName,
-    this.iosPluginColor,
+    this.themColorHexIOS,
     this.setStorePaymentDetailsMode = false,
   });
 }
