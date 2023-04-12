@@ -95,7 +95,8 @@ class _MyHomePageState extends State<MyHomePage> {
             checkoutId: checkoutId,
             countryCode: InAppPaymentSetting.countryCode,
             currencyCode: InAppPaymentSetting.currencyCode,
-            themColorHexIOS: "#1298AD" // FOR IOS ONLY
+            themColorHexIOS: "#000000", // FOR IOS ONLY
+            companyName: "Test Co"
         ),
       );
     } else {
@@ -104,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
           brandName: cardName,
           checkoutId: checkoutId,
           setStorePaymentDetailsMode: false,
-          themColorHexIOS: "#1298AD" // FOR IOS ONLY
+          themColorHexIOS: "#000000" // FOR IOS ONLY
         ),
       );
     }
