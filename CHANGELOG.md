@@ -1,3 +1,6 @@
+## 1.0.5
+* fix IOS issue app can not redirect to application again after open browser
+
 ## 1.0.4
 * add discord , github Link , update readmey
 
