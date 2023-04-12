@@ -153,8 +153,8 @@ when the plugin closes, check the payment status
       // do something
     }
 ```
-change android color open `android/app/src/main/res/values` and add the following lines
-&NewLine;
+change color in android platform 
+open `android/app/src/main/res/values` and add the following lines
 
 ```
     <!--    DEFAULT COLORS YOU CAN OVERRIDE IN YOUR APP-->
