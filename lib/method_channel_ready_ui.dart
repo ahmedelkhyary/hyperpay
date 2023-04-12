@@ -48,7 +48,7 @@ Map<String, String?> getReadyModelCards(
     "checkoutid": checkoutId,
     "brand": brand,
     "lang": lang,
-    "iosPluginColor": themColorHexIOS ?? "",
+    "themColorHexIOS": themColorHexIOS ?? "",
     "ShopperResultUrl": shopperResultUrl,
     "setStorePaymentDetailsMode": setStorePaymentDetailsMode.toString(),
   };

@@ -153,6 +153,17 @@ when the plugin closes, check the payment status
       // do something
     }
 ```
+change android color open `android/app/src/main/res/values` and add the following lines
+&NewLine;
+
+```
+    <!--    DEFAULT COLORS YOU CAN OVERRIDE IN YOUR APP-->
+    <color name="headerBackground">#000000</color>
+    <color name="cancelButtonTintColor">#FFFFFF</color>
+    <color name="listMarkTintColor">#000000</color>
+    <color name="cameraTintColor">#000000</color>
+    <color name="checkboxButtonTintColor">#000000</color>
+```
 
 ```
   class InAppPaymentSetting {

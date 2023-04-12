@@ -15,4 +15,12 @@
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
+
+    <!--    DEFAULT COLORS YOU CAN OVERRIDE IN YOUR APP-->
+    <color name="headerBackground">#000000</color>
+    <color name="cancelButtonTintColor">#FFFFFF</color>
+    <color name="listMarkTintColor">#000000</color>
+    <color name="cameraTintColor">#000000</color>
+    <color name="checkboxButtonTintColor">#000000</color>
+
 </resources>
