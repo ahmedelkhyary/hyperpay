@@ -1,3 +1,6 @@
+## 1.0.6
+* update ios , android change theme color
+
 ## 1.0.5
 * fix IOS issue app can not redirect to application again after open browser
 
