@@ -130,7 +130,7 @@ payRequestNow({required String cardName, required String checkoutId}) async {
             countryCode: InAppPaymentSetting.countryCode,
             currencyCode: InAppPaymentSetting.currencyCode,
             themColorHexIOS: "#000000", // FOR IOS ONLY
-            companyName: "Test Co"
+            companyName: "Test Co" // This name will appear in apple pay form
 ),
       );
     } else {
