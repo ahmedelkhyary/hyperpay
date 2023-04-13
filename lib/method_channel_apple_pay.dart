@@ -16,13 +16,14 @@ Future<PaymentResultData> implementPaymentApplePay({
       getReadyModelApplePay(
           applePayBundel: applePay.applePayBundel,
           brand: PaymentBrands.applePay,
-          cuntryCode: applePay.countryCode,
+          countryCode: applePay.countryCode,
           currencyCode: applePay.currencyCode,
           checkoutId: applePay.checkoutId,
           channelName: channelName,
           paymentMode: paymentMode,
           lang: lang,
           shopperResultUrl: shopperResultUrl,
+          companyName: applePay.companyName,
           themColorHexIOS: applePay.themColorHexIOS),
     );
     transactionStatus = '$result';
@@ -38,13 +39,14 @@ Map<String, String> getReadyModelApplePay({
   required String brand,
   required String checkoutId,
   required String applePayBundel,
-  required String cuntryCode,
+  required String countryCode,
   required String currencyCode,
   required String channelName,
   required String shopperResultUrl,
   required PaymentMode paymentMode,
   required String lang,
   String? themColorHexIOS = "",
+  String? companyName = "",
 }) {
   return {
     "type": PaymentConst.applePay,
@@ -52,10 +54,11 @@ Map<String, String> getReadyModelApplePay({
     "checkoutid": checkoutId,
     "brand": brand,
     "lang": lang,
-    "iosPluginColor": themColorHexIOS ?? "",
+    "themColorHexIOS": themColorHexIOS ?? "",
+    "companyName": companyName ?? "",
     "ShopperResultUrl": shopperResultUrl,
     "ApplePayBundel": applePayBundel,
-    "CountryCode": cuntryCode,
+    "CountryCode": countryCode,
     "CurrencyCode": currencyCode,
   };
 }

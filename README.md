@@ -129,7 +129,8 @@ payRequestNow({required String cardName, required String checkoutId}) async {
             checkoutId: checkoutId,
             countryCode: InAppPaymentSetting.countryCode,
             currencyCode: InAppPaymentSetting.currencyCode,
-            themColorHexIOS: "#1298AD" // FOR IOS ONLY
+            themColorHexIOS: "#000000", // FOR IOS ONLY
+            companyName: "Test Co" // This name will appear in apple pay form
 ),
       );
     } else {
@@ -138,7 +139,7 @@ payRequestNow({required String cardName, required String checkoutId}) async {
           brandName: cardName,
           checkoutId: checkoutId,
           setStorePaymentDetailsMode: false,
-          themColorHexIOS: "#1298AD" // FOR IOS ONLY
+          themColorHexIOS: "#000000", // FOR IOS ONLY
         ),
       );
     }
@@ -151,6 +152,17 @@ when the plugin closes, check the payment status
         paymentResultData.paymentResult == PaymentResult.sync) {
       // do something
     }
+```
+change color in `android` platform 
+open `android/app/src/main/res/values` and add the following lines
+
+```
+    <!--    DEFAULT COLORS YOU CAN OVERRIDE IN YOUR APP-->
+    <color name="headerBackground">#000000</color>
+    <color name="cancelButtonTintColor">#FFFFFF</color>
+    <color name="listMarkTintColor">#000000</color>
+    <color name="cameraTintColor">#000000</color>
+    <color name="checkboxButtonTintColor">#000000</color>
 ```
 
 ```

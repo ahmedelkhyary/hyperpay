@@ -25,7 +25,8 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     var setStorePaymentDetailsMode:String = "";
     var lang:String = "";
     var amount:Double = 1;
-    var themColorHex:String = "#1298AD";
+    var themColorHex:String = "";
+    var companyName:String = "";
     var safariVC: SFSafariViewController?
     var transaction: OPPTransaction?
     var provider = OPPPaymentProvider(mode: OPPProviderMode.test)
@@ -55,7 +56,8 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
             self.checkoutid = (args!["checkoutid"] as? String)!
             self.shopperResultURL = (args!["ShopperResultUrl"] as? String)!
             self.lang=(args!["lang"] as? String)!
-            
+            self.themColorHex=(args!["themColorHexIOS"] as? String)!
+
             
             if self.type == "ReadyUI" {
                 self.setStorePaymentDetailsMode=(args!["setStorePaymentDetailsMode"] as? String )!
@@ -74,6 +76,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                 self.applePaybundel=(args!["ApplePayBundel"] as? String)!
                 self.countryCode=(args!["CountryCode"] as? String)!
                 self.currencyCode=(args!["CurrencyCode"] as? String)!
+                self.companyName=(args!["companyName"] as? String)!
                 applepay(checkoutId: self.checkoutid, result1: result)
             }
             else {
@@ -192,6 +195,8 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                }
                else if self.brand == "APPLEPAY" {
                    let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePaybundel, countryCode: self.countryCode)
+                   paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: self.companyName, amount: NSDecimalNumber(value: self.amount))]
+
                    if #available(iOS 12.1.1, *) {
                        paymentRequest.supportedNetworks = [ PKPaymentNetwork.mada,PKPaymentNetwork.visa,
                                                            PKPaymentNetwork.masterCard ]
