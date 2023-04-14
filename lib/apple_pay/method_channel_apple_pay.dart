@@ -41,6 +41,7 @@ Future<PaymentResultData> implementPaymentApplePay({
         errorString: e.message, paymentResult: PaymentResult.error);
   }
 }
+
 /// This function prepares a model for Apple Pay payment.
 /// It takes the required parameters such as brand, checkoutId,
 /// applePayBundle, country code, currency code, channel name,

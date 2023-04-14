@@ -1,3 +1,6 @@
+## 1.0.8
+* update dart format
+
 ## 1.0.7
 * add custom ui for android platform
 

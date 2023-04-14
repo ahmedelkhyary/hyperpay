@@ -51,6 +51,7 @@ class FlutterHyperPay {
       setStorePaymentDetailsMode: readyUI.setStorePaymentDetailsMode,
     );
   }
+
   /// This method is used for making custom UI payments with cards.
   /// It takes in the required CustomUI input and returns a PaymentResultData object.
   Future<PaymentResultData> customUICards({required CustomUI customUI}) async {
@@ -69,6 +70,7 @@ class FlutterHyperPay {
       enabledTokenization: customUI.enabledTokenization,
     );
   }
+
   /// This function is used to do payment using custom UI. It takes "CustomUI" as an argument,
   /// which consists of the brand name, checkout id, card number, holder name, month, year and cvv.
   /// The function returns a Future of PaymentResultData.
@@ -83,6 +85,7 @@ class FlutterHyperPay {
       phoneNumber: customUISTC.phoneNumber,
     );
   }
+
   /// // This function is used to make payments through ApplePay.
   /// It takes ApplePay object as a mandatory input parameter and shopperResultUrl,
   /// channelName, paymentMode, lang as optional input parameters.
@@ -96,6 +99,7 @@ class FlutterHyperPay {
         paymentMode: paymentMode,
         lang: lang);
   }
+
   /// This function allows the user to make payments using their stored cards.
   /// It accepts an argument of type StoredCards and makes a call to the implementPaymentStoredCards
   /// function with the values required for the payment.
