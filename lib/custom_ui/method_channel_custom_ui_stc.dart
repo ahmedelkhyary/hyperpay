@@ -1,14 +1,12 @@
 import 'package:flutter/services.dart';
-import 'flutter_hyperpay.dart';
+import '../flutter_hyperpay.dart';
 
-Future<PaymentResultData> implementPaymentStoredCards({
-  required String? brand,
+Future<PaymentResultData> implementPaymentCustomUISTC({
+  required PaymentMode paymentMode,
   required String checkoutId,
-  required String tokenId,
-  required String cvv,
   required String channelName,
   required String shopperResultUrl,
-  required PaymentMode paymentMode,
+  required String phoneNumber,
   required String lang,
 }) async {
   String transactionStatus;
@@ -16,15 +14,13 @@ Future<PaymentResultData> implementPaymentStoredCards({
   try {
     final String? result = await platform.invokeMethod(
       PaymentConst.methodCall,
-      getPaymentWithCards(
-          tokenId: tokenId,
-          brand: brand,
-          cvv: cvv,
-          checkoutId: checkoutId,
-          channelName: channelName,
-          shopperResultUrl: shopperResultUrl,
-          paymentMode: paymentMode,
-          lang: lang),
+      getCustomUiSTCModelCards(
+        checkoutId: checkoutId,
+        shopperResultUrl: shopperResultUrl,
+        paymentMode: paymentMode,
+        phoneNumber: phoneNumber,
+        lang: lang
+      ),
     );
     transactionStatus = '$result';
     return PaymentResultManger.getPaymentResult(transactionStatus);
@@ -35,24 +31,19 @@ Future<PaymentResultData> implementPaymentStoredCards({
   }
 }
 
-Map<String, String?> getPaymentWithCards({
-  required String? brand,
-  required String checkoutId,
-  required String tokenId,
-  required String cvv,
-  required String channelName,
-  required String shopperResultUrl,
+Map<String, String?> getCustomUiSTCModelCards({
   required PaymentMode paymentMode,
+  required String phoneNumber,
+  required String checkoutId,
   required String lang,
+  required String shopperResultUrl,
 }) {
   return {
-    "type": PaymentConst.storedCards,
+    "type": PaymentConst.customUiSTC,
     "mode": paymentMode.toString().split('.').last,
     "checkoutid": checkoutId,
-    "brand": brand,
+    "phone_number": phoneNumber,
     "lang": lang,
     "ShopperResultUrl": shopperResultUrl,
-    "TokenID": tokenId,
-    "cvv": cvv,
   };
 }

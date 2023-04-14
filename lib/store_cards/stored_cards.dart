@@ -1,4 +1,4 @@
-part of 'flutter_hyperpay.dart';
+part of '../flutter_hyperpay.dart';
 
 class StoredCards {
   String paymentType = PaymentConst.readyUi;
