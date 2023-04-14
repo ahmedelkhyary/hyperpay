@@ -108,7 +108,7 @@ getCheckOut() async {
     final url = Uri.parse('https://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      payRequestNow(checkoutId: json.decode(response.body)['id'], cardName: "VISA");
+      payRequestNow(checkoutId: json.decode(response.body)['id'], brandName: "VISA");
     }else{
       dev.log(response.body.toString(), name: "STATUS CODE ERROR");
     }
@@ -116,10 +116,10 @@ getCheckOut() async {
   ```
 #### If you want using `readyUI` send checkoutId and brandName to Plugin
 ```
-payRequestNow({required String cardName, required String checkoutId}) async {
+payRequestNow({required String brandName, required String checkoutId}) async {
 
     PaymentResultData paymentResultData;
-    if (cardName.toLowerCase() ==
+    if (brandName.toLowerCase() ==
         InAppPaymentSetting.applePay.toLowerCase()) {
       paymentResultData = await flutterHyperPay.payWithApplePay(
         applePay: ApplePay(
@@ -135,7 +135,7 @@ payRequestNow({required String cardName, required String checkoutId}) async {
     } else {
       paymentResultData = await flutterHyperPay.readyUICards(
         readyUI: ReadyUI(
-          brandName: cardName,
+          brandName: brandName,
           checkoutId: checkoutId,
           setStorePaymentDetailsMode: false,
           themColorHexIOS: "#000000", // FOR IOS ONLY
@@ -149,12 +149,12 @@ payRequestNow({required String cardName, required String checkoutId}) async {
 #### If you want using `CustomUI` - now for android only next release we will support IOS
 ```
  payRequestNowCustomUi(
-      {required String cardName, required String checkoutId}) async {
+      {required String brandName, required String checkoutId}) async {
     PaymentResultData paymentResultData;
 
     paymentResultData = await flutterHyperPay.customUICards(
       customUI: CustomUI(
-        brandName: cardName,
+        brandName: brandName,
         checkoutId: checkoutId,
         cardNumber: "5541805721646120",
         holderName: "test name",
