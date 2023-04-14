@@ -13,7 +13,6 @@ Future<PaymentResultData> implementPaymentCustomUI({
   required int month,
   required int year,
   required int cvv,
-  required bool payTypeStoredCard,
   required bool enabledTokenization,
 }) async {
   String transactionStatus;
@@ -33,7 +32,6 @@ Future<PaymentResultData> implementPaymentCustomUI({
         cvv: cvv,
         lang: lang,
         enabledTokenization: enabledTokenization,
-        payTypeStoredCard: payTypeStoredCard,
       ),
     );
     transactionStatus = '$result';
@@ -56,7 +54,6 @@ Map<String, String?> getCustomUiModelCards({
   required int month,
   required int year,
   required int cvv,
-  required bool payTypeStoredCard,
   required bool enabledTokenization,
 }) {
   return {
@@ -70,7 +67,6 @@ Map<String, String?> getCustomUiModelCards({
     "month": month.toString(),
     "year": year.toString(),
     "cvv": cvv.toString(),
-    "PayTypeStoredCard": payTypeStoredCard.toString(),
     "EnabledTokenization": enabledTokenization.toString(),
     "ShopperResultUrl": shopperResultUrl,
   };

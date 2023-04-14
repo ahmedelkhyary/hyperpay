@@ -9,7 +9,6 @@ class CustomUI {
   int month;
   int year;
   int cvv;
-  bool payTypeStoredCard;
   bool enabledTokenization;
 
   CustomUI({
@@ -20,7 +19,6 @@ class CustomUI {
     required this.month,
     required this.year,
     required this.cvv,
-    this.payTypeStoredCard = false,
     this.enabledTokenization = false,
   });
 }

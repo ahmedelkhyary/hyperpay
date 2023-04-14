@@ -162,7 +162,6 @@ payRequestNow({required String cardName, required String checkoutId}) async {
         year: 2023,
         cvv: 123,
         enabledTokenization: false, // default
-        payTypeStoredCard: false // default
       ),
     );
   }

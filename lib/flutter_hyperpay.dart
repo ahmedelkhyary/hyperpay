@@ -60,7 +60,6 @@ class FlutterHyperPay {
       year: customUI.year,
       cvv: customUI.cvv,
       lang: lang,
-      payTypeStoredCard: customUI.payTypeStoredCard,
       enabledTokenization: customUI.enabledTokenization,
     );
   }
