@@ -114,7 +114,7 @@ getCheckOut() async {
     }
   }
   ```
-#### If you want using `readyUI` send checkoutId and brandName to Plugin
+If you want using `readyUI` send checkoutId and brandName to Plugin
 ```
 payRequestNow({required String brandName, required String checkoutId}) async {
 
@@ -146,7 +146,7 @@ payRequestNow({required String brandName, required String checkoutId}) async {
 
 ```
 
-#### If you want using `CustomUI` - now for android only next release we will support IOS
+If you want using `CustomUI` - now for android only next release we will support IOS
 ```
  payRequestNowCustomUi(
       {required String brandName, required String checkoutId}) async {
@@ -166,7 +166,7 @@ payRequestNow({required String brandName, required String checkoutId}) async {
     );
   }
 ```
-#### `STC CustomUI`
+ `STC CustomUI`
 ```
   // STC_PAY
     payRequestNowCustomUiSTCPAY(
@@ -182,7 +182,7 @@ payRequestNow({required String brandName, required String checkoutId}) async {
   }
 ```
 
-#### get check the payment status after request
+get check the payment status after request
 ```
     if (paymentResultData.paymentResult == PaymentResult.success ||
         paymentResultData.paymentResult == PaymentResult.sync) {
