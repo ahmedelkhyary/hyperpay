@@ -3,6 +3,8 @@ part of 'flutter_hyperpay.dart';
 class PaymentConst {
   static const String applePay = "APPLEPAY";
   static const String readyUi = "ReadyUI";
+  static const String customUi = "CustomUI";
+  static const String customUiSTC = "CustomUISTC";
   static const String storedCards = "StoredCards";
   static const String methodCall = "gethyperpayresponse";
   static const String success = "success";

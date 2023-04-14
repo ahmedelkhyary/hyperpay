@@ -1,4 +1,4 @@
-part of 'flutter_hyperpay.dart';
+part of '../flutter_hyperpay.dart';
 
 class ReadyUI {
   String paymentType = PaymentConst.readyUi;
@@ -8,7 +8,6 @@ class ReadyUI {
   String? themColorHexIOS;
 
   ReadyUI({
-    this.paymentType = PaymentConst.readyUi,
     required this.checkoutId,
     this.brandName,
     this.themColorHexIOS,

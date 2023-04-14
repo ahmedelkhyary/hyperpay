@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("pay with ready ui".toUpperCase() , style: const TextStyle(fontSize: 20 , color: Colors.red),),
             InkWell( onTap: (){getCheckOut(brandName: "VISA");}, child: const Text("VISA" , style: TextStyle(fontSize: 20),)),
             InkWell( onTap: (){getCheckOut(brandName: "MASTER");}, child: const Text("MASTER" , style: TextStyle(fontSize: 20),)),
             InkWell( onTap: (){getCheckOut(brandName: "MADA");}, child: const Text("MADA" , style: TextStyle(fontSize: 20),)),
@@ -63,6 +64,19 @@ class _MyHomePageState extends State<MyHomePage> {
             Platform.isIOS
                 ? InkWell( onTap: (){getCheckOut(brandName: "APPLEPAY");}, child: const Text("APPLEPAY" , style: TextStyle(fontSize: 20),))
                 : Container(),
+
+            const Divider(),
+            Text("pay with custom ui".toUpperCase() , style: const TextStyle(fontSize: 20 , color: Colors.red),),
+            InkWell( onTap: (){getCheckOut(brandName: "VISA" ,cardNumber: "4111111111111111" ,  payWithReadyUi: false);}, child: const Text("VISA" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: (){getCheckOut(brandName: "MASTER" ,cardNumber: "5541805721646120", payWithReadyUi: false);}, child: const Text("MASTER" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: (){getCheckOut(brandName: "MADA" ,cardNumber: "5541805721646120", payWithReadyUi: false);}, child: const Text("MADA" , style: TextStyle(fontSize: 20),)),
+            const Divider(),
+            Text("pay with custom ui stc".toUpperCase() , style: const TextStyle(fontSize: 20 , color: Colors.red),),
+            InkWell( onTap: (){
+              payRequestNowCustomUiSTCPAY(checkoutId: "64AC8464BF6209E8EDC21BE0B614B673.uat01-vm-tx01", phoneNumber: "0588987147");
+
+            }, child: const Text("STC_PAY" , style: TextStyle(fontSize: 20),)),
+
           ],
         ),
       ),
@@ -73,21 +87,26 @@ class _MyHomePageState extends State<MyHomePage> {
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
   /// Brands Names [ VISA , MASTER , MADA , STC_PAY , APPLEPAY]
 
-  getCheckOut({required String brandName}) async {
+  getCheckOut({required String brandName , bool payWithReadyUi = true , String? cardNumber }) async {
     final url = Uri.parse('https://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      payRequestNow(checkoutId: json.decode(response.body)['id'], cardName: brandName);
+
+        if(payWithReadyUi) {
+          payRequestNowReadyUI(checkoutId: json.decode(response.body)['id'], brandName: brandName);
+        }else{
+          payRequestNowCustomUi(checkoutId: json.decode(response.body)['id'], brandName: brandName , cardNumber: cardNumber!);
+        }
+
     }else{
       dev.log(response.body.toString(), name: "STATUS CODE ERROR");
     }
   }
 
-  payRequestNow({required String cardName, required String checkoutId}) async {
-
+  payRequestNowReadyUI(
+      {required String brandName, required String checkoutId}) async {
     PaymentResultData paymentResultData;
-    if (cardName.toLowerCase() ==
-        InAppPaymentSetting.applePay.toLowerCase()) {
+    if (brandName.toLowerCase() == InAppPaymentSetting.applePay.toLowerCase()) {
       paymentResultData = await flutterHyperPay.payWithApplePay(
         applePay: ApplePay(
           /// ApplePayBundel refer to Merchant ID
@@ -96,17 +115,16 @@ class _MyHomePageState extends State<MyHomePage> {
             countryCode: InAppPaymentSetting.countryCode,
             currencyCode: InAppPaymentSetting.currencyCode,
             themColorHexIOS: "#000000", // FOR IOS ONLY
-            companyName: "Test Co"
-        ),
+            companyName: "Test Co"),
       );
     } else {
       paymentResultData = await flutterHyperPay.readyUICards(
         readyUI: ReadyUI(
-          brandName: cardName,
-          checkoutId: checkoutId,
-          setStorePaymentDetailsMode: false,
-          themColorHexIOS: "#000000" // FOR IOS ONLY
-        ),
+            brandName: brandName,
+            checkoutId: checkoutId,
+            setStorePaymentDetailsMode: false,
+            themColorHexIOS: "#000000" // FOR IOS ONLY
+            ),
       );
     }
 
@@ -114,7 +132,46 @@ class _MyHomePageState extends State<MyHomePage> {
         paymentResultData.paymentResult == PaymentResult.sync) {
       // do something
     }
+  }
 
+  payRequestNowCustomUi(
+      {required String brandName, required String checkoutId , required String cardNumber}) async {
+    PaymentResultData paymentResultData;
+
+    paymentResultData = await flutterHyperPay.customUICards(
+      customUI: CustomUI(
+        brandName: brandName,
+        checkoutId: checkoutId,
+        cardNumber: cardNumber,
+        holderName: "test name",
+        month: 12,
+        year: 2023,
+        cvv: 123,
+        enabledTokenization: false, // default
+      ),
+    );
+
+    if (paymentResultData.paymentResult == PaymentResult.success ||
+        paymentResultData.paymentResult == PaymentResult.sync) {
+      // do something
+    }
+  }
+
+  payRequestNowCustomUiSTCPAY(
+      {required String phoneNumber, required String checkoutId}) async {
+    PaymentResultData paymentResultData;
+
+    paymentResultData = await flutterHyperPay.customUISTC(
+      customUISTC: CustomUISTC(
+          checkoutId: checkoutId,
+          phoneNumber: phoneNumber
+      ),
+    );
+
+    if (paymentResultData.paymentResult == PaymentResult.success ||
+        paymentResultData.paymentResult == PaymentResult.sync) {
+      // do something
+    }
   }
 }
 

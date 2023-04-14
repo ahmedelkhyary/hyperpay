@@ -8,7 +8,7 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](https://pub.dev/packages/hyperpay_plugin/license)
 
 
-## Support ReadyUI
+## Support ReadyUI , CustomUI
 - **VISA** **,** **MasterCard**
 - **STC**
 - **Apple Pay**
@@ -20,7 +20,6 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
    &NewLine;
 
 ```
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation(name: "oppwa.mobile-4.9.0-release", ext: 'aar')
     debugImplementation(name: "ipworks3ds_sdk", ext: 'aar')
     releaseImplementation(name: "ipworks3ds_sdk_deploy", ext: 'aar')
@@ -109,18 +108,18 @@ getCheckOut() async {
     final url = Uri.parse('https://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      payRequestNow(checkoutId: json.decode(response.body)['id'], cardName: "VISA");
+      payRequestNow(checkoutId: json.decode(response.body)['id'], brandName: "VISA");
     }else{
       dev.log(response.body.toString(), name: "STATUS CODE ERROR");
     }
   }
   ```
-send checkoutId and brandName to Plugin
+#### If you want using `readyUI` send checkoutId and brandName to Plugin
 ```
-payRequestNow({required String cardName, required String checkoutId}) async {
+payRequestNow({required String brandName, required String checkoutId}) async {
 
     PaymentResultData paymentResultData;
-    if (cardName.toLowerCase() ==
+    if (brandName.toLowerCase() ==
         InAppPaymentSetting.applePay.toLowerCase()) {
       paymentResultData = await flutterHyperPay.payWithApplePay(
         applePay: ApplePay(
@@ -136,7 +135,7 @@ payRequestNow({required String cardName, required String checkoutId}) async {
     } else {
       paymentResultData = await flutterHyperPay.readyUICards(
         readyUI: ReadyUI(
-          brandName: cardName,
+          brandName: brandName,
           checkoutId: checkoutId,
           setStorePaymentDetailsMode: false,
           themColorHexIOS: "#000000", // FOR IOS ONLY
@@ -146,14 +145,52 @@ payRequestNow({required String cardName, required String checkoutId}) async {
   }
 
 ```
-when the plugin closes, check the payment status
+
+#### If you want using `CustomUI` - now for android only next release we will support IOS
+```
+ payRequestNowCustomUi(
+      {required String brandName, required String checkoutId}) async {
+    PaymentResultData paymentResultData;
+
+    paymentResultData = await flutterHyperPay.customUICards(
+      customUI: CustomUI(
+        brandName: brandName,
+        checkoutId: checkoutId,
+        cardNumber: "5541805721646120",
+        holderName: "test name",
+        month: 12,
+        year: 2023,
+        cvv: 123,
+        enabledTokenization: false, // default
+      ),
+    );
+  }
+```
+#### `STC CustomUI`
+```
+  // STC_PAY
+    payRequestNowCustomUiSTCPAY(
+      {required String phoneNumber, required String checkoutId}) async {
+    PaymentResultData paymentResultData;
+
+    paymentResultData = await flutterHyperPay.customUISTC(
+      customUISTC: CustomUISTC(
+          checkoutId: checkoutId,
+          phoneNumber: phoneNumber
+      ),
+    );
+  }
+```
+
+#### get check the payment status after request
 ```
     if (paymentResultData.paymentResult == PaymentResult.success ||
         paymentResultData.paymentResult == PaymentResult.sync) {
       // do something
     }
 ```
-change color in `android` platform 
+`ReadyUI`
+change color in `android` platform
 open `android/app/src/main/res/values` and add the following lines
 
 ```
@@ -164,7 +201,7 @@ open `android/app/src/main/res/values` and add the following lines
     <color name="cameraTintColor">#000000</color>
     <color name="checkboxButtonTintColor">#000000</color>
 ```
-
+`payment setting`
 ```
   class InAppPaymentSetting {
   static const String applePay="APPLEPAY";
@@ -182,6 +219,3 @@ open `android/app/src/main/res/values` and add the following lines
   }
 }
 ```
-
-
-

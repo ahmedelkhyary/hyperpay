@@ -45,7 +45,6 @@ public class PaymentPlugin  implements
   private  MethodChannel.Result Result;
   private  String mode = "";
   private String brands = "";
-  private String PayTypeSotredCard = "";
   private String Lang = "";
   private String EnabledTokenization = "";
   private String ShopperResultUrl = "";
@@ -105,10 +104,12 @@ public class PaymentPlugin  implements
           month = call.argument("month");
           cvv = call.argument("cvv");
           EnabledTokenization = call.argument("EnabledTokenization");
-          PayTypeSotredCard = call.argument("PayTypeSotredCard");
-          TokenID = call.argument("TokenID");
           openCustomUI(checkoutId);
           break;
+
+        case "CustomUISTC":
+          number = call.argument("phone_number");
+          openCustomUISTC(checkoutId);
 
         default : error("1", "THIS TYPE NO IMPLEMENT" + type, "");
       }
@@ -212,8 +213,86 @@ public class PaymentPlugin  implements
   }
 
   private void openCustomUI(String checkoutId) {
-    if (brands.equals("STC_PAY")) {
-      try {
+
+    Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+            ? "Please Waiting.."
+            : "برجاء الانتظار..", Toast.LENGTH_SHORT).show();
+
+        if (!CardPaymentParams.isNumberValid(number , true)) {
+          Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+                  ? "Card number is not valid for brand"
+                  : "رقم البطاقة غير صالح",
+                  Toast.LENGTH_SHORT).show();
+        } else if (!CardPaymentParams.isHolderValid(holder)) {
+          Toast.makeText(activity.getApplicationContext(),  Lang.equals("en_US")
+                  ? "Holder name is not valid"
+                  : "اسم المالك غير صالح"
+                  , Toast.LENGTH_SHORT).show();
+        } else if (!CardPaymentParams.isExpiryYearValid(year)) {
+          Toast.makeText(activity.getApplicationContext(),  Lang.equals("en_US")
+                  ? "Expiry year is not valid"
+                  : "سنة انتهاء الصلاحية غير صالحة" ,
+                  Toast.LENGTH_SHORT).show();
+        } else if (!CardPaymentParams.isExpiryMonthValid(month)) {
+          Toast.makeText(activity.getApplicationContext(),  Lang.equals("en_US")
+                  ? "Expiry month is not valid"
+                  : "شهر انتهاء الصلاحية غير صالح"
+                  , Toast.LENGTH_SHORT).show();
+        } else if (!CardPaymentParams.isCvvValid(cvv)) {
+          Toast.makeText(activity.getApplicationContext(),  Lang.equals("en_US")
+                  ? "CVV is not valid"
+                  : "CVV غير صالح"
+                  , Toast.LENGTH_SHORT).show();
+        } else {
+          // To add MADA
+          if (brands.equals("MADA")) {
+            String bin = number.substring(0,6);
+            if (!bin.matches(PaymentConst.madaRegexV) || !bin.matches(PaymentConst.madaRegexM)) {
+              Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+                              ? "This card is not Mada card"
+                              : "هذه البطاقة ليست بطاقة مدى"
+                      , Toast.LENGTH_SHORT).show();
+            }
+          }
+
+          boolean EnabledTokenizationTemp = EnabledTokenization.equals("true");
+          try {
+            PaymentParams paymentParams = new CardPaymentParams(
+                    checkoutId, brands, number, holder, month, year, cvv
+            ).setTokenizationEnabled(EnabledTokenizationTemp);//Set Enabled TokenizationTemp
+
+            paymentParams.setShopperResultUrl(ShopperResultUrl + "://result");
+
+            Transaction transaction = new Transaction(paymentParams);
+
+            //Set Mode;
+            boolean resultMode = mode.equals("test");
+            Connect.ProviderMode providerMode ;
+
+            if (resultMode) {
+              providerMode =  Connect.ProviderMode.TEST ;
+            } else {
+              providerMode =  Connect.ProviderMode.LIVE ;
+            }
+
+            paymentProvider = new OppPaymentProvider(activity.getBaseContext(), providerMode);
+
+            //Submit Transaction
+            //Listen for transaction Completed - transaction Failed
+            paymentProvider.submitTransaction(transaction, this);
+
+          } catch (PaymentException e) {
+            error("0.1", e.getLocalizedMessage(), "");
+          }
+        }
+  }
+
+  private void openCustomUISTC(String checkoutId) {
+
+    Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+            ? "Please Waiting.."
+            : "برجاء الانتظار..", Toast.LENGTH_SHORT).show();
+    try {
         //Set Mode
         boolean resultMode = mode.equals("test");
         Connect.ProviderMode providerMode ;
@@ -241,66 +320,7 @@ public class PaymentPlugin  implements
       } catch (PaymentException e) {
         e.printStackTrace();
       }
-    } else {
 
-      if (PayTypeSotredCard.equals("true")) {
-        storedCardPayment(checkoutId);
-      }
-      else {
-
-        if (!CardPaymentParams.isNumberValid(number , true)) {
-          Toast.makeText(activity.getApplicationContext(), "Card number is not valid for brand", Toast.LENGTH_SHORT).show();
-        } else if (!CardPaymentParams.isHolderValid(holder)) {
-          Toast.makeText(activity.getApplicationContext(), "Holder name is not valid", Toast.LENGTH_SHORT).show();
-        } else if (!CardPaymentParams.isExpiryYearValid(year)) {
-          Toast.makeText(activity.getApplicationContext(), "Expiry year is not valid", Toast.LENGTH_SHORT).show();
-        } else if (!CardPaymentParams.isExpiryMonthValid(month)) {
-          Toast.makeText(activity.getApplicationContext(), "Expiry month is not valid", Toast.LENGTH_SHORT).show();
-        } else if (!CardPaymentParams.isCvvValid(cvv)) {
-          Toast.makeText(activity.getApplicationContext(), "CVV is not valid", Toast.LENGTH_SHORT).show();
-        } else {
-          boolean EnabledTokenizationTemp = EnabledTokenization.equals("true");
-          try {
-            PaymentParams paymentParams = new CardPaymentParams(
-                    checkoutId,
-                    brands,
-                    number,
-                    holder,
-                    month,
-                    year,
-                    cvv
-            ).setTokenizationEnabled(EnabledTokenizationTemp);//Set Enabled TokenizationTemp
-
-            paymentParams.setShopperResultUrl(ShopperResultUrl + "://result");
-
-            Transaction transaction = new Transaction(paymentParams);
-
-            //Set Mode;
-            boolean resultMode = mode.equals("test");
-            Connect.ProviderMode providerMode ;
-
-            if (resultMode) {
-              providerMode =  Connect.ProviderMode.TEST ;
-            } else {
-              providerMode =  Connect.ProviderMode.LIVE ;
-            }
-
-            paymentProvider = new OppPaymentProvider(activity.getBaseContext(), providerMode);
-
-            //Submit Transaction
-            //Listen for transaction Completed - transaction Failed
-            paymentProvider.submitTransaction(transaction, this);
-
-          } catch (PaymentException e) {
-            error(
-                    "0.1",
-                    e.getLocalizedMessage(),
-                    ""
-            );
-          }
-        }
-      }
-    }
   }
 
   @Override

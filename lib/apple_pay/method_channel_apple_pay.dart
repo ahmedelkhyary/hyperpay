@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'flutter_hyperpay.dart';
+import '../flutter_hyperpay.dart';
 
 Future<PaymentResultData> implementPaymentApplePay({
   required ApplePay applePay,
