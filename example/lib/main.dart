@@ -148,7 +148,6 @@ class _MyHomePageState extends State<MyHomePage> {
         year: 2023,
         cvv: 123,
         enabledTokenization: false, // default
-        payTypeStoredCard: false // default
       ),
     );
 
