@@ -20,7 +20,6 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
    &NewLine;
 
 ```
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation(name: "oppwa.mobile-4.9.0-release", ext: 'aar')
     debugImplementation(name: "ipworks3ds_sdk", ext: 'aar')
     releaseImplementation(name: "ipworks3ds_sdk_deploy", ext: 'aar')
