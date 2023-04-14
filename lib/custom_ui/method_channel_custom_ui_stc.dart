@@ -1,6 +1,10 @@
 import 'package:flutter/services.dart';
 import '../flutter_hyperpay.dart';
 
+/// implementPaymentCustomUISTC is a method used to make online payments.
+/// It requires the paymentMode, checkoutId, channelName, shopperResultUrl,
+/// phoneNumber and lang to be passed as arguments for successful implementation.
+/// It returns a PaymentResultData object with the paymentResult and errorString.
 Future<PaymentResultData> implementPaymentCustomUISTC({
   required PaymentMode paymentMode,
   required String checkoutId,
@@ -15,12 +19,11 @@ Future<PaymentResultData> implementPaymentCustomUISTC({
     final String? result = await platform.invokeMethod(
       PaymentConst.methodCall,
       getCustomUiSTCModelCards(
-        checkoutId: checkoutId,
-        shopperResultUrl: shopperResultUrl,
-        paymentMode: paymentMode,
-        phoneNumber: phoneNumber,
-        lang: lang
-      ),
+          checkoutId: checkoutId,
+          shopperResultUrl: shopperResultUrl,
+          paymentMode: paymentMode,
+          phoneNumber: phoneNumber,
+          lang: lang),
     );
     transactionStatus = '$result';
     return PaymentResultManger.getPaymentResult(transactionStatus);
@@ -31,6 +34,10 @@ Future<PaymentResultData> implementPaymentCustomUISTC({
   }
 }
 
+/// This method creates a map of parameters to be used for a custom UI STC (STC Pay) payment.
+/// It requires the payment mode, phone number, checkout ID, language,
+/// and shopper result URL as parameters. It returns a map containing data for the payment type,
+/// mode, checkout id, phone number, language, and shopper result URL.
 Map<String, String?> getCustomUiSTCModelCards({
   required PaymentMode paymentMode,
   required String phoneNumber,

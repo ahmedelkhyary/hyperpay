@@ -34,6 +34,11 @@ class FlutterHyperPay {
     required this.lang,
   });
 
+  /// This async function takes a ReadyUI object as input and returns a Future object of type PaymentResultData.
+  /// It implements a payment operation by passing the Brand name, Checkout ID, Shopper Result URL,
+  /// Payment Channel name, Payment mode, Language, Theme color in HEX (iOS),
+  /// and a flag to set the store payment details mode.
+  /// The function waits for the payment operation to complete and returns the resulting PaymentResultData.
   Future<PaymentResultData> readyUICards({required ReadyUI readyUI}) async {
     return await implementPayment(
       brand: readyUI.brandName,
@@ -46,7 +51,8 @@ class FlutterHyperPay {
       setStorePaymentDetailsMode: readyUI.setStorePaymentDetailsMode,
     );
   }
-
+  /// This method is used for making custom UI payments with cards.
+  /// It takes in the required CustomUI input and returns a PaymentResultData object.
   Future<PaymentResultData> customUICards({required CustomUI customUI}) async {
     return await implementPaymentCustomUI(
       brand: customUI.brandName,
@@ -63,7 +69,9 @@ class FlutterHyperPay {
       enabledTokenization: customUI.enabledTokenization,
     );
   }
-
+  /// This function is used to do payment using custom UI. It takes "CustomUI" as an argument,
+  /// which consists of the brand name, checkout id, card number, holder name, month, year and cvv.
+  /// The function returns a Future of PaymentResultData.
   Future<PaymentResultData> customUISTC(
       {required CustomUISTC customUISTC}) async {
     return await implementPaymentCustomUISTC(
@@ -75,7 +83,10 @@ class FlutterHyperPay {
       phoneNumber: customUISTC.phoneNumber,
     );
   }
-
+  /// // This function is used to make payments through ApplePay.
+  /// It takes ApplePay object as a mandatory input parameter and shopperResultUrl,
+  /// channelName, paymentMode, lang as optional input parameters.
+  /// It returns a PaymentResultData object after a successful payment.
   Future<PaymentResultData> payWithApplePay(
       {required ApplePay applePay}) async {
     return await implementPaymentApplePay(
@@ -85,7 +96,10 @@ class FlutterHyperPay {
         paymentMode: paymentMode,
         lang: lang);
   }
-
+  /// This function allows the user to make payments using their stored cards.
+  /// It accepts an argument of type StoredCards and makes a call to the implementPaymentStoredCards
+  /// function with the values required for the payment.
+  /// It returns a Future<PaymentResultData> which is the outcome of the payment.
   Future<PaymentResultData> payWithSoredCards(
       {required StoredCards storedCards}) async {
     return await implementPaymentStoredCards(

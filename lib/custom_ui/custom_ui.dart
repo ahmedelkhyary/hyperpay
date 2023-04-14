@@ -1,5 +1,8 @@
 part of '../flutter_hyperpay.dart';
 
+/// This class is used to define a CustomUI object which is used to make payments using the PaymentConst.
+/// customUi payment type. It has parameters to define the checkoutId, brandName,
+/// cardNumber, holderName, month, year, cvv and enabledTokenization (optional).
 class CustomUI {
   String paymentType = PaymentConst.customUi;
   String checkoutId;

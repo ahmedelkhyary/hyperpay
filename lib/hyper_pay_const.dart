@@ -1,5 +1,8 @@
 part of 'flutter_hyperpay.dart';
 
+/// This class contains different constants used in Payment APIs including
+/// Apple Pay, Ready UI, Custom UI, Custom UI STC, Stored Cards, Method Call,
+/// Success, Error, and Sync.
 class PaymentConst {
   static const String applePay = "APPLEPAY";
   static const String readyUi = "ReadyUI";
@@ -12,6 +15,8 @@ class PaymentConst {
   static const String sync = "SYNC";
 }
 
+/// This class contains constants representing various payment brands,
+/// such as mada, applePay, credit, stcPay, masterCard, and visa.
 class PaymentBrands {
   static const String mada = "MADA";
   static const String applePay = "APPLEPAY";
@@ -21,6 +26,8 @@ class PaymentBrands {
   static const String visa = "VISA";
 }
 
+/// This class holds the data for a payment result,
+/// containing an errorString (nullable) and a paymentResult object.
 class PaymentResultData {
   String? errorString;
   PaymentResult paymentResult;
@@ -31,6 +38,9 @@ class PaymentResultData {
   });
 }
 
+/// This class is used to store the language constants used for Payment.
+/// Constants include iOS's Arabic (ar) and English (en)
+/// and Android's English (en_US) and Arabic (ar_AR).
 class PaymentLang {
   static const String iosARLang = "ar";
   static const String iosENLang = "en";

@@ -1,6 +1,13 @@
 import 'package:flutter/services.dart';
 import '../flutter_hyperpay.dart';
 
+/// This is an asynchronous function that implements a custom UI payment.
+/// It takes parameters such as paymentMode, brand, checkoutId, channelName,
+/// shopperResultUrl, lang, cardNumber, holderName, month, year, cvv and enabledTokenization.
+/// It uses the MethodChannel class to invoke a payment method call with a custom UI payment model.
+/// The function returns a PaymentResultData object with information on the payment transaction status.
+/// If successful, it returns the payment result. If unsuccessful,
+/// it returns the error string and payment result.
 Future<PaymentResultData> implementPaymentCustomUI({
   required PaymentMode paymentMode,
   required String brand,
@@ -43,6 +50,11 @@ Future<PaymentResultData> implementPaymentCustomUI({
   }
 }
 
+/// This function is used to get the required customUi model cards for payment processing.
+/// It takes all the essential information needed for the process,
+/// like payment mode, brand, checkoutId, shopperResultUrl, lang, cardNumber,
+/// holderName, month, year, cvv, and enabledTokenization.
+/// It then generates and returns a map containing each of the data fields.
 Map<String, String?> getCustomUiModelCards({
   required PaymentMode paymentMode,
   required String brand,

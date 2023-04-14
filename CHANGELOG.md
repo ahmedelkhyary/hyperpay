@@ -1,3 +1,6 @@
+## 1.0.7
+* add custom ui for android platform
+
 ## 1.0.6
 * update ios , android change theme color
 
