@@ -2,7 +2,7 @@
 
 The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started
 
-[![pub package](https://img.shields.io/badge/Releas-1.0.8%20Pub%20dev-blue)](https://pub.dev/packages/hyperpay_plugin)
+[![pub package](https://img.shields.io/badge/Releas-1.0.9%20Pub%20dev-blue)](https://pub.dev/packages/hyperpay_plugin)
 [![Discord](https://img.shields.io/badge/Discord-JOIN-blue?logo=discord)](https://discord.gg/tjZaRwDk)
 [![GitHub](https://img.shields.io/badge/Github-Link-blue?logo=github)](https://github.com/ahmedelkhyary/hyperpay)
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](https://pub.dev/packages/hyperpay_plugin/license)
@@ -91,11 +91,11 @@ end
 define instanse of `FlutterHyperPay`
 ```dart
 late FlutterHyperPay flutterHyperPay ;
-    flutterHyperPay = FlutterHyperPay(
-      shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
-      paymentMode:  PaymentMode.test, // test or live
-      lang: InAppPaymentSetting.getLang(), 
-    );
+flutterHyperPay = FlutterHyperPay(
+shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
+paymentMode:  PaymentMode.test, // test or live
+lang: InAppPaymentSetting.getLang(),
+);
 
 ```
 create a method to get the checkoutId
@@ -108,44 +108,36 @@ getCheckOut() async {
     final url = Uri.parse('https://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      payRequestNow(checkoutId: json.decode(response.body)['id'], brandName: "VISA");
+      payRequestNowReadyUI(
+        checkoutId: json.decode(response.body)['id'],
+        brandsName: [ "VISA" , "MASTER" , "MADA" ,"PAYPAL", "STC_PAY" , "APPLEPAY"]);
     }else{
       dev.log(response.body.toString(), name: "STATUS CODE ERROR");
     }
   }
   ```
-If you want using `readyUI` send checkoutId and brandName to Plugin
-```
-payRequestNow({required String brandName, required String checkoutId}) async {
+If you want using `readyUI` send checkoutId and List of `brandsName` to Plugin
 
+Brands Names support [ VISA , MASTER , MADA , STC_PAY , APPLEPAY]
+```
+  payRequestNowReadyUI(
+      {required List<String> brandsName, required String checkoutId}) async {
     PaymentResultData paymentResultData;
-    if (brandName.toLowerCase() ==
-        InAppPaymentSetting.applePay.toLowerCase()) {
-      paymentResultData = await flutterHyperPay.payWithApplePay(
-        applePay: ApplePay(
-          /// ApplePayBundel refer to Merchant ID
-            applePayBundel: InAppPaymentSetting.merchantId,
-            checkoutId: checkoutId,
-            countryCode: InAppPaymentSetting.countryCode,
-            currencyCode: InAppPaymentSetting.currencyCode,
-            themColorHexIOS: "#000000", // FOR IOS ONLY
-            companyName: "Test Co" // This name will appear in apple pay form
-),
-      );
-    } else {
       paymentResultData = await flutterHyperPay.readyUICards(
         readyUI: ReadyUI(
-          brandName: brandName,
-          checkoutId: checkoutId,
-          setStorePaymentDetailsMode: false,
-          themColorHexIOS: "#000000", // FOR IOS ONLY
-        ),
+            brandsName: brandsName ,
+            checkoutId: checkoutId,
+            merchantIdApplePayIOS: InAppPaymentSetting.merchantId, // applepay
+            countryCodeApplePayIOS: InAppPaymentSetting.countryCode, // applePay
+            companyNameApplePayIOS: "Test Co", // applePay
+            themColorHexIOS: "#000000" ,// FOR IOS ONLY
+            setStorePaymentDetailsMode: true // store payment details for future use
+            ),
       );
-    }
   }
 
-```
 
+```
 If you want using `CustomUI` - now for android only next release we will support IOS
 ```
  payRequestNowCustomUi(
@@ -166,7 +158,7 @@ If you want using `CustomUI` - now for android only next release we will support
     );
   }
 ```
- `STC CustomUI`
+`STC CustomUI`
 ```
   // STC_PAY
     payRequestNowCustomUiSTCPAY(
@@ -204,12 +196,10 @@ open `android/app/src/main/res/values` and add the following lines
 `payment setting`
 ```
   class InAppPaymentSetting {
-  static const String applePay="APPLEPAY";
    // shopperResultUrl : this name must like scheme in intent-filter , url scheme in xcode
   static const String shopperResultUrl= "com.testpayment.payment";
   static const String merchantId= "MerchantId";
   static const String countryCode="SA";
-  static const String currencyCode="SAR";
   static getLang() {
     if (Platform.isIOS) {
       return  "en"; // ar
