@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
             countryCodeApplePayIOS: InAppPaymentSetting.countryCode,
             companyNameApplePayIOS: "Test Co",
             themColorHexIOS: "#000000" ,// FOR IOS ONLY
-            setStorePaymentDetailsMode: true // default - store payment details for future use
+            setStorePaymentDetailsMode: true // store payment details for future use
             ),
       );
 
@@ -178,7 +178,7 @@ class InAppPaymentSetting {
     if (Platform.isIOS) {
       return  "en"; // ar
     } else {
-      return "en_US"; // ar_AR
+      return "ar_AR"; // ar_AR
     }
   }
 }
