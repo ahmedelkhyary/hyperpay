@@ -178,7 +178,7 @@ class InAppPaymentSetting {
     if (Platform.isIOS) {
       return  "en"; // ar
     } else {
-      return "ar_AR"; // ar_AR
+      return "en_US"; // ar_AR
     }
   }
 }
