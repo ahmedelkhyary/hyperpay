@@ -7,6 +7,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     var mode:String = "";
     var checkoutid:String = "";
     var brand:String = "";
+    var brandsReadyUi:[String] = [];
     var STCPAY:String = "";
     var number:String = "";
     var holder:String = "";
@@ -32,9 +33,6 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     var provider = OPPPaymentProvider(mode: OPPProviderMode.test)
     var checkoutProvider: OPPCheckoutProvider?
     var Presult:FlutterResult?
-    // var enabledTokenization:String =  "";
-
-
 
   public static func register(with registrar: FlutterPluginRegistrar) {
     let flutterChannel:String = "Hyperpay.demo.fultter/channel";
@@ -42,90 +40,68 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     let instance = SwiftPaymentPlugin()
     registrar.addApplicationDelegate(instance)
     registrar.addMethodCallDelegate(instance, channel: channel)
-     
+
   }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         self.Presult = result
-        
+
         if call.method == "gethyperpayresponse"{
             let args = call.arguments as? Dictionary<String,Any>
             self.type = (args!["type"] as? String)!
-            self.brand = (args!["brand"] as? String)!
             self.mode = (args!["mode"] as? String)!
             self.checkoutid = (args!["checkoutid"] as? String)!
             self.shopperResultURL = (args!["ShopperResultUrl"] as? String)!
             self.lang=(args!["lang"] as? String)!
-            self.themColorHex=(args!["themColorHexIOS"] as? String)!
 
-            
             if self.type == "ReadyUI" {
+                self.applePaybundel=(args!["merchantId"] as? String)!
+                self.countryCode=(args!["CountryCode"] as? String)!
+                self.companyName=(args!["companyName"] as? String)!
+                self.brandsReadyUi = (args!["brand"]) as! [String]
+                self.themColorHex=(args!["themColorHexIOS"] as? String)!
+
                 self.setStorePaymentDetailsMode=(args!["setStorePaymentDetailsMode"] as? String )!
-                
                 DispatchQueue.main.async {
                     self.openCheckoutUI(checkoutId: self.checkoutid, result1: result)
                 }
-                
-            }
-            
-            else if self.type=="StoredCards"{
-                self.cvv = (args!["cvv"] as? String)!
-                self.tokenID=(args!["TokenID"] as? String)!
-                storedCards(checkoutId: self.checkoutid, result1: result)
-            }else if self.type=="APPLEPAY"{
-                self.applePaybundel=(args!["ApplePayBundel"] as? String)!
-                self.countryCode=(args!["CountryCode"] as? String)!
-                self.currencyCode=(args!["CurrencyCode"] as? String)!
-                self.companyName=(args!["companyName"] as? String)!
-                applepay(checkoutId: self.checkoutid, result1: result)
             }
             else {
-                if let brand = (args!["brand"] as? String) {
-                    self.brand = brand
-                    self.number = (args!["card_number"] as? String)!
-                    self.holder = (args!["holder_name"] as? String)!
-                    self.year = (args!["year"] as? String)!
-                    self.month = (args!["month"] as? String)!
-                    self.cvv = (args!["cvv"] as? String)!
-                    self.pMadaVExp = (args!["MadaRegexV"] as? String)!
-                    self.prMadaMExp = (args!["MadaRegexM"] as? String)!
-                }
-                if let amount = (args!["Amount"] as? Double) {
-                    self.amount = amount
-                }
-                if let STCPAY = (args!["STCPAY"] as? String) {
-                    self.STCPAY = STCPAY
-                }
-                openCustomUI(checkoutId: self.checkoutid, result1: result)
+                result(FlutterError(code: "1", message: "Method name is not found", details: ""))
             }
-            
-            
-        }else {
+
+        } else {
                 result(FlutterError(code: "1", message: "Method name is not found", details: ""))
             }
         }
-    
-    
+
+
     private func openCheckoutUI(checkoutId: String,result1: @escaping FlutterResult) {
-         
+
          if self.mode == "live" {
              self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
          }else{
              self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
          }
          DispatchQueue.main.async{
+
              let checkoutSettings = OPPCheckoutSettings()
-             if self.brand == "MADA" {
-                 checkoutSettings.paymentBrands = ["MADA"]
+             checkoutSettings.paymentBrands = self.brandsReadyUi;
+             if(self.brandsReadyUi.contains("APPLEPAY")){
+
+                     let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePaybundel, countryCode: self.countryCode)
+                     paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: self.companyName, amount: NSDecimalNumber(value: self.amount))]
+
+                     if #available(iOS 12.1.1, *) {
+                         paymentRequest.supportedNetworks = [ PKPaymentNetwork.mada,PKPaymentNetwork.visa, PKPaymentNetwork.masterCard ]
+                     }
+                     else {
+                         // Fallback on earlier versions
+                         paymentRequest.supportedNetworks = [ PKPaymentNetwork.visa, PKPaymentNetwork.masterCard ]
+                     }
+                     checkoutSettings.applePayPaymentRequest = paymentRequest
+                    // checkoutSettings.paymentBrands = ["APPLEPAY"]
              }
-             else if self.brand == "VISA" {
-                 checkoutSettings.paymentBrands = ["VISA"]
-             }else if self.brand=="MASTER"{
-                 checkoutSettings.paymentBrands = ["MASTER"]
-             } else if self.brand=="STC_PAY"{
-                 checkoutSettings.paymentBrands = ["STC_PAY"]
-             }
-            
              checkoutSettings.language = self.lang
              // Set available payment brands for your shop
              checkoutSettings.shopperResultURL = self.shopperResultURL+"://result"
@@ -134,7 +110,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
              }
              self.setThem(checkoutSettings: checkoutSettings, hexColorString: self.themColorHex)
              self.checkoutProvider = OPPCheckoutProvider(paymentProvider: self.provider, checkoutID: checkoutId, settings: checkoutSettings)!
-            self.checkoutProvider?.delegate = self
+             self.checkoutProvider?.delegate = self
              self.checkoutProvider?.presentCheckout(forSubmittingTransactionCompletionHandler: {
                  (transaction, error) in
                  guard let transaction = transaction else {
@@ -170,135 +146,11 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
          }
 
      }
-    
-    
-    
-    private func applepay(checkoutId: String,result1: @escaping FlutterResult) {
-           
-           if self.mode == "live" {
-               self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
-           }else{
-               self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
-               
-           }
-           DispatchQueue.main.async{
-               let checkoutSettings = OPPCheckoutSettings()
-               if self.brand == "MADA" {
-                   checkoutSettings.paymentBrands = ["MADA"]
-               }
-               else if self.brand == "VISA" {
-                   checkoutSettings.paymentBrands = ["VISA"]
-               }else if self.brand=="MASTER"{
-                   checkoutSettings.paymentBrands = ["MASTER"]
-               } else if self.brand=="STC_PAY"{
-                   checkoutSettings.paymentBrands = ["STC_PAY"]
-               }
-               else if self.brand == "APPLEPAY" {
-                   let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePaybundel, countryCode: self.countryCode)
-                   paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: self.companyName, amount: NSDecimalNumber(value: self.amount))]
 
-                   if #available(iOS 12.1.1, *) {
-                       paymentRequest.supportedNetworks = [ PKPaymentNetwork.mada,PKPaymentNetwork.visa,
-                                                           PKPaymentNetwork.masterCard ]
-                   }
-                   else {
-                       // Fallback on earlier versions
-                       paymentRequest.supportedNetworks = [ PKPaymentNetwork.visa,
-                                                           PKPaymentNetwork.masterCard ]
-                   }
-                   checkoutSettings.applePayPaymentRequest = paymentRequest
-                   checkoutSettings.paymentBrands = ["APPLEPAY"]
-                
-               }
-               self.setThem(checkoutSettings: checkoutSettings, hexColorString: self.themColorHex)
-               checkoutSettings.language = self.lang
-               // Set available payment brands for your shop
-               checkoutSettings.shopperResultURL = self.shopperResultURL+"://result"
-          
-             
-               self.checkoutProvider = OPPCheckoutProvider(paymentProvider: self.provider, checkoutID: checkoutId, settings: checkoutSettings)!
-               self.checkoutProvider?.delegate = self
-               self.checkoutProvider?.presentCheckout(forSubmittingTransactionCompletionHandler: {
-                   (transaction, error) in
-                   guard let transaction = transaction else {
-                       // Handle invalid transaction, check error
-                       print(error.debugDescription)
-                       result1(FlutterError.init(code: "1",message: "Error: " + error.debugDescription,details: nil))
-                       return
-                   }
-                   self.transaction = transaction
-                   if transaction.type == .synchronous {
-                       // If a transaction is synchronous, just request the payment status
-                       // You can use transaction.resourcePath or just checkout ID to do it
-                       DispatchQueue.main.async {
-                           result1("SYNC")
-                       }
-                   }
-                   else if transaction.type == .asynchronous {
-                       NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveAsynchronousPaymentCallback), name: Notification.Name(rawValue: "AsyncPaymentCompletedNotificationKey"), object: nil)
-                   }
-                   else {
-                       // Executed in case of failure of the transaction for any reason
-                       result1(FlutterError.init(code: "1",message: "Error: " + self.transaction.debugDescription,details: nil))
-                       print(self.transaction.debugDescription)
-                   }
-               }
-                                                      , cancelHandler: {
-                                                          // Executed if the shopper closes the payment page prematurely
-                                                          print(self.transaction.debugDescription)
-                                                      })
-           }
 
-       }
-       
-       private func storedCards(checkoutId: String,result1: @escaping FlutterResult) {
-           if self.mode == "live" {
-               self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
-           }else{
-               self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
-               
-           }
-           do {
-               let params = try OPPTokenPaymentParams(checkoutID: self.checkoutid, tokenID: self.tokenID, cardPaymentBrand: self.brand, cvv:self.cvv)
-               params.shopperResultURL =  self.shopperResultURL+"://result"
-               self.transaction  = OPPTransaction(paymentParams: params)
-               self.provider.submitTransaction(self.transaction!) {
-                   (transaction, error) in
-                   guard let transaction = self.transaction else {
-                       // Handle invalid transaction, check error
-                       self.createalart(titletext: error.debugDescription , msgtext: "")
-                       return
-                   }
-                   if transaction.type == .asynchronous {
-                       self.safariVC = SFSafariViewController(url: self.transaction!.redirectURL!)
-                       self.safariVC?.delegate = self;
-                       //    self.present(self.safariVC!, animated: true, completion: nil)
-                       UIApplication.shared.delegate?.window??.rootViewController?.present(self.safariVC!, animated: true, completion: nil)
-                   }
-                   else if transaction.type == .synchronous {
-                       // Send request to your server to obtain transaction status
-                       result1("success")
-                   }
-                   else {
-                       // Handle the error
-                       result1(FlutterError(code: "UNAVAILABLE Else",
-                       message: error.debugDescription,
-                       details: nil))
-                   }
-               }
-               // Set shopper result URL
-               //    params.shopperResultURL = "com.companyname.appname.payments://result"
-           }
-           catch let error as NSError {
-               // See error.code (OPPErrorCode) and error.localizedDescription to identify the reason of failure
-               self.createalart(titletext: error.localizedDescription, msgtext: "")
-           }
+       private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {}
 
-       }
 
-private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {}
-
-       
        @objc func didReceiveAsynchronousPaymentCallback(result: @escaping FlutterResult) {
            NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "AsyncPaymentCompletedNotificationKey"), object: nil)
            if self.type == "ReadyUI" || self.type=="APPLEPAY"||self.type=="StoredCards"{
@@ -327,7 +179,7 @@ private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {
 
            return handler
        }
-    
+
        func createalart(titletext:String,msgtext:String){
            DispatchQueue.main.async {
                let alertController = UIAlertController(title: titletext, message:
@@ -367,7 +219,7 @@ private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {
            formatter.minimumFractionDigits = 2
            return formatter.number(from: string) as? NSDecimalNumber ?? 0
        }
-    
+
     func setThem( checkoutSettings :OPPCheckoutSettings,hexColorString :String){
          // General colors of the checkout UI
          checkoutSettings.theme.confirmationButtonColor = UIColor(hexString:hexColorString);
@@ -375,12 +227,7 @@ private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {
          checkoutSettings.theme.cellHighlightedBackgroundColor = UIColor(hexString:hexColorString);
          checkoutSettings.theme.accentColor = UIColor(hexString:hexColorString);
      }
-    
-    
-    
 }
-
-
 
 extension UIColor {
     convenience init(hexString: String) {
