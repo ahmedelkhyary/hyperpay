@@ -57,23 +57,33 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("pay with ready ui".toUpperCase() , style: const TextStyle(fontSize: 20 , color: Colors.red),),
-            InkWell( onTap: (){getCheckOut(brandName: "VISA");}, child: const Text("VISA" , style: TextStyle(fontSize: 20),)),
-            InkWell( onTap: (){getCheckOut(brandName: "MASTER");}, child: const Text("MASTER" , style: TextStyle(fontSize: 20),)),
-            InkWell( onTap: (){getCheckOut(brandName: "MADA");}, child: const Text("MADA" , style: TextStyle(fontSize: 20),)),
-            InkWell( onTap: (){getCheckOut(brandName: "STC_PAY");}, child: const Text("STC_PAY" , style: TextStyle(fontSize: 20),)),
-            Platform.isIOS
-                ? InkWell( onTap: (){getCheckOut(brandName: "APPLEPAY");}, child: const Text("APPLEPAY" , style: TextStyle(fontSize: 20),))
-                : Container(),
+            InkWell( onTap: ()async{
+              String? checkoutId = await getCheckOut();
+              if(checkoutId !=null) {
+                /// Brands Names [ VISA , MASTER , MADA , STC_PAY , APPLEPAY]
+                payRequestNowReadyUI( brandsName: [ "VISA" , "MASTER" , "MADA" ,"PAYPAL", "STC_PAY" , "APPLEPAY"], checkoutId: checkoutId);
+              }
+              }, child: const Text("[VISA,MASTER,MADA,STC_PAY,APPLEPAY]" , style: TextStyle(fontSize: 20),)),
 
             const Divider(),
             Text("pay with custom ui".toUpperCase() , style: const TextStyle(fontSize: 20 , color: Colors.red),),
-            InkWell( onTap: (){getCheckOut(brandName: "VISA" ,cardNumber: "4111111111111111" ,  payWithReadyUi: false);}, child: const Text("VISA" , style: TextStyle(fontSize: 20),)),
-            InkWell( onTap: (){getCheckOut(brandName: "MASTER" ,cardNumber: "5541805721646120", payWithReadyUi: false);}, child: const Text("MASTER" , style: TextStyle(fontSize: 20),)),
-            InkWell( onTap: (){getCheckOut(brandName: "MADA" ,cardNumber: "5541805721646120", payWithReadyUi: false);}, child: const Text("MADA" , style: TextStyle(fontSize: 20),)),
+            InkWell( onTap: ()async{
+              String? checkoutId = await getCheckOut();
+              if(checkoutId !=null) {
+                // "VISA" 4111111111111111
+                // "MASTER" 5541805721646120
+                // "MADA" "4464040000000007"
+                payRequestNowCustomUi(brandName: "MADA", checkoutId: checkoutId, cardNumber: "4464040000000007");
+              }
+              }, child: const Text("CUSTOM_UI" , style: TextStyle(fontSize: 20),)),
+
             const Divider(),
             Text("pay with custom ui stc".toUpperCase() , style: const TextStyle(fontSize: 20 , color: Colors.red),),
-            InkWell( onTap: (){
-              payRequestNowCustomUiSTCPAY(checkoutId: "64AC8464BF6209E8EDC21BE0B614B673.uat01-vm-tx01", phoneNumber: "0588987147");
+            InkWell( onTap: ()async{
+              String? checkoutId = await getCheckOut();
+              if(checkoutId !=null) {
+                payRequestNowCustomUiSTCPAY(checkoutId: checkoutId, phoneNumber: "0588987147");
+              }
 
             }, child: const Text("STC_PAY" , style: TextStyle(fontSize: 20),)),
 
@@ -85,48 +95,33 @@ class _MyHomePageState extends State<MyHomePage> {
 
   /// URL TO GET CHECKOUT ID FOR TEST
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
-  /// Brands Names [ VISA , MASTER , MADA , STC_PAY , APPLEPAY]
 
-  getCheckOut({required String brandName , bool payWithReadyUi = true , String? cardNumber }) async {
+  Future<String?> getCheckOut() async {
     final url = Uri.parse('https://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-
-        if(payWithReadyUi) {
-          payRequestNowReadyUI(checkoutId: json.decode(response.body)['id'], brandName: brandName);
-        }else{
-          payRequestNowCustomUi(checkoutId: json.decode(response.body)['id'], brandName: brandName , cardNumber: cardNumber!);
-        }
-
+      dev.log(json.decode(response.body)['id'].toString(), name: "checkoutId");
+      return json.decode(response.body)['id'];
     }else{
       dev.log(response.body.toString(), name: "STATUS CODE ERROR");
+      return null;
     }
   }
 
   payRequestNowReadyUI(
-      {required String brandName, required String checkoutId}) async {
+      {required List<String> brandsName, required String checkoutId}) async {
     PaymentResultData paymentResultData;
-    if (brandName.toLowerCase() == InAppPaymentSetting.applePay.toLowerCase()) {
-      paymentResultData = await flutterHyperPay.payWithApplePay(
-        applePay: ApplePay(
-          /// ApplePayBundel refer to Merchant ID
-            applePayBundel: InAppPaymentSetting.merchantId,
-            checkoutId: checkoutId,
-            countryCode: InAppPaymentSetting.countryCode,
-            currencyCode: InAppPaymentSetting.currencyCode,
-            themColorHexIOS: "#000000", // FOR IOS ONLY
-            companyName: "Test Co"),
-      );
-    } else {
       paymentResultData = await flutterHyperPay.readyUICards(
         readyUI: ReadyUI(
-            brandName: brandName,
+            brandsName: brandsName ,
             checkoutId: checkoutId,
-            setStorePaymentDetailsMode: false,
-            themColorHexIOS: "#000000" // FOR IOS ONLY
+            merchantIdApplePayIOS: InAppPaymentSetting.merchantId,
+            countryCodeApplePayIOS: InAppPaymentSetting.countryCode,
+            companyNameApplePayIOS: "Test Co",
+            themColorHexIOS: "#000000" ,// FOR IOS ONLY
+            setStorePaymentDetailsMode: true // default - store payment details for future use
             ),
       );
-    }
 
     if (paymentResultData.paymentResult == PaymentResult.success ||
         paymentResultData.paymentResult == PaymentResult.sync) {
@@ -176,11 +171,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class InAppPaymentSetting {
-  static const String applePay="APPLEPAY";
   static const String shopperResultUrl= "com.testpayment.payment";
   static const String merchantId= "MerchantId";
   static const String countryCode="SA";
-  static const String currencyCode="SAR";
   static getLang() {
     if (Platform.isIOS) {
       return  "en"; // ar

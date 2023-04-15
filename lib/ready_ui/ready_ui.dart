@@ -8,13 +8,19 @@ class ReadyUI {
   String paymentType = PaymentConst.readyUi;
   String checkoutId;
   bool setStorePaymentDetailsMode;
-  String? brandName;
-  String? themColorHexIOS;
+  List<String> brandsName;
+  String merchantIdApplePayIOS;
+  String countryCodeApplePayIOS;
+  String companyNameApplePayIOS = "";
+  String themColorHexIOS;
 
   ReadyUI({
     required this.checkoutId,
-    this.brandName,
-    this.themColorHexIOS,
+    required this.brandsName,
+    this.merchantIdApplePayIOS = "",
+    this.countryCodeApplePayIOS = "",
+    this.companyNameApplePayIOS = "",
+    this.themColorHexIOS = "",
     this.setStorePaymentDetailsMode = false,
   });
 }

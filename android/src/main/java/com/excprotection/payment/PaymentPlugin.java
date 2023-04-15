@@ -36,6 +36,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public class PaymentPlugin  implements
@@ -44,7 +45,8 @@ public class PaymentPlugin  implements
 
   private  MethodChannel.Result Result;
   private  String mode = "";
-  private String brands = "";
+  private List<String> brandsReadyUi ;
+  private String brands = "" ;
   private String Lang = "";
   private String EnabledTokenization = "";
   private String ShopperResultUrl = "";
@@ -84,11 +86,12 @@ public class PaymentPlugin  implements
       mode = call.argument("mode");
       Lang = call.argument("lang");
       ShopperResultUrl = call.argument("ShopperResultUrl");
-      brands = call.argument("brand");
-      setStorePaymentDetailsMode = call.argument("setStorePaymentDetailsMode");
 
       switch (type != null ? type : "NullType") {
-        case "ReadyUI" : openCheckoutUI(checkoutId) ;
+        case "ReadyUI" :
+          brandsReadyUi = call.argument("brand");
+          setStorePaymentDetailsMode = call.argument("setStorePaymentDetailsMode");
+          openCheckoutUI(checkoutId) ;
         break;
         case "StoredCards" :
           cvv = call.argument("cvv");
@@ -122,19 +125,7 @@ public class PaymentPlugin  implements
 
   private void openCheckoutUI(String checkoutId) {
 
-    Set<String> paymentBrands = new LinkedHashSet<>();
-
-    switch (brands) {
-      case "MADA" : paymentBrands.add("MADA"); break ;
-      case "STC_PAY" : paymentBrands.add("STC_PAY"); break ;
-      case "VISA" : paymentBrands.add("VISA");  break ;
-      case "MASTER" : paymentBrands.add("MASTER");  break ;
-      default :
-        paymentBrands.add("MASTER");
-        paymentBrands.add("VISA");
-
-    }
-
+    Set<String> paymentBrands = new LinkedHashSet<>(brandsReadyUi);
     // CHECK PAYMENT MODE
     CheckoutSettings checkoutSettings;
     if (mode.equals("live")) {
@@ -150,11 +141,8 @@ public class PaymentPlugin  implements
     // SET LANG
     checkoutSettings.setLocale(Lang);
 
-    if (!brands.equals("STC_PAY")) {
-      checkoutSettings.getStorePaymentDetailsMode();
-    }
-    //SHOW TOTAL PAYMENT AMOUNT IN BUTTON
-    checkoutSettings.setTotalAmountRequired(true);
+    // SHOW TOTAL PAYMENT AMOUNT IN BUTTON
+    // checkoutSettings.setTotalAmountRequired(true);
 
     //SET SHOPPER
     checkoutSettings.setShopperResultUrl(ShopperResultUrl + "://result");
@@ -244,16 +232,6 @@ public class PaymentPlugin  implements
                   : "CVV غير صالح"
                   , Toast.LENGTH_SHORT).show();
         } else {
-          // To add MADA
-          if (brands.equals("MADA")) {
-            String bin = number.substring(0,6);
-            if (!bin.matches(PaymentConst.madaRegexV) || !bin.matches(PaymentConst.madaRegexM)) {
-              Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
-                              ? "This card is not Mada card"
-                              : "هذه البطاقة ليست بطاقة مدى"
-                      , Toast.LENGTH_SHORT).show();
-            }
-          }
 
           boolean EnabledTokenizationTemp = EnabledTokenization.equals("true");
           try {
