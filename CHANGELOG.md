@@ -1,3 +1,6 @@
+## 1.0.9
+* update list of brands name to plugin
+
 ## 1.0.8
 * update dart format
 
