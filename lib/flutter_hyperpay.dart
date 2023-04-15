@@ -3,7 +3,6 @@ import 'package:hyperpay_plugin/custom_ui/method_channel_custom_ui.dart';
 import 'package:hyperpay_plugin/custom_ui/method_channel_custom_ui_stc.dart';
 
 import 'store_cards/method_channel_store_cards.dart';
-import 'apple_pay/method_channel_apple_pay.dart';
 import 'ready_ui/method_channel_ready_ui.dart';
 
 part 'hyper_pay_const.dart';
@@ -19,8 +18,6 @@ part 'custom_ui/custom_ui_stc.dart';
 part 'store_cards/stored_cards.dart';
 
 part 'enum.dart';
-
-part 'apple_pay/apple_pay.dart';
 
 class FlutterHyperPay {
   String channelName = "Hyperpay.demo.fultter/channel";
@@ -87,20 +84,6 @@ class FlutterHyperPay {
       lang: lang,
       phoneNumber: customUISTC.phoneNumber,
     );
-  }
-
-  /// // This function is used to make payments through ApplePay.
-  /// It takes ApplePay object as a mandatory input parameter and shopperResultUrl,
-  /// channelName, paymentMode, lang as optional input parameters.
-  /// It returns a PaymentResultData object after a successful payment.
-  Future<PaymentResultData> payWithApplePay(
-      {required ApplePay applePay}) async {
-    return await implementPaymentApplePay(
-        applePay: applePay,
-        shopperResultUrl: shopperResultUrl,
-        channelName: channelName,
-        paymentMode: paymentMode,
-        lang: lang);
   }
 
   /// This function allows the user to make payments using their stored cards.
