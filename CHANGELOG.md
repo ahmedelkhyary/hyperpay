@@ -1,3 +1,6 @@
+## 2.0.0
+* update hyperPay sdk plugin from version 4.9.0 to 4.12.0
+
 ## 1.0.9
 * update list of brands name to plugin
 
