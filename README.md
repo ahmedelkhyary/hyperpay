@@ -20,7 +20,7 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
    &NewLine;
 
 ```
-    implementation(name: "oppwa.mobile-4.9.0-release", ext: 'aar')
+    implementation(name: "oppwa.mobile-release", ext: 'aar')
     debugImplementation(name: "ipworks3ds_sdk", ext: 'aar')
     releaseImplementation(name: "ipworks3ds_sdk_deploy", ext: 'aar')
     implementation "com.google.android.material:material:1.6.1"
@@ -41,10 +41,8 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
         <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
                 <data android:scheme="com.testpayment.payment" />
             </intent-filter>
@@ -143,7 +141,6 @@ If you want using `CustomUI` - now for android only next release we will support
  payRequestNowCustomUi(
       {required String brandName, required String checkoutId}) async {
     PaymentResultData paymentResultData;
-
     paymentResultData = await flutterHyperPay.customUICards(
       customUI: CustomUI(
         brandName: brandName,
@@ -164,7 +161,6 @@ If you want using `CustomUI` - now for android only next release we will support
     payRequestNowCustomUiSTCPAY(
       {required String phoneNumber, required String checkoutId}) async {
     PaymentResultData paymentResultData;
-
     paymentResultData = await flutterHyperPay.customUISTC(
       customUISTC: CustomUISTC(
           checkoutId: checkoutId,
