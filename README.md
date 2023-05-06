@@ -206,4 +206,4 @@ open `android/app/src/main/res/values` and add the following lines
 }
 ```
 
-[`MerchantId apple pay Setup click here this steps to create and verify apple pay and domain`](https://www.linkedin.com/posts/ahmed-elkhyary-b996a41aa_apple-pay-integration-with-merchants-id-activity-6991326488822190080-7qku?utm_source=share&utm_medium=member_desktop) 
+[`MerchantId apple pay Setup click here this steps to create and verify apple pay and domain`](https://github.com/ahmedelkhyary/applepay_merchantId_config) 
