@@ -1,11 +1,11 @@
 name: hyperpay_plugin
 description: The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile.
-version: 2.0.1
+version: 2.0.2
 repository: https://github.com/ahmedelkhyary/hyperpay
 
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: '>=2.18.5 <4.0.0'
   flutter: ">=2.5.0"
 
 dependencies:

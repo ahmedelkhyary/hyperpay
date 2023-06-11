@@ -1,3 +1,6 @@
+## 2.0.2
+* update discord Link
+
 ## 2.0.1
 * update hyperPay sdk plugin IOS issue
 
