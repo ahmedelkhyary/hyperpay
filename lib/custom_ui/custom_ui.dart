@@ -9,7 +9,7 @@ class CustomUI {
   String brandName;
   String cardNumber;
   String holderName;
-  int month;
+  String month;
   int year;
   int cvv;
   bool enabledTokenization;
