@@ -1,4 +1,4 @@
-part of '../flutter_hyperpay.dart';
+import '../flutter_hyperpay.dart';
 
 /// This class is used to define a CustomUI object which is used to make payments using the PaymentConst.
 /// customUi payment type. It has parameters to define the checkoutId, brandName,

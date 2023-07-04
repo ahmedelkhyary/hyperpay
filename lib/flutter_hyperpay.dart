@@ -1,21 +1,15 @@
 import 'dart:async';
-import 'package:hyperpay_plugin/custom_ui/method_channel_custom_ui.dart';
-import 'package:hyperpay_plugin/custom_ui/method_channel_custom_ui_stc.dart';
 
-import 'store_cards/method_channel_store_cards.dart';
-import 'ready_ui/method_channel_ready_ui.dart';
+import 'model/custom_ui.dart';
+import 'model/custom_ui_stc.dart';
+import 'model/ready_ui.dart';
+import 'model/stored_cards.dart';
+import 'src/custom_ui/method_channel_custom_ui.dart';
+import 'src/custom_ui/method_channel_custom_ui_stc.dart';
+import 'src/ready_ui/method_channel_ready_ui.dart';
+import 'src/store_cards/method_channel_store_cards.dart';
 
 part 'hyper_pay_const.dart';
-
-part 'helper/helper.dart';
-
-part 'ready_ui/ready_ui.dart';
-
-part 'custom_ui/custom_ui.dart';
-
-part 'custom_ui/custom_ui_stc.dart';
-
-part 'store_cards/stored_cards.dart';
 
 part 'enum.dart';
 

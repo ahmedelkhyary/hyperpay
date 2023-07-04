@@ -5,6 +5,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:developer' as dev;
 
+import 'package:hyperpay_plugin/model/custom_ui.dart';
+import 'package:hyperpay_plugin/model/custom_ui_stc.dart';
+import 'package:hyperpay_plugin/model/ready_ui.dart';
+
 void main() {
   runApp(const MyApp());
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 
-import '../flutter_hyperpay.dart';
+import '../../flutter_hyperpay.dart';
+import '../helper/helper.dart';
 
 /// This function implements the payment with the provided payment details.
 /// It takes in parameters like brand, checkoutId, channelName, etc. which are essential for the payment to happen.

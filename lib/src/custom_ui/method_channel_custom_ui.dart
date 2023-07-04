@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
-import '../flutter_hyperpay.dart';
+import '../../flutter_hyperpay.dart';
+import '../helper/helper.dart';
 
 /// This is an asynchronous function that implements a custom UI payment.
 /// It takes parameters such as paymentMode, brand, checkoutId, channelName,
