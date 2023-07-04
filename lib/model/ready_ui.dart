@@ -1,4 +1,4 @@
-part of '../flutter_hyperpay.dart';
+import '../flutter_hyperpay.dart';
 
 /// ReadyUI class holds all the necessary data related to the ReadyUI payment method
 /// which is used in PaymentConst. It is required to provide checkoutId when initializing the class.

@@ -1,4 +1,4 @@
-part of '../flutter_hyperpay.dart';
+import '../flutter_hyperpay.dart';
 
 /// Class CustomUISTC is used to store the payment type,
 /// checkout ID, and phone number for custom UI payment.
