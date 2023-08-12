@@ -1,3 +1,6 @@
+## 2.0.4
+* update sdk version from 4.12 to 5.1.0 
+
 ## 2.0.3
 * update structure format
 
