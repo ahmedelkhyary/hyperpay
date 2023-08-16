@@ -1,4 +1,4 @@
-part of '../flutter_hyperpay.dart';
+import '../../flutter_hyperpay.dart';
 
 /// PaymentResultManger is a class used to generate a PaymentResultData
 /// object based on the paymentResult passed. It will return the respective paymentResult
