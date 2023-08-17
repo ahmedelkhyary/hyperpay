@@ -9,9 +9,8 @@ import 'src/custom_ui/method_channel_custom_ui_stc.dart';
 import 'src/ready_ui/method_channel_ready_ui.dart';
 import 'src/store_cards/method_channel_store_cards.dart';
 
-part 'hyper_pay_const.dart';
-
 part 'enum.dart';
+part 'hyper_pay_const.dart';
 
 class FlutterHyperPay {
   String channelName = "Hyperpay.demo.fultter/channel";

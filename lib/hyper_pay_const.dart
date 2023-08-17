@@ -36,6 +36,9 @@ class PaymentResultData {
     required this.errorString,
     required this.paymentResult,
   });
+
+  @override
+  String toString() => 'PaymentResultData{errorString: $errorString, paymentResult: $paymentResult}';
 }
 
 /// This class is used to store the language constants used for Payment.
