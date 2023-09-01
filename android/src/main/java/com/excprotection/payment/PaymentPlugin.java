@@ -113,6 +113,7 @@ public class PaymentPlugin  implements
         case "CustomUISTC":
           number = call.argument("phone_number");
           openCustomUISTC(checkoutId);
+          break;
 
         default : error("1", "THIS TYPE NO IMPLEMENT" + type, "");
       }
