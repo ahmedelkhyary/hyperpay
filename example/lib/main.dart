@@ -143,9 +143,9 @@ class _MyHomePageState extends State<MyHomePage> {
         checkoutId: checkoutId,
         cardNumber: cardNumber,
         holderName: "test name",
-        month: 12,
-        year: 2023,
-        cvv: 123,
+        month: "01",
+        year: "2025",
+        cvv: "123",
         enabledTokenization: false, // default
       ),
     );

@@ -19,8 +19,8 @@ Future<PaymentResultData> implementPaymentCustomUI({
   required String cardNumber,
   required String holderName,
   required String month,
-  required int year,
-  required int cvv,
+  required String year,
+  required String cvv,
   required bool enabledTokenization,
 }) async {
   String transactionStatus;
@@ -65,8 +65,8 @@ Map<String, String?> getCustomUiModelCards({
   required String cardNumber,
   required String holderName,
   required String month,
-  required int year,
-  required int cvv,
+  required String year,
+  required String cvv,
   required bool enabledTokenization,
 }) {
   return {
