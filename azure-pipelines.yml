@@ -14,18 +14,7 @@ stages:
     steps: 
 
     # replace "key.properties" with your secure file name
-    - task: DownloadSecureFile@1
-      name: keyprop
-      displayName: Download key properties file
-      inputs:
-        secureFile: 'key.properties' 
-
-    # replace "key.jks" with your secure file name
-    - task: DownloadSecureFile@1
-      name: key
-      displayName: Download signing key
-      inputs:
-        secureFile: 'key.jks'
+  
 
     # adjust paths and file names here
     - task: Bash@3
