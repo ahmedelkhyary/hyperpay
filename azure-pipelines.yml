@@ -1,20 +1,21 @@
-# Android
-# Build your Android project with Gradle.
-# Add steps that test, sign, and distribute the APK, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/android
+
+# Flutter build
 
 trigger:
 - main
+jobs:
+  - job: Android
+    pool:
+      vmImage: 'macOS-latest'
 
-pool:
-  vmImage: 'macos-latest'
-
-steps:
-- task: Gradle@2
+- task: FlutterInstall@0
   inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleDebug'
+    mode: 'auto'
+    channel: 'stable'
+    version: 'latest'
+
+- task: FlutterBuild@0
+  inputs:
+    target: 'apk'
+    projectDirectory: '.'
+
