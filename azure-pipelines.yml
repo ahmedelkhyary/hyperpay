@@ -1,36 +1,42 @@
+# azure-pipeline.yml
+
 trigger:
-  - main
+  branches:
+    include:
+      - main  # Update with your main branch name
 
-stages:
-- stage: AndroidStage
-  pool:
-    vmImage: 'ubuntu-latest'
-  dependsOn: []
-  displayName: Android
-  jobs:
+pool:
+  vmImage: 'macos-latest'  # Update with the desired agent image
 
-  - job: AndroidJob
-    displayName: Android
-    steps: 
+steps:
+- task: UseFlutterVersion@1
+  inputs:
+    flutterVersion: 'stable'  # Update with the desired Flutter version
+    
 
-    # replace "key.properties" with your secure file name
-  
+- script: flutter pub get
+  displayName: 'Flutter pub get'
 
-    # adjust paths and file names here
-    - task: Bash@3
-      displayName: Copy config files
-      inputs:
-        targetType: 'inline'
-        script: |
-          cp $(keyprop.secureFilePath) $(Build.SourcesDirectory)/android/key.properties
-          cp $(key.secureFilePath) $(Build.SourcesDirectory)/android/app/key.jks
-          
-          echo "key.properties copied to $(Build.SourcesDirectory)/android/key.properties"
-          echo "key.jks copied to $(Build.SourcesDirectory)/android/app/key.jks"
+- script: flutter analyze
+  displayName: 'Flutter analyze'
 
-    - task: FlutterInstall@0
-      displayName: "Install Flutter SDK"
-      inputs:
-        mode: 'auto'
-        channel: 'stable'
-        version: 'latest'
+- script: flutter test --coverage
+  displayName: 'Flutter tests with coverage'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/lcov.info'
+    failIfCoverageEmpty: false
+
+- task: FlutterBuild@0
+  inputs:
+    targetPlatform: 'ios'  # Update with the desired target platform
+    releaseMode: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build/ios/iphoneos'
+    ArtifactName: 'ios'
+
+# Add additional steps for Android builds, distribution, etc. as needed
