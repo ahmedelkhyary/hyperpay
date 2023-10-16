@@ -6,7 +6,7 @@ trigger:
       - main  # Update with your main branch name
 
 pool:
-  vmImage: 'macos-latest'  # Update with the desired agent image
+    vmImage: 'ubuntu-latest'
 
 steps:
 
