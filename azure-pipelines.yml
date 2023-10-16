@@ -9,10 +9,12 @@ pool:
   vmImage: 'macos-latest'  # Update with the desired agent image
 
 steps:
-- task: UseFlutterVersion@1
+
+- task: FlutterInstall@0
   inputs:
-    flutterVersion: 'stable'  # Update with the desired Flutter version
-    
+    mode: 'auto'
+    channel: 'stable'
+    version: 'latest'    
 
 - script: flutter pub get
   displayName: 'Flutter pub get'
@@ -28,11 +30,6 @@ steps:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/lcov.info'
     failIfCoverageEmpty: false
-
-- task: FlutterBuild@0
-  inputs:
-    targetPlatform: 'ios'  # Update with the desired target platform
-    releaseMode: true
 
 - task: PublishBuildArtifacts@1
   inputs:
