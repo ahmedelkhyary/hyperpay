@@ -1,14 +1,3 @@
-
-# Flutter build
-
-trigger:
-- main
-
-jobs:
-  - job: Android
-    pool:
-      vmImage: 'macOS-latest'
-
 - task: FlutterInstall@0
   inputs:
     mode: 'auto'
@@ -19,4 +8,3 @@ jobs:
   inputs:
     target: 'apk'
     projectDirectory: '.'
-
