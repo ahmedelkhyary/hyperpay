@@ -22,6 +22,14 @@ steps:
 - script: flutter pub get
   displayName: 'Flutter pub get'
 
+- script: flutter build apk --release
+  displayName: 'Flutter build APK release'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build/app/outputs/flutter-apk/app-release.apk'
+    ArtifactName: 'apk'
+
 # - script: flutter analyze
 #   displayName: 'Flutter analyze'
 
