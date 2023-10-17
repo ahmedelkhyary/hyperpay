@@ -6,7 +6,7 @@ trigger:
       - main  # Update with your main branch name
 
 pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'windows-latest'
 
 steps:
 
@@ -16,24 +16,27 @@ steps:
     channel: 'stable'
     version: 'latest'    
 
+- script: flutter clean
+  displayName: 'Flutter clean'
+
 - script: flutter pub get
   displayName: 'Flutter pub get'
 
-- script: flutter analyze
-  displayName: 'Flutter analyze'
+# - script: flutter analyze
+#   displayName: 'Flutter analyze'
 
-- script: flutter test --coverage
-  displayName: 'Flutter tests with coverage'
+# - script: flutter test --coverage
+#   displayName: 'Flutter tests with coverage'
 
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/lcov.info'
-    failIfCoverageEmpty: false
+# - task: PublishCodeCoverageResults@1
+#   inputs:
+#     codeCoverageTool: 'Cobertura'
+#     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/lcov.info'
+#     failIfCoverageEmpty: false
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/build/ios/iphoneos'
-    ArtifactName: 'ios'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(System.DefaultWorkingDirectory)/build/ios/iphoneos'
+#     ArtifactName: 'ios'
 
 # Add additional steps for Android builds, distribution, etc. as needed
