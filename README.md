@@ -136,7 +136,7 @@ Brands Names support [ VISA , MASTER , MADA , STC_PAY , APPLEPAY]
 
 
 ```
-If you want using `CustomUI` - now for android only next release we will support IOS
+If you want using `CustomUI` 
 ```
  payRequestNowCustomUi(
       {required String brandName, required String checkoutId}) async {
