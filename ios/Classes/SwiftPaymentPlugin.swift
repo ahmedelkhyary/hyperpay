@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import SafariServices
 
-public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate  {
+public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate   {
     var type:String = "";
     var mode:String = "";
     var checkoutid:String = "";
@@ -33,6 +33,8 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     var provider = OPPPaymentProvider(mode: OPPProviderMode.test)
     var checkoutProvider: OPPCheckoutProvider?
     var Presult:FlutterResult?
+    var window: UIWindow?
+
 
   public static func register(with registrar: FlutterPluginRegistrar) {
     let flutterChannel:String = "Hyperpay.demo.fultter/channel";
@@ -65,10 +67,20 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                 DispatchQueue.main.async {
                     self.openCheckoutUI(checkoutId: self.checkoutid, result1: result)
                 }
+            } else if self.type  == "CustomUI"{
+                
+                 self.brand = (args!["brand"] as? String)!
+                 self.number = (args!["card_number"] as? String)!
+                 self.holder = (args!["holder_name"] as? String)!
+                 self.year = (args!["year"] as? String)!
+                 self.month = (args!["month"] as? String)!
+                 self.cvv = (args!["cvv"] as? String)!
+                 self.setStorePaymentDetailsMode = (args!["EnabledTokenization"] as? String)!
+                 self.openCustomUI(checkoutId: self.checkoutid, result1: result)
             }
             else {
                 result(FlutterError(code: "1", message: "Method name is not found", details: ""))
-            }
+                    }
 
         } else {
                 result(FlutterError(code: "1", message: "Method name is not found", details: ""))
@@ -148,8 +160,71 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
      }
 
 
-       private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {}
+    private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {
 
+        if self.mode == "live" {
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
+        }else{
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
+        }
+
+             if !OPPCardPaymentParams.isNumberValid(self.number, luhnCheck: true) {
+                self.createalart(titletext: "Card Number is Invalid", msgtext: "")
+            }
+            else  if !OPPCardPaymentParams.isHolderValid(self.holder) {
+                self.createalart(titletext: "Card Holder is Invalid", msgtext: "")
+            }
+            else   if !OPPCardPaymentParams.isCvvValid(self.cvv) {
+                self.createalart(titletext: "CVV is Invalid", msgtext: "")
+            }
+            else  if !OPPCardPaymentParams.isExpiryYearValid(self.year) {
+                self.createalart(titletext: "Expiry Year is Invalid", msgtext: "")
+            }
+            else  if !OPPCardPaymentParams.isExpiryMonthValid(self.month) {
+                self.createalart(titletext: "Expiry Month is Invalid", msgtext: "")
+            }
+            else {
+                do {
+                    let params = try OPPCardPaymentParams(checkoutID: checkoutId, paymentBrand: self.brands, holder: self.holder, number: self.number, expiryMonth: self.month, expiryYear: self.year, cvv: self.cvv)
+                    var isEnabledTokenization:Bool = false;
+                    if(self.setStorePaymentDetailsMode=="true"){
+                        isEnabledTokenization=true;
+                    }
+                    params.isTokenizationEnabled=isEnabledTokenization;
+                    //set tokenization
+                    params.shopperResultURL =  self.shopperResultURL+"://result"
+                    self.transaction  = OPPTransaction(paymentParams: params)
+                    self.provider.submitTransaction(self.transaction!) {
+                        (transaction, error) in
+                        guard let transaction = self.transaction else {
+                            // Handle invalid transaction, check error
+                            self.createalart(titletext: error as! String, msgtext: error as! String)
+                            return
+                        }
+                        if transaction.type == .asynchronous {
+                            self.safariVC = SFSafariViewController(url: self.transaction!.redirectURL!)
+                            self.safariVC?.delegate = self;
+                            //    self.present(self.safariVC!, animated: true, completion: nil)
+                            self.window?.rootViewController?.present(self.safariVC!, animated: true, completion: nil)
+                        }
+                        else if transaction.type == .synchronous {
+                            // Send request to your server to obtain transaction status
+                            result1("success")
+                        }
+                        else {
+                            // Handle the error
+                            self.createalart(titletext: error as! String, msgtext: "Plesae try again")
+                        }
+                    }
+                    // Set shopper result URL
+                    //    params.shopperResultURL = "com.companyname.appname.payments://result"
+                }
+                catch let error as NSError {
+                    // See error.code (OPPErrorCode) and error.localizedDescription to identify the reason of failure
+                    self.createalart(titletext: error.localizedDescription, msgtext: "")
+                }
+            }
+    }
 
        @objc func didReceiveAsynchronousPaymentCallback(result: @escaping FlutterResult) {
            NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "AsyncPaymentCompletedNotificationKey"), object: nil)
