@@ -1,3 +1,6 @@
+## 2.0.6
+* add custom Ui for IOS
+
 ## 2.0.5
 * fix month issue in custom ui
 
