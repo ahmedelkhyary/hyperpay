@@ -1,3 +1,6 @@
+## 2.0.7
+* update models description
+
 ## 2.0.6
 * add custom Ui for IOS
 
