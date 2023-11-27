@@ -155,7 +155,7 @@ If you want using `CustomUI`
     );
   }
 ```
-`STC CustomUI`
+`STC CustomUI` - now for android only next release we will support IOS
 ```
   // STC_PAY
     payRequestNowCustomUiSTCPAY(
