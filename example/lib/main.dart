@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // "VISA" 4111111111111111
                 // "MASTER" 5541805721646120
                 // "MADA" "4464040000000007"
-                payRequestNowCustomUi(brandName: "MADA", checkoutId: checkoutId, cardNumber: "4464040000000007");
+                payRequestNowCustomUi(brandName: "VISA", checkoutId: checkoutId, cardNumber: "4111111111111111");
               }
               }, child: const Text("CUSTOM_UI" , style: TextStyle(fontSize: 20),)),
 
