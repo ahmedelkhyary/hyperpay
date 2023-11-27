@@ -5,8 +5,10 @@ import '../flutter_hyperpay.dart';
 class CustomUISTC {
   /// initializes a variable named paymentType with the value PaymentConst.customUi.
   String paymentType = PaymentConst.customUi;
+
   /// declares a string variable named checkoutId without assigning it an initial value.
   String checkoutId;
+
   /// The phone number for STC (Saudi Telecom Company) can vary depending on the specific region or service you are looking for
   String phoneNumber;
 
