@@ -5,10 +5,10 @@ import SafariServices
 public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate   {
     var type:String = "";
     var mode:String = "";
-    var checkoutid:String = "";
+    var checkoutId:String = "";
     var brand:String = "";
     var brandsReadyUi:[String] = [];
-    var STCPAY:String = "";
+    var STCPay:String = "";
     var number:String = "";
     var holder:String = "";
     var year:String = "";
@@ -19,8 +19,8 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     var brands:String = "";
     var shopperResultURL:String = "";
     var tokenID:String = "";
-    var payTypeSotredCard:String = "";
-    var applePaybundel:String = "";
+    var payTypeStoredCard:String = "";
+    var applePayBundle:String = "";
     var countryCode:String = "";
     var currencyCode:String = "";
     var setStorePaymentDetailsMode:String = "";
@@ -32,7 +32,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     var transaction: OPPTransaction?
     var provider = OPPPaymentProvider(mode: OPPProviderMode.test)
     var checkoutProvider: OPPCheckoutProvider?
-    var Presult:FlutterResult?
+    var PaymentResult:FlutterResult?
     var window: UIWindow?
 
 
@@ -46,18 +46,19 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
   }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        self.Presult = result
+        self.PaymentResult = result
 
-        if call.method == "gethyperpayresponse"{
+        switch call.method {
+            case "gethyperpayresponse":
             let args = call.arguments as? Dictionary<String,Any>
             self.type = (args!["type"] as? String)!
             self.mode = (args!["mode"] as? String)!
-            self.checkoutid = (args!["checkoutid"] as? String)!
+            self.checkoutId = (args!["checkoutid"] as? String)!
             self.shopperResultURL = (args!["ShopperResultUrl"] as? String)!
             self.lang=(args!["lang"] as? String)!
 
             if self.type == "ReadyUI" {
-                self.applePaybundel=(args!["merchantId"] as? String)!
+                self.applePayBundle=(args!["merchantId"] as? String)!
                 self.countryCode=(args!["CountryCode"] as? String)!
                 self.companyName=(args!["companyName"] as? String)!
                 self.brandsReadyUi = (args!["brand"]) as! [String]
@@ -65,10 +66,9 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
 
                 self.setStorePaymentDetailsMode=(args!["setStorePaymentDetailsMode"] as? String )!
                 DispatchQueue.main.async {
-                    self.openCheckoutUI(checkoutId: self.checkoutid, result1: result)
+                    self.openCheckoutUI(checkoutId: self.checkoutId, result1: result)
                 }
             } else if self.type  == "CustomUI"{
-    
                  self.brand = (args!["brand"] as? String)!
                  self.number = (args!["card_number"] as? String)!
                  self.holder = (args!["holder_name"] as? String)!
@@ -76,17 +76,17 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                  self.month = (args!["month"] as? String)!
                  self.cvv = (args!["cvv"] as? String)!
                  self.setStorePaymentDetailsMode = (args!["EnabledTokenization"] as? String)!
-                 self.openCustomUI(checkoutId: self.checkoutid, result1: result)
+                 self.openCustomUI(checkoutId: self.checkoutId, result1: result)
             }
             else {
                 result(FlutterError(code: "1", message: "Method name is not found", details: ""))
-                    }
-        } else if call.method == "dismissView" {
-            dismissCurrentViewController(result: result)
-        } else {
-                result(FlutterError(code: "1", message: "Method name is not found", details: ""))
             }
+        case "dismissView":
+            dismissCurrentViewController(result: result)
+        default:
+            result(FlutterError(code: "1", message: "Method name is not found", details: ""))
         }
+    }
 
 
     private func openCheckoutUI(checkoutId: String,result1: @escaping FlutterResult) {
@@ -102,7 +102,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
              checkoutSettings.paymentBrands = self.brandsReadyUi;
              if(self.brandsReadyUi.contains("APPLEPAY")){
 
-                     let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePaybundel, countryCode: self.countryCode)
+                     let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePayBundle, countryCode: self.countryCode)
                      paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: self.companyName, amount: NSDecimalNumber(value: self.amount))]
 
                      if #available(iOS 12.1.1, *) {
@@ -122,7 +122,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                  checkoutSettings.storePaymentDetails = OPPCheckoutStorePaymentDetailsMode.prompt;
              }
              self.setThem(checkoutSettings: checkoutSettings, hexColorString: self.themColorHex)
-             self.checkoutProvider = OPPCheckoutProvider(paymentProvider: self.provider, checkoutID: checkoutId, settings: checkoutSettings)!
+             self.checkoutProvider = OPPCheckoutProvider(paymentProvider: self.provider, checkoutId: checkoutId, settings: checkoutSettings)!
              self.checkoutProvider?.delegate = self
              self.checkoutProvider?.presentCheckout(forSubmittingTransactionCompletionHandler: {
                  (transaction, error) in
@@ -186,7 +186,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
             }
             else {
                 do {
-                    let params = try OPPCardPaymentParams(checkoutID: checkoutId, paymentBrand: self.brands, holder: self.holder, number: self.number, expiryMonth: self.month, expiryYear: self.year, cvv: self.cvv)
+                    let params = try OPPCardPaymentParams(checkoutId: checkoutId, paymentBrand: self.brands, holder: self.holder, number: self.number, expiryMonth: self.month, expiryYear: self.year, cvv: self.cvv)
                     var isEnabledTokenization:Bool = false;
                     if(self.setStorePaymentDetailsMode=="true"){
                         isEnabledTokenization=true;
@@ -248,13 +248,13 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
        }
 
     private func dismissCurrentViewController(result: @escaping FlutterResult) {
-        didReceiveAsynchronousPaymentCallback(result: self.Presult!)
+        didReceiveAsynchronousPaymentCallback(result: self.PaymentResult!)
     }
 
      public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
            var handler:Bool = false
            if url.scheme?.caseInsensitiveCompare( self.shopperResultURL) == .orderedSame {
-               didReceiveAsynchronousPaymentCallback(result: self.Presult!)
+               didReceiveAsynchronousPaymentCallback(result: self.PaymentResult!)
                handler = true
            }
 
@@ -277,7 +277,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
            controller.dismiss(animated: true, completion: nil)
        }
        func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-           if let params = try? OPPApplePayPaymentParams(checkoutID: self.checkoutid, tokenData: payment.token.paymentData) as OPPApplePayPaymentParams? {
+           if let params = try? OPPApplePayPaymentParams(checkoutId: self.checkoutId, tokenData: payment.token.paymentData) as OPPApplePayPaymentParams? {
                self.transaction  = OPPTransaction(paymentParams: params)
                self.provider.submitTransaction(OPPTransaction(paymentParams: params), completionHandler: {
                    (transaction, error) in
@@ -288,7 +288,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                    else {
                        // send request to your server to obtain transaction status.
                        completion(.success)
-                       self.Presult!("success")
+                       self.PaymentResult!("success")
                    }
                })
            }

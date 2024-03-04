@@ -117,7 +117,7 @@ public class PaymentPlugin  implements
 
         default : error("1", "THIS TYPE NO IMPLEMENT" + type, "");
       }
-    } else if (call.method.equals("dismissView")) { {
+    } else if (call.method.equals("dismissView")) {
       dismissCurrentActivity();
     } else {
       notImplemented();
