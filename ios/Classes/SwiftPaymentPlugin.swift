@@ -81,7 +81,8 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
             else {
                 result(FlutterError(code: "1", message: "Method name is not found", details: ""))
                     }
-
+        } else if call.method == "dismissView" {
+            dismissCurrentViewController(result: result)
         } else {
                 result(FlutterError(code: "1", message: "Method name is not found", details: ""))
             }
@@ -245,6 +246,11 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
            }
 
        }
+
+    private func dismissCurrentViewController(result: @escaping FlutterResult) {
+        didReceiveAsynchronousPaymentCallback(result: self.Presult!)
+    }
+
      public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
            var handler:Bool = false
            if url.scheme?.caseInsensitiveCompare( self.shopperResultURL) == .orderedSame {
