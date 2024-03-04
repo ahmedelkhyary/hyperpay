@@ -68,7 +68,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     self.openCheckoutUI(checkoutId: self.checkoutid, result1: result)
                 }
             } else if self.type  == "CustomUI"{
-                
+    
                  self.brand = (args!["brand"] as? String)!
                  self.number = (args!["card_number"] as? String)!
                  self.holder = (args!["holder_name"] as? String)!

@@ -117,12 +117,22 @@ public class PaymentPlugin  implements
 
         default : error("1", "THIS TYPE NO IMPLEMENT" + type, "");
       }
+    } else if (call.method.equals("dismissView")) { {
+      dismissCurrentActivity();
+      break;
 
     } else {
       notImplemented();
     }
 
   }
+
+  // Method to dismiss the current Activity
+private void dismissCurrentActivity() {
+  if (activity != null) {
+      activity.finish();
+  }
+}
 
   private void openCheckoutUI(String checkoutId) {
 

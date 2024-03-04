@@ -83,7 +83,13 @@ end
 
 
 
-
+### Dismiss The View
+```dart
+void dismissNativeView() {
+  const channel = MethodChannel('Hyperpay.demo.fultter/channel');
+  channel.invokeMethod('dismissView');
+}
+```
 
 ### Setup HyperPay Environment Configuration
 define instanse of `FlutterHyperPay`
