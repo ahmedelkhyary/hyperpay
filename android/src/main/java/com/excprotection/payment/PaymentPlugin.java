@@ -119,8 +119,6 @@ public class PaymentPlugin  implements
       }
     } else if (call.method.equals("dismissView")) { {
       dismissCurrentActivity();
-      break;
-
     } else {
       notImplemented();
     }
