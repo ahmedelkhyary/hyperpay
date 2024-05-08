@@ -68,8 +68,8 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     self.openCheckoutUI(checkoutId: self.checkoutid, result1: result)
                 }
             } else if self.type  == "CustomUI"{
-                
-                 self.brand = (args!["brand"] as? String)!
+
+                 self.brands = (args!["brand"] as? String)!
                  self.number = (args!["card_number"] as? String)!
                  self.holder = (args!["holder_name"] as? String)!
                  self.year = (args!["year"] as? String)!
@@ -205,7 +205,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                             self.safariVC = SFSafariViewController(url: self.transaction!.redirectURL!)
                             self.safariVC?.delegate = self;
                             //    self.present(self.safariVC!, animated: true, completion: nil)
-                            self.window?.rootViewController?.present(self.safariVC!, animated: true, completion: nil)
+                            UIApplication.shared.windows.first?.rootViewController?.present(self.safariVC!, animated: true, completion: nil)
                         }
                         else if transaction.type == .synchronous {
                             // Send request to your server to obtain transaction status
