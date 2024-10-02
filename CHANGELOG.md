@@ -1,3 +1,6 @@
+## 3.0.0
+* update IOS SDK 6.14.0
+
 ## 2.0.8
 * update models description
 
