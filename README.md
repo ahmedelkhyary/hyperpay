@@ -52,6 +52,7 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
 ```
 #### Note about Intent-filter scheme
 The `Scheme` field must match the `InAppPaymentSetting.shopperResultUrl` field.
+Don't make `Scheme` like `com.testPayment.Payment` avoid capital letters in Android.
 
 `It's used when making a payment outside the app (Like open browser) and back into the app`
 
@@ -192,7 +193,8 @@ open `android/app/src/main/res/values` and add the following lines
 `payment setting`
 ```
   class InAppPaymentSetting {
-   // shopperResultUrl : this name must like scheme in intent-filter , url scheme in xcode
+   // shopperResultUrl : this name must like scheme in intent-filter, url scheme in xcode
+   // Avoid capital letters like `com.testPayment.Payment`, as it will not work in Android.
   static const String shopperResultUrl= "com.testpayment.payment";
   static const String merchantId= "MerchantId";
   static const String countryCode="SA";
