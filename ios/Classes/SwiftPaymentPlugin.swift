@@ -297,7 +297,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
 
     func setThem( checkoutSettings :OPPCheckoutSettings,hexColorString :String){
          // General colors of the checkout UI
-         checkoutSettings.theme.confirmationButtonColor = UIColor(hexString:hexColorString);
+         checkoutSettings.theme.confirmationButtonColor = UIColor(red:0,green:0.75,blue:0,alpha:1);
          checkoutSettings.theme.navigationBarBackgroundColor = UIColor(hexString:hexColorString);
          checkoutSettings.theme.cellHighlightedBackgroundColor = UIColor(hexString:hexColorString);
          checkoutSettings.theme.accentColor = UIColor(hexString:hexColorString);
