@@ -1,12 +1,22 @@
 package com.excprotection.payment;
 
+import static com.oppwa.mobile.connect.payment.card.CardPaymentParams.isHolderValid;
+
+import android.os.Parcel;
+
+import androidx.annotation.NonNull;
+
+import com.oppwa.mobile.connect.checkout.dialog.IPaymentFormListener;
+import com.oppwa.mobile.connect.checkout.meta.CheckoutValidationResult;
+
 // Create your listener to override holder validation
 public class CustomFormListener implements IPaymentFormListener {
     public CustomFormListener() {}
-    
+
+    @NonNull
     @Override
     public CheckoutValidationResult onCardHolderValidate(String holder) {
-        if(holder.length == 0) {
+        if(holder != null && holder.isEmpty()) {
             return CheckoutValidationResult.NOT_VALID;
         }
         if (isHolderValid(holder)) {
@@ -22,7 +32,10 @@ public class CustomFormListener implements IPaymentFormListener {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {}
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+
+    }
+
     
     private CustomFormListener(Parcel in) {}
 
