@@ -142,6 +142,8 @@ public class PaymentPlugin  implements
     // SET LANG
     checkoutSettings.setLocale(Lang);
 
+    checkoutSettings.setPaymentFormListener(new CustomFormListener());
+
     // SHOW TOTAL PAYMENT AMOUNT IN BUTTON
     // checkoutSettings.setTotalAmountRequired(true);
 
