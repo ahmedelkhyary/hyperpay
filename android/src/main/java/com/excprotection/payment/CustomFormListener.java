@@ -16,7 +16,10 @@ public class CustomFormListener implements IPaymentFormListener {
     @NonNull
     @Override
     public CheckoutValidationResult onCardHolderValidate(String holder) {
-        if(holder != null && holder.isEmpty()) {
+        if(holder == null ) {
+            return CheckoutValidationResult.NOT_VALID;
+        }
+        if(holder.isEmpty()) {
             return CheckoutValidationResult.NOT_VALID;
         }
         if (isHolderValid(holder)) {
