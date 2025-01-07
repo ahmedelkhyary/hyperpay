@@ -87,6 +87,25 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
             }
         }
 
+    @IBAction func checkoutButtonAction(_ sender: UIButton) {
+        // Set a delegate property for the OPPCheckoutProvider instance
+        self.checkoutProvider?.delegate = self
+ 
+    }
+ 
+    // Implement a callback, it will be called after holder text field loses focus or Pay button is pressed
+    public func checkoutProvider(
+        _ checkoutProvider: OPPCheckoutProvider, validateCardHolder cardHolder: String?
+    ) -> Bool {
+        guard let cardHolder = cardHolder, !cardHolder.trimmingCharacters(in: .whitespaces).isEmpty
+        else {
+            return false
+        }
+ 
+        return true
+        // return `true` if the card holder is valid, otherwise `false`
+    }
+
 
     private func openCheckoutUI(checkoutId: String,result1: @escaping FlutterResult) {
 
