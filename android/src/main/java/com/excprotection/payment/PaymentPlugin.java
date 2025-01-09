@@ -4,6 +4,7 @@ import com.oppwa.mobile.connect.payment.PaymentParams;
 import com.oppwa.mobile.connect.payment.card.CardPaymentParams;
 import com.oppwa.mobile.connect.payment.stcpay.STCPayPaymentParams;
 import com.oppwa.mobile.connect.payment.stcpay.STCPayVerificationOption;
+import com.oppwa.mobile.connect.provider.ITransactionListener;
 import com.oppwa.mobile.connect.provider.OppPaymentProvider;
 import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -41,7 +42,7 @@ import java.util.Set;
 
 public class PaymentPlugin  implements
         PluginRegistry.ActivityResultListener ,ActivityAware
-        , FlutterPlugin, MethodCallHandler , PluginRegistry.NewIntentListener {
+        , FlutterPlugin, MethodCallHandler , PluginRegistry.NewIntentListener, ITransactionListener {
 
   private  MethodChannel.Result Result;
   private  String mode = "";
@@ -162,15 +163,10 @@ public class PaymentPlugin  implements
             context.getPackageName(), CheckoutBroadcastReceiver.class.getName());
 
     // SET UP THE INTENT AND START THE CHECKOUT ACTIVITY
-//    Intent intent = checkoutSettings.createCheckoutActivityIntent(context.getApplicationContext(), componentName);
-//
-//    // START ACTIVITY
-//    activity.startActivityForResult(intent, CheckoutActivity.REQUEST_CODE_CHECKOUT);
 
-    //Intent intent = checkoutSettings.createCheckoutActivityIntent(context.getApplicationContext(), componentName);
     Intent intent = new Intent(context.getApplicationContext(), CheckoutActivity.class);
-    intent.putExtra("com.oppwa.mobile.connect.checkout.dialog.EXTRA_CHECKOUT_SETTINGS", checkoutSettings);
-    intent.putExtra("com.oppwa.mobile.connect.checkout.dialog.EXTRA_CHECKOUT_RECEIVER", componentName);
+    intent.putExtra(CheckoutActivity.CHECKOUT_SETTINGS, checkoutSettings);
+    intent.putExtra(CheckoutActivity.CHECKOUT_RECEIVER, componentName);
 
     // START ACTIVITY
     activity.startActivityForResult(intent, 242);
@@ -268,7 +264,7 @@ public class PaymentPlugin  implements
 
             //Submit Transaction
             //Listen for transaction Completed - transaction Failed
-            //  paymentProvider.submitTransaction(transaction, this);
+            paymentProvider.submitTransaction(transaction, this);
 
           } catch (PaymentException e) {
             error("0.1", e.getLocalizedMessage(), "");
@@ -304,7 +300,7 @@ public class PaymentPlugin  implements
 
         //Submit Transaction
         //Listen for transaction Completed - transaction Failed
-        //paymentProvider.submitTransaction(transaction, this);
+        paymentProvider.submitTransaction(transaction, this);
 
       } catch (PaymentException e) {
         e.printStackTrace();
@@ -318,6 +314,8 @@ public class PaymentPlugin  implements
       case CheckoutActivity.RESULT_OK :
         /* transaction completed */
         Transaction transaction = data.getParcelableExtra(CheckoutActivity.CHECKOUT_RESULT_TRANSACTION);
+
+
         /* resource path if needed */
         // String resourcePath = data.getStringExtra(CheckoutActivity.CHECKOUT_RESULT_RESOURCE_PATH);
         if (transaction.getTransactionType() == TransactionType.SYNC) {
@@ -366,51 +364,6 @@ public class PaymentPlugin  implements
     return  true ;
   }
 
-//  @Override
-//  public void transactionCompleted(@NonNull Transaction transaction) {
-//
-//    if (transaction.getTransactionType() == TransactionType.SYNC) {
-//      success("SYNC");
-//    } else {
-//      /* wait for the callback in the s */
-//      Uri uri = Uri.parse(transaction.getRedirectUrl());
-//      Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//      activity.startActivity(intent);
-//    }
-//  }
-
-//  @Override
-//  public void transactionFailed(@NonNull Transaction transaction, @NonNull PaymentError paymentError) {
-//    error("transactionFailed", paymentError.getErrorMessage(), "transactionFailed"
-//    );
-//  }
-
-//  @Override
-//  public void brandsValidationRequestSucceeded(@NonNull BrandsValidation brandsValidation) {
-//
-//  }
-//
-//  @Override
-//  public void brandsValidationRequestFailed(@NonNull PaymentError paymentError) {
-//  }
-//
-//  @Override
-//  public void imagesRequestSucceeded(@NonNull ImagesRequest imagesRequest) {
-//
-//  }
-//
-//  @Override
-//  public void imagesRequestFailed() {
-//
-//  }
-//
-//  @Override
-//  public void paymentConfigRequestSucceeded(@NonNull CheckoutInfo checkoutInfo) {
-//  }
-//
-//  @Override
-//  public void paymentConfigRequestFailed(@NonNull PaymentError paymentError) {
-//  }
 
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
@@ -438,5 +391,63 @@ public class PaymentPlugin  implements
   @Override
   public void onDetachedFromActivity() {
 
+  }
+
+  @Override
+  public void transactionCompleted(@NonNull Transaction transaction) {
+    if (transaction.getTransactionType() == TransactionType.SYNC) {
+      success("SYNC");
+    } else {
+      /* wait for the callback in the s */
+      Uri uri = Uri.parse(transaction.getRedirectUrl());
+      Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+      activity.startActivity(intent);
+    }
+  }
+
+  @Override
+  public void transactionFailed(@NonNull Transaction transaction, @NonNull PaymentError paymentError) {
+    error("transactionFailed", paymentError.getErrorMessage(), "transactionFailed"
+    );
+  }
+
+  @Override
+  public void brandsValidationRequestSucceeded(@NonNull BrandsValidation brandsValidation) {
+    ITransactionListener.super.brandsValidationRequestSucceeded(brandsValidation);
+  }
+
+  @Override
+  public void brandsValidationRequestFailed(@NonNull PaymentError error) {
+    ITransactionListener.super.brandsValidationRequestFailed(error);
+  }
+
+  @Override
+  public void paymentConfigRequestSucceeded(@NonNull CheckoutInfo checkoutInfo) {
+    ITransactionListener.super.paymentConfigRequestSucceeded(checkoutInfo);
+  }
+
+  @Override
+  public void paymentConfigRequestFailed(@NonNull PaymentError error) {
+    ITransactionListener.super.paymentConfigRequestFailed(error);
+  }
+
+  @Override
+  public void imagesRequestSucceeded(@NonNull ImagesRequest imagesRequest) {
+    ITransactionListener.super.imagesRequestSucceeded(imagesRequest);
+  }
+
+  @Override
+  public void imagesRequestFailed() {
+    ITransactionListener.super.imagesRequestFailed();
+  }
+
+  @Override
+  public void binRequestSucceeded(@NonNull String[] brands) {
+    ITransactionListener.super.binRequestSucceeded(brands);
+  }
+
+  @Override
+  public void binRequestFailed() {
+    ITransactionListener.super.binRequestFailed();
   }
 }
