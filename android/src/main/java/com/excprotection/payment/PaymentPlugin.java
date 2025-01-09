@@ -197,7 +197,7 @@ public class PaymentPlugin  implements
 
       //Submit Transaction
       //Listen for transaction Completed - transaction Failed
-    //  paymentProvider.submitTransaction(transaction, this);
+    paymentProvider.submitTransaction(transaction, this);
 
     } catch (PaymentException e) {
       e.printStackTrace();
