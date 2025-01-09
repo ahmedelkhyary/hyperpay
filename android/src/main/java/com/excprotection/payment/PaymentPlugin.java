@@ -28,7 +28,7 @@ import com.oppwa.mobile.connect.payment.CheckoutInfo;
 import com.oppwa.mobile.connect.payment.ImagesRequest;
 import com.oppwa.mobile.connect.payment.token.TokenPaymentParams;
 import com.oppwa.mobile.connect.provider.Connect;
-import com.oppwa.mobile.connect.provider.ITransactionListener;
+//import com.oppwa.mobile.connect.provider.ITransactionListener;
 import com.oppwa.mobile.connect.provider.Transaction;
 import com.oppwa.mobile.connect.provider.TransactionType;
 import android.net.Uri;
@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Set;
 
 public class PaymentPlugin  implements
-        PluginRegistry.ActivityResultListener ,ActivityAware,  ITransactionListener
+        PluginRegistry.ActivityResultListener ,ActivityAware
         , FlutterPlugin, MethodCallHandler , PluginRegistry.NewIntentListener {
 
   private  MethodChannel.Result Result;
@@ -148,7 +148,7 @@ public class PaymentPlugin  implements
     // checkoutSettings.setTotalAmountRequired(true);
 
     //SET SHOPPER
-    checkoutSettings.setShopperResultUrl(ShopperResultUrl + "://result");
+    //checkoutSettings.setShopperResultUrl(ShopperResultUrl + "://result");
 
     //SAVE PAYMENT CARDS FOR NEXT
     if (setStorePaymentDetailsMode.equals("true")) {
@@ -162,10 +162,18 @@ public class PaymentPlugin  implements
             context.getPackageName(), CheckoutBroadcastReceiver.class.getName());
 
     // SET UP THE INTENT AND START THE CHECKOUT ACTIVITY
-    Intent intent = checkoutSettings.createCheckoutActivityIntent(context.getApplicationContext(), componentName);
+//    Intent intent = checkoutSettings.createCheckoutActivityIntent(context.getApplicationContext(), componentName);
+//
+//    // START ACTIVITY
+//    activity.startActivityForResult(intent, CheckoutActivity.REQUEST_CODE_CHECKOUT);
+
+    //Intent intent = checkoutSettings.createCheckoutActivityIntent(context.getApplicationContext(), componentName);
+    Intent intent = new Intent(context.getApplicationContext(), CheckoutActivity.class);
+    intent.putExtra("com.oppwa.mobile.connect.checkout.dialog.EXTRA_CHECKOUT_SETTINGS", checkoutSettings);
+    intent.putExtra("com.oppwa.mobile.connect.checkout.dialog.EXTRA_CHECKOUT_RECEIVER", componentName);
 
     // START ACTIVITY
-    activity.startActivityForResult(intent, CheckoutActivity.REQUEST_CODE_CHECKOUT);
+    activity.startActivityForResult(intent, 242);
 
   }
 
@@ -193,7 +201,7 @@ public class PaymentPlugin  implements
 
       //Submit Transaction
       //Listen for transaction Completed - transaction Failed
-      paymentProvider.submitTransaction(transaction, this);
+    //  paymentProvider.submitTransaction(transaction, this);
 
     } catch (PaymentException e) {
       e.printStackTrace();
@@ -260,7 +268,7 @@ public class PaymentPlugin  implements
 
             //Submit Transaction
             //Listen for transaction Completed - transaction Failed
-            paymentProvider.submitTransaction(transaction, this);
+            //  paymentProvider.submitTransaction(transaction, this);
 
           } catch (PaymentException e) {
             error("0.1", e.getLocalizedMessage(), "");
@@ -296,7 +304,7 @@ public class PaymentPlugin  implements
 
         //Submit Transaction
         //Listen for transaction Completed - transaction Failed
-        paymentProvider.submitTransaction(transaction, this);
+        //paymentProvider.submitTransaction(transaction, this);
 
       } catch (PaymentException e) {
         e.printStackTrace();
@@ -358,51 +366,51 @@ public class PaymentPlugin  implements
     return  true ;
   }
 
-  @Override
-  public void transactionCompleted(@NonNull Transaction transaction) {
+//  @Override
+//  public void transactionCompleted(@NonNull Transaction transaction) {
+//
+//    if (transaction.getTransactionType() == TransactionType.SYNC) {
+//      success("SYNC");
+//    } else {
+//      /* wait for the callback in the s */
+//      Uri uri = Uri.parse(transaction.getRedirectUrl());
+//      Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//      activity.startActivity(intent);
+//    }
+//  }
 
-    if (transaction.getTransactionType() == TransactionType.SYNC) {
-      success("SYNC");
-    } else {
-      /* wait for the callback in the s */
-      Uri uri = Uri.parse(transaction.getRedirectUrl());
-      Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-      activity.startActivity(intent);
-    }
-  }
+//  @Override
+//  public void transactionFailed(@NonNull Transaction transaction, @NonNull PaymentError paymentError) {
+//    error("transactionFailed", paymentError.getErrorMessage(), "transactionFailed"
+//    );
+//  }
 
-  @Override
-  public void transactionFailed(@NonNull Transaction transaction, @NonNull PaymentError paymentError) {
-    error("transactionFailed", paymentError.getErrorMessage(), "transactionFailed"
-    );
-  }
-
-  @Override
-  public void brandsValidationRequestSucceeded(@NonNull BrandsValidation brandsValidation) {
-
-  }
-
-  @Override
-  public void brandsValidationRequestFailed(@NonNull PaymentError paymentError) {
-  }
-
-  @Override
-  public void imagesRequestSucceeded(@NonNull ImagesRequest imagesRequest) {
-
-  }
-
-  @Override
-  public void imagesRequestFailed() {
-
-  }
-
-  @Override
-  public void paymentConfigRequestSucceeded(@NonNull CheckoutInfo checkoutInfo) {
-  }
-
-  @Override
-  public void paymentConfigRequestFailed(@NonNull PaymentError paymentError) {
-  }
+//  @Override
+//  public void brandsValidationRequestSucceeded(@NonNull BrandsValidation brandsValidation) {
+//
+//  }
+//
+//  @Override
+//  public void brandsValidationRequestFailed(@NonNull PaymentError paymentError) {
+//  }
+//
+//  @Override
+//  public void imagesRequestSucceeded(@NonNull ImagesRequest imagesRequest) {
+//
+//  }
+//
+//  @Override
+//  public void imagesRequestFailed() {
+//
+//  }
+//
+//  @Override
+//  public void paymentConfigRequestSucceeded(@NonNull CheckoutInfo checkoutInfo) {
+//  }
+//
+//  @Override
+//  public void paymentConfigRequestFailed(@NonNull PaymentError paymentError) {
+//  }
 
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {

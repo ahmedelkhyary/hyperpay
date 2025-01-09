@@ -47,7 +47,7 @@ android {
         applicationId "com.example.example"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -68,11 +68,20 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation(name: "oppwa.mobile-release", ext: 'aar')
-    debugImplementation(name: "ipworks3ds_sdk", ext: 'aar')
-    releaseImplementation(name: "ipworks3ds_sdk_deploy", ext: 'aar')
+//    implementation(name: "oppwa.mobile-release", ext: 'aar')
+//    debugImplementation(name: "ipworks3ds_sdk", ext: 'aar')
+//    releaseImplementation(name: "ipworks3ds_sdk_deploy", ext: 'aar')
     implementation "com.google.android.material:material:1.6.1"
     implementation "androidx.appcompat:appcompat:1.5.1"
     implementation 'com.google.android.gms:play-services-wallet:19.1.0'
     implementation "androidx.browser:browser:1.4.0"
+    implementation "com.google.code.gson:gson:2.8.9"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.webkit:webkit:1.4.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation 'androidx.databinding:viewbinding:7.1.2'
+
+
 }
