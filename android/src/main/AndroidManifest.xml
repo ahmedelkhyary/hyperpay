@@ -33,8 +33,8 @@
         <activity
             android:name="com.oppwa.mobile.connect.checkout.dialog.CheckoutActivity"
             android:configChanges="orientation"
-            android:exported="false"
-            android:launchMode="singleTop"
+            android:exported="true"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan"
             tools:replace="android:windowSoftInputMode" />
 
