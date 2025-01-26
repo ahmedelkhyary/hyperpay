@@ -1,3 +1,7 @@
+## 3.1.1
+* Updated HyperPay native SDK to version 6.16.1 for Android.
+* Fix Android crash issue when using Api level 34
+
 ## 3.0.0
 * update IOS SDK 6.14.0
 

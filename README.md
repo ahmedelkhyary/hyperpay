@@ -2,7 +2,7 @@
 
 The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started
 
-[![pub package](https://img.shields.io/badge/Release-3.0.0%20Pub%20dev-blue)](https://pub.dev/packages/hyperpay_plugin)
+[![pub package](https://img.shields.io/badge/Release-3.1.1%20Pub%20dev-blue)](https://pub.dev/packages/hyperpay_plugin)
 [![Discord](https://img.shields.io/badge/Discord-JOIN-blue?logo=discord)](https://discord.gg/T8TyGxpGBS)
 [![GitHub](https://img.shields.io/badge/Github-Link-blue?logo=github)](https://github.com/ahmedelkhyary/hyperpay)
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](https://pub.dev/packages/hyperpay_plugin/license)
@@ -51,6 +51,7 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
         
 ```
 #### Note about Intent-filter scheme
+#### `shopperResultUrl since mSDK version 6.0.0 the shopper result URL is not required`
 The `Scheme` field must match the `InAppPaymentSetting.shopperResultUrl` field.
 Don't make `Scheme` like `com.testPayment.Payment` avoid capital letters in Android.
 
