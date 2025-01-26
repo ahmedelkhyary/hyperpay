@@ -87,6 +87,25 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
             }
         }
 
+    @IBAction func checkoutButtonAction(_ sender: UIButton) {
+        // Set a delegate property for the OPPCheckoutProvider instance
+        self.checkoutProvider?.delegate = self
+ 
+    }
+ 
+    // Implement a callback, it will be called after holder text field loses focus or Pay button is pressed
+    public func checkoutProvider(
+        _ checkoutProvider: OPPCheckoutProvider, validateCardHolder cardHolder: String?
+    ) -> Bool {
+        guard let cardHolder = cardHolder, !cardHolder.trimmingCharacters(in: .whitespaces).isEmpty
+        else {
+            return false
+        }
+ 
+        return true
+        // return `true` if the card holder is valid, otherwise `false`
+    }
+
 
     private func openCheckoutUI(checkoutId: String,result1: @escaping FlutterResult) {
 
@@ -297,7 +316,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
 
     func setThem( checkoutSettings :OPPCheckoutSettings,hexColorString :String){
          // General colors of the checkout UI
-         checkoutSettings.theme.confirmationButtonColor = UIColor(hexString:hexColorString);
+         checkoutSettings.theme.confirmationButtonColor = UIColor(red:0,green:0.75,blue:0,alpha:1);
          checkoutSettings.theme.navigationBarBackgroundColor = UIColor(hexString:hexColorString);
          checkoutSettings.theme.cellHighlightedBackgroundColor = UIColor(hexString:hexColorString);
          checkoutSettings.theme.accentColor = UIColor(hexString:hexColorString);

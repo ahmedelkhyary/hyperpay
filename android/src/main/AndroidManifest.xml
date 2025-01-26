@@ -18,16 +18,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <data android:scheme="override_url" />
             </intent-filter>
+
+                <intent-filter>
+                <data android:scheme="sa.gov.gosi.taminaty"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <activity
             android:name="com.oppwa.mobile.connect.checkout.dialog.CheckoutActivity"
             android:configChanges="orientation"
-            android:exported="false"
-            android:launchMode="singleTop"
+            android:exported="true"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan"
             tools:replace="android:windowSoftInputMode" />
+
+             
         
         <meta-data
             android:name="flutterEmbedding"
