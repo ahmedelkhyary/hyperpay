@@ -83,7 +83,7 @@ class FlutterHyperPay {
   /// This function allows the user to make payments using their stored cards.
   /// It accepts an argument of type StoredCards and makes a call to the implementPaymentStoredCards
   /// function with the values required for the payment.
-  /// It returns a Future<PaymentResultData> which is the outcome of the payment.
+
   Future<PaymentResultData> payWithSoredCards(
       {required StoredCards storedCards}) async {
     return await implementPaymentStoredCards(
