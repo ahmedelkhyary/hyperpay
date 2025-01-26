@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Divider(),
             Text("pay with custom ui".toUpperCase() , style: const TextStyle(fontSize: 20 , color: Colors.red),),
             InkWell( onTap: ()async{
-              String? checkoutId = await getCheckOut();
+              String? checkoutId = "D4BA27E10287D21E24789A07B044CA12.uat01-vm-tx02";
               if(checkoutId !=null) {
                 // "VISA" 4111111111111111
                 // "MASTER" 5541805721646120
