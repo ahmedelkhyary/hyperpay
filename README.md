@@ -6,6 +6,7 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
 [![Discord](https://img.shields.io/badge/Discord-JOIN-blue?logo=discord)](https://discord.gg/T8TyGxpGBS)
 [![GitHub](https://img.shields.io/badge/Github-Link-blue?logo=github)](https://github.com/ahmedelkhyary/hyperpay)
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](https://pub.dev/packages/hyperpay_plugin/license)
+[![Coffee](https://img.shields.io/badge/coffee-black?logo=buy-me-a-coffee)](https://buymeacoffee.com/ahmedelkhyary)
 
 
 ## Support ReadyUI , CustomUI
