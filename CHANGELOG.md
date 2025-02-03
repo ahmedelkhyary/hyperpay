@@ -1,3 +1,6 @@
+## 3.1.3
+* Fix crashing issue when open Ready UI
+
 ## 3.1.2
 * update IOS SDK 6.16.0
 
