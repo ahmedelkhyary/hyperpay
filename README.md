@@ -2,7 +2,7 @@
 
 The HyperPay platform offers a complete, easy-to-use guide to enable seamless integration of our end-to-end payment gateway for mobile and desktop browsers. Through a unified API, you can enable and gain access to all platform features. Choose one of the options below to quickly get started
 
-[![pub package](https://img.shields.io/badge/Release-3.1.3%20Pub%20dev-blue)](https://pub.dev/packages/hyperpay_plugin)
+[![pub package](https://img.shields.io/badge/Release-3.1.4%20Pub%20dev-blue)](https://pub.dev/packages/hyperpay_plugin)
 [![Discord](https://img.shields.io/badge/Discord-JOIN-blue?logo=discord)](https://discord.gg/T8TyGxpGBS)
 [![GitHub](https://img.shields.io/badge/Github-Link-blue?logo=github)](https://github.com/ahmedelkhyary/hyperpay)
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](https://pub.dev/packages/hyperpay_plugin/license)
@@ -21,19 +21,21 @@ The HyperPay platform offers a complete, easy-to-use guide to enable seamless in
    &NewLine;
 
 ```
-    implementation(name: "oppwa.mobile-release", ext: 'aar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     debugImplementation(name: "ipworks3ds_sdk", ext: 'aar')
     releaseImplementation(name: "ipworks3ds_sdk_deploy", ext: 'aar')
+    implementation(name: "oppwa.mobile-release", ext: 'aar')
     implementation "com.google.android.material:material:1.6.1"
     implementation "androidx.appcompat:appcompat:1.5.1"
     implementation 'com.google.android.gms:play-services-wallet:19.1.0'
-    implementation "androidx.browser:browser:1.4.0" 
-    implementation "androidx.recyclerview:recyclerview:1.2.1"
-    implementation "androidx.fragment:fragment-ktx:1.4.1"
-    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-    implementation "androidx.webkit:webkit:1.4.0"
+    implementation "androidx.browser:browser:1.4.0"
     implementation "com.google.code.gson:gson:2.8.9"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.webkit:webkit:1.4.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation 'androidx.databinding:viewbinding:7.1.2'
 ```
 2. Open `app/build.gradle` and make sure that the `minSdkVersion` is **21**
    &NewLine;

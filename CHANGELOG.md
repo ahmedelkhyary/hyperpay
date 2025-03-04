@@ -1,3 +1,6 @@
+## 3.1.4
+* Fix crashing android issue when open Ready UI
+
 ## 3.1.3
 * Fix crashing issue when open Ready UI
 
