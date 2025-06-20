@@ -1,8 +1,9 @@
 import Flutter
 import UIKit
 import SafariServices
+import PassKit
 
-public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate   {
+public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate, PKPaymentAuthorizationViewControllerDelegate   {
     var type:String = "";
     var mode:String = "";
     var checkoutid:String = "";
@@ -57,15 +58,29 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
             self.lang=(args!["lang"] as? String)!
 
             if self.type == "ReadyUI" {
-                self.applePaybundel=(args!["merchantId"] as? String)!
-                self.countryCode=(args!["CountryCode"] as? String)!
-                self.companyName=(args!["companyName"] as? String)!
                 self.brandsReadyUi = (args!["brand"]) as! [String]
-                self.themColorHex=(args!["themColorHexIOS"] as? String)!
+                
+                if self.brandsReadyUi.count == 1 && self.brandsReadyUi.first == "APPLEPAY" {
+                    self.applePaybundel = (args!["merchantId"] as? String)!
+                    self.countryCode = (args!["CountryCode"] as? String)!
+                    self.companyName = (args!["companyName"] as? String)!
+                    self.amount = (args!["amount"] as? Double) ?? 1.0
+                    self.currencyCode = (args!["currencyCode"] as? String)!
 
-                self.setStorePaymentDetailsMode=(args!["setStorePaymentDetailsMode"] as? String )!
-                DispatchQueue.main.async {
-                    self.openCheckoutUI(checkoutId: self.checkoutid, result1: result)
+                    DispatchQueue.main.async {
+                        self.openApplePay(checkoutId: self.checkoutid, result1: result)
+                    }
+                } else {
+                    self.applePaybundel = (args!["merchantId"] as? String)!
+                    self.countryCode = (args!["CountryCode"] as? String)!
+                    self.companyName = (args!["companyName"] as? String)!
+                    self.themColorHex = (args!["themColorHexIOS"] as? String)!
+                    self.setStorePaymentDetailsMode = (args!["setStorePaymentDetailsMode"] as? String )!
+                    self.amount = (args!["amount"] as? Double) ?? 1.0
+
+                    DispatchQueue.main.async {
+                        self.openCheckoutUI(checkoutId: self.checkoutid, result1: result)
+                    }
                 }
             } else if self.type  == "CustomUI"{
 
@@ -178,6 +193,30 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
 
      }
 
+    public func openApplePay(checkoutId: String, result1: @escaping FlutterResult) {
+        if self.mode == "live" {
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
+        } else {
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
+        }
+        
+        let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePaybundel, countryCode: self.countryCode)
+        
+        paymentRequest.currencyCode = self.currencyCode
+        paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: self.companyName, amount: NSDecimalNumber(value: self.amount))]
+        
+        if #available(iOS 12.1.1, *) {
+            paymentRequest.supportedNetworks = [PKPaymentNetwork.mada, PKPaymentNetwork.visa, PKPaymentNetwork.masterCard]
+        } else {
+            paymentRequest.supportedNetworks = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard]
+        }
+        
+        if let applePayViewController = OPPPaymentProvider.applePayViewController(with: paymentRequest, delegate: self) {
+            UIApplication.shared.windows.first?.rootViewController?.present(applePayViewController, animated: true, completion: nil)
+        } else {
+            result1(FlutterError(code: "2", message: "Apple Pay is not available or not configured on this device.", details: nil))
+        }
+    }
 
     private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {
 
