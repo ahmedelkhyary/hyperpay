@@ -65,10 +65,10 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     self.countryCode = (args!["CountryCode"] as? String)!
                     self.companyName = (args!["companyName"] as? String)!
                     self.amount = (args!["amount"] as? Double) ?? 1.0
-                    self.currencyCode = (args!["currencyCode"] as? String)!
+                    self.currencyCode = (args!["currencyCode"] as? String) ?? "SAR"
 
                     DispatchQueue.main.async {
-                        self.openApplePay(checkoutId: self.checkoutid, result1: result)
+                        self.openApplePay()
                     }
                 } else {
                     self.applePaybundel = (args!["merchantId"] as? String)!
@@ -193,13 +193,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
 
      }
 
-    public func openApplePay(checkoutId: String, result1: @escaping FlutterResult) {
-        if self.mode == "live" {
-            self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
-        } else {
-            self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
-        }
-        
+    private func openApplePay() {
         let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePaybundel, countryCode: self.countryCode)
         
         paymentRequest.currencyCode = self.currencyCode
@@ -211,10 +205,15 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
             paymentRequest.supportedNetworks = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard]
         }
         
-        if let applePayViewController = OPPPaymentProvider.applePayViewController(with: paymentRequest, delegate: self) {
+        guard let applePayViewController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) else {
+            self.Presult?(FlutterError(code: "2", message: "Failed to initialize Apple Pay. The device may not support it or have cards configured.", details: nil))
+            return
+        }
+        
+        applePayViewController.delegate = self
+
+        DispatchQueue.main.async {
             UIApplication.shared.windows.first?.rootViewController?.present(applePayViewController, animated: true, completion: nil)
-        } else {
-            result1(FlutterError(code: "2", message: "Apple Pay is not available or not configured on this device.", details: nil))
         }
     }
 
@@ -325,10 +324,10 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
            }
 
        }
-       func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+       public func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
            controller.dismiss(animated: true, completion: nil)
        }
-       func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+       public func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
            if let params = try? OPPApplePayPaymentParams(checkoutID: self.checkoutid, tokenData: payment.token.paymentData) as OPPApplePayPaymentParams? {
                self.transaction  = OPPTransaction(paymentParams: params)
                self.provider.submitTransaction(OPPTransaction(paymentParams: params), completionHandler: {
