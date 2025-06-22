@@ -92,8 +92,11 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                  self.cvv = (args!["cvv"] as? String)!
                  self.setStorePaymentDetailsMode = (args!["EnabledTokenization"] as? String)!
                  self.openCustomUI(checkoutId: self.checkoutid, result1: result)
-            }
-            else {
+            } else if self.type  == "StoredCards"{
+                self.tokenID = (args!["TokenID"] as? String)!
+                self.cvv = (args!["cvv"] as? String)!
+                self.openStoredCardPayment(checkoutId: self.checkoutid, result1: result)
+           } else {
                 result(FlutterError(code: "1", message: "Method name is not found", details: ""))
                     }
 
@@ -190,6 +193,54 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                                                         print(self.transaction.debugDescription)
                                                     })
          }
+
+     }
+
+    private func openStoredCardPayment(checkoutId: String, result1: @escaping FlutterResult) {
+
+        if self.mode == "live" {
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
+        }else{
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
+        }
+
+             if !OPPCardPaymentParams.isCvvValid(self.cvv) {
+                self.createalart(titletext: "CVV is Invalid", msgtext: "")
+            }
+            else {
+                do {
+                    let params = try OPPTokenPaymentParams(checkoutID: checkoutId, tokenID: self.tokenID, cardPaymentBrand: self.brands, cvv: self.cvv)
+                    params.shopperResultURL =  self.shopperResultURL+"://result"
+                    self.transaction  = OPPTransaction(paymentParams: params)
+                    
+                    self.provider.submitTransaction(self.transaction!) {
+                        (transaction, error) in
+                        guard let transaction = self.transaction else {
+                            self.createalart(titletext: error as! String, msgtext: error as! String)
+                            return
+                        }
+                        if transaction.type == .asynchronous {
+                            NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "AsyncPaymentCompletedNotificationKey"), object: nil)
+                            self.safariVC = SFSafariViewController(url: self.transaction!.redirectURL!)
+                            self.safariVC?.delegate = self;
+                            self.safariVC?.dismiss(animated: true) {
+                                        DispatchQueue.main.async {
+                                            self.Presult?("success")
+                                        }
+                                    }
+                        }
+                        else if transaction.type == .synchronous {
+                            result1("success")
+                        }
+                        else {
+                            self.createalart(titletext: error as! String, msgtext: "Plesae try again")
+                        }
+                    }
+                }
+                catch let error as NSError {
+                    self.createalart(titletext: error.localizedDescription, msgtext: "")
+                }
+            }
 
      }
 
