@@ -37,6 +37,6 @@ class ReadyUI {
     this.companyNameApplePayIOS = "",
     this.themColorHexIOS = "",
     this.setStorePaymentDetailsMode = false,
-    this.amount = 1.0,
+    required this.amount,
   });
 }
