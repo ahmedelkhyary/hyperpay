@@ -64,7 +64,8 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     self.applePaybundel = (args!["merchantId"] as? String)!
                     self.countryCode = (args!["CountryCode"] as? String)!
                     self.companyName = (args!["companyName"] as? String)!
-                    self.amount = (args!["amount"] as? Double) ?? 1.0
+                    self.amount = (args!["amount"] as? Double)!
+
                     self.currencyCode = (args!["currencyCode"] as? String) ?? "SAR"
 
                     DispatchQueue.main.async {
@@ -76,7 +77,6 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     self.companyName = (args!["companyName"] as? String)!
                     self.themColorHex = (args!["themColorHexIOS"] as? String)!
                     self.setStorePaymentDetailsMode = (args!["setStorePaymentDetailsMode"] as? String )!
-                    self.amount = (args!["amount"] as? Double) ?? 1.0
 
                     DispatchQueue.main.async {
                         self.openCheckoutUI(checkoutId: self.checkoutid, result1: result)
@@ -108,9 +108,9 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
     @IBAction func checkoutButtonAction(_ sender: UIButton) {
         // Set a delegate property for the OPPCheckoutProvider instance
         self.checkoutProvider?.delegate = self
- 
+
     }
- 
+
     // Implement a callback, it will be called after holder text field loses focus or Pay button is pressed
     public func checkoutProvider(
         _ checkoutProvider: OPPCheckoutProvider, validateCardHolder cardHolder: String?
@@ -119,7 +119,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
         else {
             return false
         }
- 
+
         return true
         // return `true` if the card holder is valid, otherwise `false`
     }
@@ -212,7 +212,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     let params = try OPPTokenPaymentParams(checkoutID: checkoutId, tokenID: self.tokenID, cardPaymentBrand: self.brands, cvv: self.cvv)
                     params.shopperResultURL =  self.shopperResultURL+"://result"
                     self.transaction  = OPPTransaction(paymentParams: params)
-                    
+
                     self.provider.submitTransaction(self.transaction!) {
                         (transaction, error) in
                         guard let transaction = self.transaction else {
@@ -246,15 +246,17 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
 
     private func openApplePay() {
         let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePaybundel, countryCode: self.countryCode)
-        
-        paymentRequest.currencyCode = self.currencyCode
         paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: self.companyName, amount: NSDecimalNumber(value: self.amount))]
-        
+        paymentRequest.currencyCode = self.currencyCode
+
         if #available(iOS 12.1.1, *) {
-            paymentRequest.supportedNetworks = [PKPaymentNetwork.mada, PKPaymentNetwork.visa, PKPaymentNetwork.masterCard]
-        } else {
-            paymentRequest.supportedNetworks = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard]
+            paymentRequest.supportedNetworks = [ PKPaymentNetwork.mada,PKPaymentNetwork.visa, PKPaymentNetwork.masterCard ]
         }
+        else {
+            // Fallback on earlier versions
+            paymentRequest.supportedNetworks = [ PKPaymentNetwork.visa, PKPaymentNetwork.masterCard ]
+        }
+
         
         guard let applePayViewController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) else {
             self.Presult?(FlutterError(code: "2", message: "Failed to initialize Apple Pay. The device may not support it or have cards configured.", details: nil))

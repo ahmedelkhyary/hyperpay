@@ -18,7 +18,7 @@ Future<PaymentResultData> implementPayment(
     required String countryCode,
     String? companyName = "",
     String? themColorHexIOS,
-    required bool setStorePaymentDetailsMode}) async {
+    required bool setStorePaymentDetailsMode, required double amount}) async {
   String transactionStatus;
   var platform = MethodChannel(channelName);
   try {
