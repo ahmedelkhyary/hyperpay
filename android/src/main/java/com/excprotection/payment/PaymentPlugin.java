@@ -261,6 +261,22 @@ public class PaymentPlugin  implements
             }
 
             paymentProvider = new OppPaymentProvider(activity.getBaseContext(), providerMode);
+                  
+            ThreeDSWorkflowListener threeDSWorkflowListener = new ThreeDSWorkflowListener() {
+              @Override
+              public Activity onThreeDSChallengeRequired() {
+                // provide your Activity
+                  return activity;
+              }
+        
+              @Override
+              public ThreeDSConfig onThreeDSConfigRequired() {
+                // provide your ThreeDSConfig
+                  return threeDSConfig;
+              }
+             };
+
+            paymentProvider.setThreeDSWorkflowListener(threeDSWorkflowListener);      
 
             //Submit Transaction
             //Listen for transaction Completed - transaction Failed
