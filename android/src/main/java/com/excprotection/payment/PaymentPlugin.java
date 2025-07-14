@@ -32,6 +32,8 @@ import com.oppwa.mobile.connect.provider.Connect;
 //import com.oppwa.mobile.connect.provider.ITransactionListener;
 import com.oppwa.mobile.connect.provider.Transaction;
 import com.oppwa.mobile.connect.provider.TransactionType;
+import com.oppwa.mobile.connect.provider.ThreeDSWorkflowListener;
+import com.oppwa.mobile.connect.provider.threeds.v2.model.ThreeDSConfig;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
@@ -42,7 +44,7 @@ import java.util.Set;
 
 public class PaymentPlugin  implements
         PluginRegistry.ActivityResultListener ,ActivityAware
-        , FlutterPlugin, MethodCallHandler , PluginRegistry.NewIntentListener, ITransactionListener {
+        , FlutterPlugin, MethodCallHandler , PluginRegistry.NewIntentListener, ITransactionListener, ThreeDSWorkflowListener {
 
   private  MethodChannel.Result Result;
   private  String mode = "";
@@ -57,6 +59,7 @@ public class PaymentPlugin  implements
   private OppPaymentProvider paymentProvider  = null ;
   private Activity activity;
   private Context context;
+  private ThreeDSConfig threeDSConfig;
 
 
   private final Handler handler = new Handler(Looper.getMainLooper());
@@ -261,14 +264,14 @@ public class PaymentPlugin  implements
             }
 
             paymentProvider = new OppPaymentProvider(activity.getBaseContext(), providerMode);
-                  
+
             ThreeDSWorkflowListener threeDSWorkflowListener = new ThreeDSWorkflowListener() {
               @Override
               public Activity onThreeDSChallengeRequired() {
                 // provide your Activity
                   return activity;
               }
-        
+
               @Override
               public ThreeDSConfig onThreeDSConfigRequired() {
                 // provide your ThreeDSConfig
@@ -276,7 +279,7 @@ public class PaymentPlugin  implements
               }
              };
 
-            paymentProvider.setThreeDSWorkflowListener(threeDSWorkflowListener);      
+            paymentProvider.setThreeDSWorkflowListener(threeDSWorkflowListener);
 
             //Submit Transaction
             //Listen for transaction Completed - transaction Failed
@@ -465,5 +468,15 @@ public class PaymentPlugin  implements
   @Override
   public void binRequestFailed() {
     ITransactionListener.super.binRequestFailed();
+  }
+
+  @Override
+  public Activity onThreeDSChallengeRequired() {
+    return activity;
+  }
+
+  @Override
+  public ThreeDSConfig onThreeDSConfigRequired() {
+    return threeDSConfig;
   }
 }
