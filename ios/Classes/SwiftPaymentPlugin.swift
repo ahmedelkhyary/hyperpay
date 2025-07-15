@@ -3,7 +3,7 @@ import UIKit
 import SafariServices
 import PassKit
 
-public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate, PKPaymentAuthorizationViewControllerDelegate   {
+public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate, PKPaymentAuthorizationViewControllerDelegate, OPPThreeDSWorkflowListener   {
     var type:String = "";
     var mode:String = "";
     var checkoutid:String = "";
@@ -303,6 +303,17 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     params.isTokenizationEnabled=isEnabledTokenization;
                     //set tokenization
                     params.shopperResultURL =  self.shopperResultURL+"://result"
+                    
+                    self.provider?.threeDSEventListener = self
+                    func onThreeDSChallengeRequired(completion: @escaping (UINavigationController) -> Void) {
+                        completion(self.navigationController!)
+                    }
+                    
+                    func onThreeDSConfigRequired(completion: @escaping (OPPThreeDSConfig) -> Void) {
+                        let config = OPPThreeDSConfig()
+                        completion(config)
+                    }
+                    
                     self.transaction  = OPPTransaction(paymentParams: params)
                     self.provider.submitTransaction(self.transaction!) {
                         (transaction, error) in
