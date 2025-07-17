@@ -86,6 +86,35 @@ pre_install do |installer|
     end
 end
 ```
+1.1. Open AppDelegate.swift, and paste the following inside of it:
+   &NewLine;
+   
+```ruby
+import UIKit
+import Flutter
+import GoogleMaps
+
+@main
+@objc class AppDelegate: FlutterAppDelegate {
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+
+    let flutterViewController = FlutterViewController(project: nil, nibName: nil, bundle: nil)
+    GeneratedPluginRegistrant.register(with: flutterViewController)
+
+    let navigationController = UINavigationController(rootViewController: flutterViewController)
+    navigationController.isNavigationBarHidden = true
+
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.rootViewController = navigationController
+    window?.makeKeyAndVisible()
+
+    return true
+  }
+}
+```
 
 2. Add `Url Scheme` to the list of bundle identifiers.
    The `Url Scheme` field must match the `InAppPaymentSetting.shopperResultUrl` field.
