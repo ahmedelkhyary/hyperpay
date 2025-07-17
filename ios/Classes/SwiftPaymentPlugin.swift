@@ -3,7 +3,7 @@ import UIKit
 import SafariServices
 import PassKit
 
-public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate, PKPaymentAuthorizationViewControllerDelegate, OPPThreeDSWorkflowListener   {
+public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerDelegate, OPPCheckoutProviderDelegate, PKPaymentAuthorizationViewControllerDelegate, OPPThreeDSEventListener   {
     var type:String = "";
     var mode:String = "";
     var checkoutid:String = "";
@@ -69,7 +69,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     self.currencyCode = (args!["currencyCode"] as? String) ?? "SAR"
 
                     DispatchQueue.main.async {
-                        self.openApplePay()
+                        self.openApplePay(result1: result)
                     }
                 } else {
                     self.applePaybundel = (args!["merchantId"] as? String)!
@@ -216,7 +216,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     self.provider.submitTransaction(self.transaction!) {
                         (transaction, error) in
                         guard let transaction = self.transaction else {
-                            self.createalart(titletext: error as! String, msgtext: error as! String)
+                            self.createalart(titletext: "error", msgtext: "Plesae try again")
                             return
                         }
                         if transaction.type == .asynchronous {
@@ -224,16 +224,16 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                             self.safariVC = SFSafariViewController(url: self.transaction!.redirectURL!)
                             self.safariVC?.delegate = self;
                             self.safariVC?.dismiss(animated: true) {
-                                        DispatchQueue.main.async {
-                                            self.Presult?("success")
-                                        }
-                                    }
+                                DispatchQueue.main.async {
+                                    self.Presult?("success")
+                                }
+                            }
                         }
                         else if transaction.type == .synchronous {
-                            result1("success")
+                            result1("SYNC")
                         }
                         else {
-                            self.createalart(titletext: error as! String, msgtext: "Plesae try again")
+                            self.createalart(titletext: "error", msgtext: "Plesae try again")
                         }
                     }
                 }
@@ -244,31 +244,37 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
 
      }
 
-    private func openApplePay() {
+    private func openApplePay(result1: @escaping FlutterResult) {
+        if self.mode == "live" {
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
+        } else {
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
+        }
+        
         let paymentRequest = OPPPaymentProvider.paymentRequest(withMerchantIdentifier: self.applePaybundel, countryCode: self.countryCode)
-        paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: self.companyName, amount: NSDecimalNumber(value: self.amount))]
         paymentRequest.currencyCode = self.currencyCode
-
+        paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: self.companyName, amount: NSDecimalNumber(value: self.amount))]
+        
         if #available(iOS 12.1.1, *) {
-            paymentRequest.supportedNetworks = [ PKPaymentNetwork.mada,PKPaymentNetwork.visa, PKPaymentNetwork.masterCard ]
-        }
-        else {
-            // Fallback on earlier versions
-            paymentRequest.supportedNetworks = [ PKPaymentNetwork.visa, PKPaymentNetwork.masterCard ]
-        }
-
-        
-        guard let applePayViewController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) else {
-            self.Presult?(FlutterError(code: "2", message: "Failed to initialize Apple Pay. The device may not support it or have cards configured.", details: nil))
-            return
+            paymentRequest.supportedNetworks = [.mada, .visa, .masterCard]
+        } else {
+            paymentRequest.supportedNetworks = [.visa, .masterCard]
         }
         
-        applePayViewController.delegate = self
-
-        DispatchQueue.main.async {
-            UIApplication.shared.windows.first?.rootViewController?.present(applePayViewController, animated: true, completion: nil)
+        if OPPPaymentProvider.canSubmitPaymentRequest(paymentRequest) {
+            if let vc = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest) {
+                vc.delegate = self
+                if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+                    rootViewController.present(vc, animated: true, completion: nil)
+                }
+            } else {
+                NSLog("Apple Pay not supported.")
+            }
+        } else {
+            NSLog("Unable to submit payment request. Apple Pay might not be set up correctly.")
         }
     }
+
 
     private func openCustomUI(checkoutId: String,result1: @escaping FlutterResult) {
 
@@ -304,22 +310,13 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     //set tokenization
                     params.shopperResultURL =  self.shopperResultURL+"://result"
                     
-                    self.provider?.threeDSEventListener = self
-                    func onThreeDSChallengeRequired(completion: @escaping (UINavigationController) -> Void) {
-                        completion(self.navigationController!)
-                    }
-                    
-                    func onThreeDSConfigRequired(completion: @escaping (OPPThreeDSConfig) -> Void) {
-                        let config = OPPThreeDSConfig()
-                        completion(config)
-                    }
-                    
+                    self.provider.threeDSEventListener = self
                     self.transaction  = OPPTransaction(paymentParams: params)
                     self.provider.submitTransaction(self.transaction!) {
                         (transaction, error) in
                         guard let transaction = self.transaction else {
                             // Handle invalid transaction, check error
-                            self.createalart(titletext: error as! String, msgtext: error as! String)
+                            self.createalart(titletext: "error", msgtext: "Plesae try again")
                             return
                         }
                         if transaction.type == .asynchronous {
@@ -334,14 +331,13 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                         }
                         else {
                             // Handle the error
-                            self.createalart(titletext: error as! String, msgtext: "Plesae try again")
+                            self.createalart(titletext: "error", msgtext: "Plesae try again")
                         }
                     }
                     // Set shopper result URL
                     //    params.shopperResultURL = "com.companyname.appname.payments://result"
                 }
                 catch let error as NSError {
-                    // See error.code (OPPErrorCode) and error.localizedDescription to identify the reason of failure
                     self.createalart(titletext: error.localizedDescription, msgtext: "")
                 }
             }
@@ -366,6 +362,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
            }
 
        }
+    
      public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
            var handler:Bool = false
            if url.scheme?.caseInsensitiveCompare( self.shopperResultURL) == .orderedSame {
@@ -388,27 +385,37 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
            }
 
        }
-       public func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-           controller.dismiss(animated: true, completion: nil)
-       }
-       public func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-           if let params = try? OPPApplePayPaymentParams(checkoutID: self.checkoutid, tokenData: payment.token.paymentData) as OPPApplePayPaymentParams? {
-               self.transaction  = OPPTransaction(paymentParams: params)
-               self.provider.submitTransaction(OPPTransaction(paymentParams: params), completionHandler: {
-                   (transaction, error) in
-                   if (error != nil) {
-                       // see code attribute (OPPErrorCode) and NSLocalizedDescription to identify the reason of failure.
-                       self.createalart(titletext: "APPLEPAY Error", msgtext: "")
-                   }
-                   else {
-                       // send request to your server to obtain transaction status.
-                       completion(.success)
-                       self.Presult!("success")
-                   }
-               })
-           }
+    public func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+        if let params = try? OPPApplePayPaymentParams(checkoutID: self.checkoutid, tokenData: payment.token.paymentData) as OPPApplePayPaymentParams? {
+            params.shopperResultURL =  self.shopperResultURL+"://result"
+            provider.submitTransaction(OPPTransaction(paymentParams: params), completionHandler: { (transaction, error) in
+                if (error != nil) {
+                    if let error = error {
+                            completion(.failure)
+                        }
+                } else {
+                    completion(.success)
+                }
+             })
+        }
+    }
 
-       }
+    public func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    public func onThreeDSChallengeRequired(redirectURL: String, completion: @escaping (UINavigationController) -> Void) {
+        DispatchQueue.main.async {
+            guard let navController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController else {
+                print("FATAL ERROR: Could not find a UINavigationController as the root view controller. Check your AppDelegate setup.")
+                return
+            }
+            completion(navController)
+        }
+    }
+        public func onThreeDSConfigRequired(completion: @escaping (OPPThreeDSConfig) -> Void) {
+            let config = OPPThreeDSConfig()
+            completion(config)
+        }
        func decimal(with string: String) -> NSDecimalNumber {
            //  let formatter = NumberFormatter()
            let formatter = NumberFormatter()
