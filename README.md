@@ -92,7 +92,6 @@ end
 ```ruby
 import UIKit
 import Flutter
-import GoogleMaps
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
