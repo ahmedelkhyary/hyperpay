@@ -18,7 +18,7 @@ Future<PaymentResultData> implementPayment(
     required String countryCode,
     String? companyName = "",
     String? themColorHexIOS,
-    required bool setStorePaymentDetailsMode}) async {
+    required bool setStorePaymentDetailsMode, required double amount}) async {
   String transactionStatus;
   var platform = MethodChannel(channelName);
   try {
@@ -35,6 +35,7 @@ Future<PaymentResultData> implementPayment(
         companyName: companyName,
         lang: lang,
         setStorePaymentDetailsMode: setStorePaymentDetailsMode,
+        amount: amount,
       ),
     );
     transactionStatus = '$result';
@@ -61,7 +62,7 @@ Map<String, dynamic> getReadyModelCards(
     required String countryCode,
     String? companyName = "",
     String? themColorHexIOS,
-    required bool setStorePaymentDetailsMode}) {
+    required bool setStorePaymentDetailsMode, required double amount}) {
   return {
     "type": PaymentConst.readyUi,
     "mode": paymentMode.toString().split('.').last,
@@ -74,5 +75,6 @@ Map<String, dynamic> getReadyModelCards(
     "themColorHexIOS": themColorHexIOS ?? "",
     "ShopperResultUrl": shopperResultUrl,
     "setStorePaymentDetailsMode": setStorePaymentDetailsMode.toString(),
+    "amount": amount,
   };
 }

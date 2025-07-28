@@ -123,7 +123,8 @@ class _MyHomePageState extends State<MyHomePage> {
             countryCodeApplePayIOS: InAppPaymentSetting.countryCode,
             companyNameApplePayIOS: "Test Co",
             themColorHexIOS: "#000000" ,// FOR IOS ONLY
-            setStorePaymentDetailsMode: true // store payment details for future use
+            setStorePaymentDetailsMode: true,
+            amount: 1.0 // store payment details for future use
             ),
       );
 

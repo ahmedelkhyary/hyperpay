@@ -27,6 +27,8 @@ class ReadyUI {
   /// themColorHexIOS is likely intended to represent the hexadecimal color code for the theme color you want to use in your iOS app. The term may contain a typo; it's more commonly referred to as themeColorHexIOS.
   String themColorHexIOS;
 
+  double amount;
+
   ReadyUI({
     required this.checkoutId,
     required this.brandsName,
@@ -35,5 +37,6 @@ class ReadyUI {
     this.companyNameApplePayIOS = "",
     this.themColorHexIOS = "",
     this.setStorePaymentDetailsMode = false,
+    required this.amount,
   });
 }
