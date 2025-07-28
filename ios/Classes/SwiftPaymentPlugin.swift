@@ -385,18 +385,67 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
            }
 
        }
+
+    // --- THIS IS THE FINAL, FULLY CORRECTED METHOD ---
+    // --- Replace your old method with this one ---
+
     public func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-        if let params = try? OPPApplePayPaymentParams(checkoutID: self.checkoutid, tokenData: payment.token.paymentData) as OPPApplePayPaymentParams? {
-            params.shopperResultURL =  self.shopperResultURL+"://result"
-            provider.submitTransaction(OPPTransaction(paymentParams: params), completionHandler: { (transaction, error) in
-                if (error != nil) {
-                    if let error = error {
-                            completion(.failure)
-                        }
-                } else {
+        
+        // First, check if you can create the payment parameters
+        guard let params = try? OPPApplePayPaymentParams(checkoutID: self.checkoutid, tokenData: payment.token.paymentData) else {
+            NSLog("Error: Failed to create OPPApplePayPaymentParams.")
+            self.Presult?(FlutterError(code: "APPLEPAY_INIT_FAILED", message: "Failed to initialize Apple Pay parameters.", details: nil))
+            completion(.failure)
+            return
+        }
+
+        params.shopperResultURL = self.shopperResultURL + "://result"
+        
+        // Submit the transaction to HyperPay
+        self.provider.submitTransaction(OPPTransaction(paymentParams: params)) { (transaction, error) in
+            
+            // --- FIX ---
+            // The 'guard let transaction = transaction' block has been removed.
+            // We can use the 'transaction' parameter directly.
+            
+            if transaction.type == .synchronous {
+                // For synchronous transactions, the 'error' object tells us the result.
+                if error == nil {
+                    // NO error means the payment was successful.
+                    NSLog("Payment successful (Synchronous)")
+                    self.Presult?("success")
                     completion(.success)
+                } else {
+                    // An error object exists, so the payment failed.
+                    let errorMessage = error?.localizedDescription ?? "Payment was declined"
+                    NSLog("Payment failed (Synchronous). Details: \(errorMessage)")
+                    self.Presult?(FlutterError(code: "PAYMENT_FAILED", message: errorMessage, details: nil))
+                    completion(.failure)
                 }
-             })
+            } else if transaction.type == .asynchronous {
+                // Asynchronous flow (e.g. 3D Secure) is handled by redirects.
+                // The 'error' object here is usually nil unless there's a setup issue.
+                // If an error does exist here, it's a critical failure.
+                if let asyncError = error {
+                     let errorMessage = asyncError.localizedDescription
+                     NSLog("Asynchronous flow setup failed. Details: \(errorMessage)")
+                     self.Presult?(FlutterError(code: "ASYNC_SETUP_FAILED", message: errorMessage, details: nil))
+                     completion(.failure)
+                     return
+                }
+                
+                NSLog("Payment is pending (Asynchronous). Waiting for redirect via notification.")
+                NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveAsynchronousPaymentCallback), name: Notification.Name(rawValue: "AsyncPaymentCompletedNotificationKey"), object: nil)
+                
+                // IMPORTANT: We do NOT call completion() here.
+                // The Apple Pay sheet will wait for the final status from the async callback.
+            } else {
+                // Handle any other unexpected cases as failures.
+                let errorMessage = error?.localizedDescription ?? "Unknown transaction type or error."
+                NSLog("Payment failed (Unknown State). Details: \(errorMessage)")
+                self.Presult?(FlutterError(code: "UNKNOWN_STATE", message: errorMessage, details: nil))
+                completion(.failure)
+            }
         }
     }
 
