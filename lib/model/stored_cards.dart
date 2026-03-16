@@ -24,6 +24,6 @@ class StoredCards {
     required this.checkoutId,
     this.brandName,
     required this.tokenId,
-    required this.cvv,
+    this.cvv = '',
   });
 }

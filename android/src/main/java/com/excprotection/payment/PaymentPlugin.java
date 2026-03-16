@@ -121,6 +121,7 @@ public class PaymentPlugin  implements
         case "StoredCards" :
           cvv = call.argument("cvv");
           TokenID = call.argument("TokenID");
+          brands = call.argument("brand");
           storedCardPayment(checkoutId);
           break;
 
@@ -210,33 +211,36 @@ public class PaymentPlugin  implements
   }
 
   private void storedCardPayment(String checkoutId) {
-
     try {
+        TokenPaymentParams paymentParams;
+        if (cvv != null && !cvv.isEmpty()) {
+            paymentParams = new TokenPaymentParams(checkoutId, TokenID, brands, cvv);
+        } else {
+            paymentParams = new TokenPaymentParams(checkoutId, TokenID, brands);
+        }
 
-      TokenPaymentParams paymentParams = new TokenPaymentParams(checkoutId, TokenID, brands, cvv);
+        paymentParams.setShopperResultUrl(ShopperResultUrl + "://result");
 
-      paymentParams.setShopperResultUrl(ShopperResultUrl + "://result");
-
-      Transaction transaction = new Transaction(paymentParams);
+        Transaction transaction = new Transaction(paymentParams);
 
       //Set Mode;
-      boolean resultMode = mode.equals("test");
-      Connect.ProviderMode providerMode ;
+        boolean resultMode = mode.equals("test");
+        Connect.ProviderMode providerMode;
 
-      if (resultMode) {
-        providerMode =  Connect.ProviderMode.TEST ;
-      } else {
-        providerMode =  Connect.ProviderMode.LIVE ;
-      }
+        if (resultMode) {
+            providerMode = Connect.ProviderMode.TEST;
+        } else {
+            providerMode = Connect.ProviderMode.LIVE;
+        }
 
-      paymentProvider = new OppPaymentProvider(activity.getBaseContext(), providerMode);
+        paymentProvider = new OppPaymentProvider(activity.getBaseContext(), providerMode);
 
         // Ensure ThreeDS workflow listener is provided (SDK requires non-null listener)
         paymentProvider.setThreeDSWorkflowListener(new ThreeDSWorkflowListener() {
-          @Override
-          public Activity onThreeDSChallengeRequired() {
-            return activity;
-          }
+            @Override
+            public Activity onThreeDSChallengeRequired() {
+                return activity;
+            }
         });
 
         //Submit Transaction
@@ -244,12 +248,9 @@ public class PaymentPlugin  implements
         paymentProvider.submitTransaction(transaction, this);
 
     } catch (PaymentException e) {
-      e.printStackTrace();
-
+        e.printStackTrace();
     }
-
-
-  }
+}
 
   private void openCustomUI(String checkoutId) {
 
