@@ -25,7 +25,7 @@ class PaymentBrands {
   static const String samsungPay = "SAMSUNGPAY";
   static const String credit = "credit";
   static const String stcPay = "STC_PAY";
-  static const String masterCard = "MASTERCARD";
+  static const String masterCard = "MASTER";
   static const String visa = "VISA";
 }
 
