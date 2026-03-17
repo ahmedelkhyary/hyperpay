@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'model/custom_ui.dart';
 import 'model/custom_ui_stc.dart';
+import 'model/google_pay_ui.dart';
 import 'model/ready_ui.dart';
 import 'model/stored_cards.dart';
 import 'src/custom_ui/method_channel_custom_ui.dart';
 import 'src/custom_ui/method_channel_custom_ui_stc.dart';
+import 'src/google_pay/method_channel_google_pay.dart';
 import 'src/ready_ui/method_channel_ready_ui.dart';
 import 'src/store_cards/method_channel_store_cards.dart';
 
@@ -95,6 +97,25 @@ class FlutterHyperPay {
       channelName: channelName,
       paymentMode: paymentMode,
       lang: lang,
+    );
+  }
+
+  /// This method is used for making Google Pay payments (Android only).
+  /// It takes in the required GooglePayUI input and returns a PaymentResultData object.
+  Future<PaymentResultData> googlePayUI({required GooglePayUI googlePayUI}) async {
+    return await implementGooglePayPayment(
+      checkoutId: googlePayUI.checkoutId,
+      shopperResultUrl: shopperResultUrl,
+      channelName: channelName,
+      paymentMode: paymentMode,
+      lang: lang,
+      googlePayMerchantId: googlePayUI.googlePayMerchantId,
+      gatewayMerchantId: googlePayUI.gatewayMerchantId,
+      countryCode: googlePayUI.countryCode,
+      currencyCode: googlePayUI.currencyCode,
+      amount: googlePayUI.amount,
+      allowedCardNetworks: googlePayUI.allowedCardNetworks,
+      allowedCardAuthMethods: googlePayUI.allowedCardAuthMethods,
     );
   }
 }
