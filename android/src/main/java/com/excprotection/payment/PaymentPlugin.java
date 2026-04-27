@@ -119,6 +119,16 @@ public class PaymentPlugin  implements
           openCustomUISTC(checkoutId);
           break;
 
+        case "RegisterCard":
+          brands = call.argument("brand");
+          number = call.argument("card_number");
+          holder = call.argument("holder_name");
+          year = call.argument("year");
+          month = call.argument("month");
+          cvv = call.argument("cvv");
+          registerCardTransaction(checkoutId);
+          break;
+
         default : error("1", "THIS TYPE NO IMPLEMENT" + type, "");
       }
 
@@ -289,6 +299,57 @@ public class PaymentPlugin  implements
             error("0.1", e.getLocalizedMessage(), "");
           }
         }
+  }
+
+  private void registerCardTransaction(String checkoutId) {
+
+    Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+            ? "Please Waiting.."
+            : "برجاء الانتظار..", Toast.LENGTH_SHORT).show();
+
+    if (!CardPaymentParams.isNumberValid(number, true)) {
+      Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+              ? "Card number is not valid"
+              : "رقم البطاقة غير صالح", Toast.LENGTH_SHORT).show();
+    } else if (!CardPaymentParams.isHolderValid(holder)) {
+      Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+              ? "Holder name is not valid"
+              : "اسم المالك غير صالح", Toast.LENGTH_SHORT).show();
+    } else if (!CardPaymentParams.isExpiryYearValid(year)) {
+      Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+              ? "Expiry year is not valid"
+              : "سنة انتهاء الصلاحية غير صالحة", Toast.LENGTH_SHORT).show();
+    } else if (!CardPaymentParams.isExpiryMonthValid(month)) {
+      Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+              ? "Expiry month is not valid"
+              : "شهر انتهاء الصلاحية غير صالح", Toast.LENGTH_SHORT).show();
+    } else if (!CardPaymentParams.isCvvValid(cvv)) {
+      Toast.makeText(activity.getApplicationContext(), Lang.equals("en_US")
+              ? "CVV is not valid"
+              : "CVV غير صالح", Toast.LENGTH_SHORT).show();
+    } else {
+      try {
+        PaymentParams paymentParams = new CardPaymentParams(
+                checkoutId, brands, number, holder, month, year, cvv
+        );
+
+        Transaction transaction = new Transaction(paymentParams);
+
+        boolean resultMode = mode.equals("test");
+        Connect.ProviderMode providerMode;
+        if (resultMode) {
+          providerMode = Connect.ProviderMode.TEST;
+        } else {
+          providerMode = Connect.ProviderMode.LIVE;
+        }
+
+        paymentProvider = new OppPaymentProvider(activity.getBaseContext(), providerMode);
+        paymentProvider.registerTransaction(transaction, this);
+
+      } catch (PaymentException e) {
+        error("0.1", e.getLocalizedMessage(), "");
+      }
+    }
   }
 
   private void openCustomUISTC(String checkoutId) {

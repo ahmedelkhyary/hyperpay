@@ -9,6 +9,7 @@ class PaymentConst {
   static const String customUi = "CustomUI";
   static const String customUiSTC = "CustomUISTC";
   static const String storedCards = "StoredCards";
+  static const String registerCard = "RegisterCard";
   static const String methodCall = "gethyperpayresponse";
   static const String success = "success";
   static const String error = "error";

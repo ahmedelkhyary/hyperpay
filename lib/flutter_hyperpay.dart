@@ -3,10 +3,12 @@ import 'dart:async';
 import 'model/custom_ui.dart';
 import 'model/custom_ui_stc.dart';
 import 'model/ready_ui.dart';
+import 'model/register_card.dart';
 import 'model/stored_cards.dart';
 import 'src/custom_ui/method_channel_custom_ui.dart';
 import 'src/custom_ui/method_channel_custom_ui_stc.dart';
 import 'src/ready_ui/method_channel_ready_ui.dart';
+import 'src/register_card/method_channel_register_card.dart';
 import 'src/store_cards/method_channel_store_cards.dart';
 
 part 'hyper_pay_const.dart';
@@ -95,6 +97,23 @@ class FlutterHyperPay {
       shopperResultUrl: shopperResultUrl,
       channelName: channelName,
       paymentMode: paymentMode,
+      lang: lang,
+    );
+  }
+
+  Future<PaymentResultData> registerCard(
+      {required RegisterCard registerCardData}) async {
+    return await implementRegisterCard(
+      brand: registerCardData.brandName,
+      checkoutId: registerCardData.checkoutId,
+      shopperResultUrl: shopperResultUrl,
+      channelName: channelName,
+      paymentMode: paymentMode,
+      cardNumber: registerCardData.cardNumber,
+      holderName: registerCardData.holderName,
+      month: registerCardData.month,
+      year: registerCardData.year,
+      cvv: registerCardData.cvv,
       lang: lang,
     );
   }

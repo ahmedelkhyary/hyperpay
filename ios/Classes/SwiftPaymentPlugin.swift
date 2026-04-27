@@ -96,7 +96,15 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                 self.tokenID = (args!["TokenID"] as? String)!
                 self.cvv = (args!["cvv"] as? String)!
                 self.openStoredCardPayment(checkoutId: self.checkoutid, result1: result)
-           } else {
+            } else if self.type == "RegisterCard" {
+                self.brands = (args!["brand"] as? String)!
+                self.number = (args!["card_number"] as? String)!
+                self.holder = (args!["holder_name"] as? String)!
+                self.year = (args!["year"] as? String)!
+                self.month = (args!["month"] as? String)!
+                self.cvv = (args!["cvv"] as? String)!
+                self.openRegisterCard(checkoutId: self.checkoutid, result1: result)
+            } else {
                 result(FlutterError(code: "1", message: "Method name is not found", details: ""))
                     }
 
@@ -341,6 +349,56 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     self.createalart(titletext: error.localizedDescription, msgtext: "")
                 }
             }
+    }
+
+    private func openRegisterCard(checkoutId: String, result1: @escaping FlutterResult) {
+
+        if self.mode == "live" {
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.live)
+        } else {
+            self.provider = OPPPaymentProvider(mode: OPPProviderMode.test)
+        }
+
+        if !OPPCardPaymentParams.isNumberValid(self.number, luhnCheck: true) {
+            self.createalart(titletext: "Card Number is Invalid", msgtext: "")
+        } else if !OPPCardPaymentParams.isHolderValid(self.holder) {
+            self.createalart(titletext: "Card Holder is Invalid", msgtext: "")
+        } else if !OPPCardPaymentParams.isCvvValid(self.cvv) {
+            self.createalart(titletext: "CVV is Invalid", msgtext: "")
+        } else if !OPPCardPaymentParams.isExpiryYearValid(self.year) {
+            self.createalart(titletext: "Expiry Year is Invalid", msgtext: "")
+        } else if !OPPCardPaymentParams.isExpiryMonthValid(self.month) {
+            self.createalart(titletext: "Expiry Month is Invalid", msgtext: "")
+        } else {
+            do {
+                let params = try OPPCardPaymentParams(
+                    checkoutID: checkoutId,
+                    paymentBrand: self.brands,
+                    holder: self.holder,
+                    number: self.number,
+                    expiryMonth: self.month,
+                    expiryYear: self.year,
+                    cvv: self.cvv
+                )
+                params.shopperResultURL = self.shopperResultURL + "://result"
+                self.transaction = OPPTransaction(paymentParams: params)
+                self.provider.register(self.transaction!) { (transaction, error) in
+                    guard error == nil else {
+                        result1(FlutterError(
+                            code: "register_failed",
+                            message: error?.localizedDescription,
+                            details: nil
+                        ))
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        result1("SYNC")
+                    }
+                }
+            } catch let error as NSError {
+                self.createalart(titletext: error.localizedDescription, msgtext: "")
+            }
+        }
     }
 
        @objc func didReceiveAsynchronousPaymentCallback(result: @escaping FlutterResult) {
