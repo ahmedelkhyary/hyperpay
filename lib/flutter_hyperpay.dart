@@ -102,7 +102,8 @@ class FlutterHyperPay {
 
   /// This method is used for making Google Pay payments (Android only).
   /// It takes in the required GooglePayUI input and returns a PaymentResultData object.
-  Future<PaymentResultData> googlePayUI({required GooglePayUI googlePayUI}) async {
+  Future<PaymentResultData> googlePayUI(
+      {required GooglePayUI googlePayUI}) async {
     return await implementGooglePayPayment(
       checkoutId: googlePayUI.checkoutId,
       shopperResultUrl: shopperResultUrl,

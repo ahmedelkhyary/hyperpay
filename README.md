@@ -109,7 +109,8 @@ lang: InAppPaymentSetting.getLang(),
 ```
 create a method to get the checkoutId
 ```
-  /// URL TO GET CHECKOUT ID FOR TEST
+  /// URL TO GET CHECKOUT ID FOR TEST 
+  /// THIS LINK UNAVAILABLE NOW
   /// http://dev.hyperpay.com/hyperpay-demo/getcheckoutid.php
   /// Brands Names [ VISA , MASTER , MADA , STC_PAY , APPLEPAY]
 
