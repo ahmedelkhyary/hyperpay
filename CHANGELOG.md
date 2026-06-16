@@ -1,3 +1,6 @@
+## 3.2.0
+* Update HyperPay SDK for both android and IOS to version 7.11.0
+
 ## 3.1.4
 * Fix crashing android issue when open Ready UI
 
